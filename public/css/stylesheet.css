@@ -1,0 +1,126 @@
+/* public/css/stylesheet.css */
+
+/* Estilos para o formulário de login */
+.form-label {
+    font-weight: bold;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group-text {
+    background-color: #f8f9fa;
+}
+
+/* Ícones */
+.bi {
+    font-size: 1.25rem;
+    vertical-align: middle;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para o card */
+.card {
+    border: none;
+}
+
+.card-header {
+    background-color: #939699;
+    color: white;
+}
+
+.card-body {
+    padding: 1.25rem; /* Adicionado preenchimento interno */
+}
+
+.input-group-text {
+    background-color: #f8f9fa;
+    border: none;
+}
+
+/* Menu */
+.navbar-nav.flex-column {
+    padding-left: 0;
+    list-style: none;
+}
+
+.navbar-nav.flex-column .nav-item {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+}
+
+.navbar-nav.flex-column .nav-link {
+    padding-left: 0;
+}
+
+.navbar-nav .home-link,
+.navbar-nav .about-link,
+.navbar-nav .contact-link,
+.navbar-nav .nav-link,
+.navbar-nav .nav-link,
+.navbar-light .navbar-brand {
+    color: rgb(196, 193, 193) !important;
+}
+
+/* Rodapé */
+.footer {
+    position: fixed; /* Mantém o rodapé fixo na parte inferior */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40; /* Altere a cor de fundo conforme necessário */
+    color: #ffffff; /* Altere a cor do texto conforme necessário */
+    text-align: center;
+    padding: 10px 0; /* Adicione preenchimento superior e inferior conforme necessário */
+    z-index: 1000; /* Garante que o rodapé esteja acima de outros elementos */
+}
+
+.bg-light {
+    background-color: #484848 !important;
+}
+
+.menu {
+    padding: 0px;
+}
+
+.selected {
+    color: rgb(14, 13, 13) !important;
+    background-color: rgb(77, 75, 75) !important;
+    width: 100%;
+    display: block;
+    padding: 0.5rem 1rem;
+}
+.container {
+    max-width: 100%;
+}
+
+.container h1 {
+    padding: 15px 0px;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 8px;
+    margin-right: auto;
+    margin-left: auto;
+}
