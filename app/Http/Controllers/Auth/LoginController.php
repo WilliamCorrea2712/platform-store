@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -39,5 +41,12 @@ class LoginController extends Controller
                 'email' => $errorMessage,   
             ]);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Session::forget('api_token');
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

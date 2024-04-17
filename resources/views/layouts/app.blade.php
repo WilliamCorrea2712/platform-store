@@ -27,6 +27,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contato</a>
                         </li>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}">Sair</a>
+                            </li>
+                        </ul>
                     </ul>
                 </div>
             </div>

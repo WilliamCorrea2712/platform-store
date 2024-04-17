@@ -12,10 +12,10 @@
                     <a class="nav-link users-toggle" href="#">Usuários</a>
                     <ul class="submenu" style="display: none;">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('createUser') }}">Cadastrar</a>
+                            <a class="nav-link" href="{{ route('getUser') }}">Todos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getUser') }}">Todos</a>
+                            <a class="nav-link" href="{{ route('createUser') }}">Cadastrar</a>
                         </li>
                     </ul>
                 </li>
