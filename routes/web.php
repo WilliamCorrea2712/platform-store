@@ -33,6 +33,10 @@ Route::middleware([
     });
 
     Route::middleware(['web'])->group(function () {
-        Route::get('/editUser', [UserController::class, 'edit'])->name('editUser');
-    });
+        Route::get('/getUser', [UserController::class, 'getUsers'])->name('getUser');
+        Route::get('/editUser/{id}', [UserController::class, 'edit'])->name('editUser');
+        Route::get('/users/create', [UserController::class, 'create'])->name('createUser');
+        Route::post('/users/store', [UserController::class, 'storeUser'])->name('storeUser');
+        Route::post('/updateUser/{id}', [UserController::class, 'update'])->name('updateUser');
+    });    
 });

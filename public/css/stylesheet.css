@@ -1,5 +1,16 @@
 /* public/css/stylesheet.css */
 
+.title {
+    font-family: "Arial", sans-serif;
+    margin: 15px 0px;
+    text-shadow: 2px 2px 4px rgba(233, 228, 228, 0.3);
+    border: 1px solid #ccc;
+    background-color: #343a40;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 32px;
+}
+
 /* Estilos para o formulário de login */
 .form-label {
     font-weight: bold;
@@ -21,12 +32,16 @@
 
 /* Botões */
 .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #174b81;
+    border-color: #276eb9;
+}
+
+.bg-primary {
+    background-color: #2a3033 !important;
 }
 
 .btn-primary:hover {
-    background-color: #0069d9;
+    background-color: #132f50;
     border-color: #0062cc;
 }
 
@@ -50,7 +65,7 @@
 }
 
 .card-body {
-    padding: 1.25rem; /* Adicionado preenchimento interno */
+    padding: 1.25rem;
 }
 
 .input-group-text {
@@ -69,10 +84,6 @@
     margin-bottom: 0.5rem;
 }
 
-.navbar-nav.flex-column .nav-link {
-    padding-left: 0;
-}
-
 .navbar-nav .home-link,
 .navbar-nav .about-link,
 .navbar-nav .contact-link,
@@ -84,28 +95,30 @@
 
 /* Rodapé */
 .footer {
-    position: fixed; /* Mantém o rodapé fixo na parte inferior */
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #343a40; /* Altere a cor de fundo conforme necessário */
-    color: #ffffff; /* Altere a cor do texto conforme necessário */
+    background-color: #343a40;
+    color: #ffffff;
     text-align: center;
-    padding: 10px 0; /* Adicione preenchimento superior e inferior conforme necessário */
-    z-index: 1000; /* Garante que o rodapé esteja acima de outros elementos */
+    padding: 10px 0;
+    z-index: 1000;
 }
 
 .bg-light {
-    background-color: #484848 !important;
+    background-color: rgb(29, 34, 37) !important;
 }
 
-.menu {
-    padding: 0px;
+.container-fluid > .row {
+    min-height: calc(100vh - 56px);
+    overflow-y: auto;
+    padding-right: 0 !important;
 }
 
 .selected {
     color: rgb(14, 13, 13) !important;
-    background-color: rgb(77, 75, 75) !important;
+    background-color: rgb(52 58 64) !important;
     width: 100%;
     display: block;
     padding: 0.5rem 1rem;
@@ -116,6 +129,7 @@
 
 .container h1 {
     padding: 15px 0px;
+    text-align: center;
 }
 
 .container-fluid {
@@ -123,4 +137,49 @@
     padding-left: 8px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.alert-success {
+    margin-top: 10px;
+}
+
+/* Estilos para a paginação */
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a,
+.pagination li span {
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+}
+
+.pagination li.active span {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.pagination li.disabled span,
+.pagination li.disabled a {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+.page-item.active .page-link {
+    background-color: #276eb9;
+    border-color: #276eb9;
 }

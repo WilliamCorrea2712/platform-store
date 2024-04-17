@@ -35,10 +35,10 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-1 menu d-lg-block">
+            <div class="col-md-2 menu d-lg-block">
                 @include('includes.menu')
             </div>
-            <div class="col-md-11">
+            <div class="col-md-10">
                 @yield('content')
             </div>
         </div>
