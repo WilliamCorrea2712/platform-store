@@ -3,19 +3,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link users-toggle" href="#">Usuários</a>
+                    <a class="nav-link customers-toggle" href="#">Clientes</a>
                     <ul class="submenu" style="display: none;">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getUser') }}">Todos</a>
+                            <a class="nav-link" href="{{ route('getCustomer') }}">Todos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('createUser') }}">Cadastrar</a>
+                            <a class="nav-link" href="#">Editar</a>
                         </li>
                     </ul>
                 </li>
@@ -35,15 +32,15 @@
                             <a class="nav-link" href="#">Estoque</a>
                         </li>
                     </ul>
-                </li>
+                </li>                
                 <li class="nav-item">
-                    <a class="nav-link customers-toggle" href="#">Clientes</a>
+                    <a class="nav-link users-toggle" href="#">Usuários</a>
                     <ul class="submenu" style="display: none;">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Cadastrar</a>
+                            <a class="nav-link" href="{{ route('getUser') }}">Todos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Editar</a>
+                            <a class="nav-link" href="{{ route('createUser') }}">Cadastrar</a>
                         </li>
                     </ul>
                 </li>

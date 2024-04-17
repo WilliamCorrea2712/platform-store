@@ -36,6 +36,10 @@
     border-color: #276eb9;
 }
 
+.float-right {
+    float: right !important;
+}
+
 .bg-primary {
     background-color: #2a3033 !important;
 }

@@ -19,9 +19,6 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="#">Sobre</a>
                         </li>
                         <li class="nav-item">

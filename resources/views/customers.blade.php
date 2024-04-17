@@ -15,8 +15,8 @@
         @endif
 
         <h1 class="title">
-            Todos Usuários
-            <a href="{{ route('createUser') }}" class="btn btn-primary float-right">Cadastrar</a>
+            Todos Clientes
+            <a href="{{ route('createCustomer') }}" class="btn btn-primary float-right">Cadastrar</a>
         </h1>        
 
         @if (count($paginator) > 0)
@@ -27,16 +27,21 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Email</th>
+                                <th>Contato</th>
+                                <th>Status</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($paginator as $user)
+                            @foreach ($paginator as $customer)
                                 <tr>
-                                    <td>{{ $user['name'] }}</td>
-                                    <td>{{ $user['email'] }}</td>
+                                    <td>{{ $customer['name'] }}</td>
+                                    <td>{{ $customer['email'] }}</td>
+                                    <td>{{ $customer['phone_number'] }}</td>
+                                    <td>{{ $customer['status'] == 1 ? 'Habilitado' : 'Desabilitado' }}</td>
+
                                     <td>
-                                        <a href="{{ url('/editUser/' . $user['id']) }}" class="btn btn-primary btn-sm float-right">Editar</a>
+                                        <a href="{{ url('/editCustomer/' . $customer['id']) }}" class="btn btn-primary btn-sm float-right">Editar</a>
                                     </td>                                                         
                                 </tr>
                             @endforeach
@@ -49,7 +54,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                Não há usuários disponíveis.
+                Não há clientes disponíveis.
             </div>
         @endif
     </div>
