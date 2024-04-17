@@ -3,12 +3,12 @@
 .title {
     font-family: "Arial", sans-serif;
     margin: 15px 0px;
-    text-shadow: 2px 2px 4px rgba(233, 228, 228, 0.3);
-    border: 1px solid #ccc;
-    background-color: #343a40;
-    color: #fff;
+    box-shadow: 0px 0px 10px rgb(151 146 146 / 30%); /* Sombreamento ao redor */
+    background-color: #343a4000;
+    color: #57585a;
     border-radius: 5px;
     font-size: 32px;
+    font-weight: bold;
 }
 
 /* Estilos para o formulário de login */
@@ -128,8 +128,8 @@
 }
 
 .container h1 {
-    padding: 15px 0px;
-    text-align: center;
+    padding: 15px 25px;
+    text-align: left;
 }
 
 .container-fluid {
