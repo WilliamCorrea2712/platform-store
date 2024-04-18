@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Middleware\AuthenticateWithApi;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
@@ -37,7 +39,14 @@ Route::middleware(['web'])->group(function () {
         Route::get('//getCustomer', [CustomerController::class, 'getCustomers'])->name('getCustomer');
         Route::get('/account/customers/create', [CustomerController::class, 'create'])->name('createCustomer');
         Route::post('/account/customers/store', [CustomerController::class, 'storeCustomer'])->name('storeCustomer');
+        Route::get('/editCustomer/{id}', [CustomerController::class, 'edit'])->name('editCustomer');
+        Route::post('/updateCustomer/{id}', [CustomerController::class, 'update'])->name('updateCustomer');
         
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+        Route::get('/about', [AboutController::class, 'show'])->name('about');
+        Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+        Route::post('/contact', [ContactController::class, 'contact'])->name('contact');
+
     });
 });

@@ -12,8 +12,8 @@
             </div>
         @endif
         <h1 class="title">
-            Clientes
-            <a href="{{ route('createCustomer') }}" class="btn btn-primary float-right">Cadastrar</a>
+            {{ __('Clientes') }}
+            <a href="{{ route('createCustomer') }}" class="btn btn-primary float-right">{{ __('Cadastrar') }}</a>
         </h1>      
         @if (count($paginator) > 0)
             <div class="card shadow-sm">        
@@ -21,11 +21,11 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Contato</th>
-                                <th>Status</th>
-                                <th>Ações</th>
+                                <th>{{ __('Nome') }}</th>
+                                <th>{{ __('Email') }}</th>
+                                <th>{{ __('Contato') }}</th>
+                                <th>{{ __('Status') }}</th>
+                                <th>{{ __('Ações') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,7 +48,7 @@
                 </div>
             </div>
         @else
-            <div class="alert alert-info" role="alert">Não há clientes disponíveis.</div>
+            <div class="alert alert-info" role="alert">{{ __('Não há clientes disponíveis.') }}</div>
         @endif
     </div>
 @endsection

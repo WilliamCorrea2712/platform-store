@@ -9,10 +9,10 @@
                     <a class="nav-link customers-toggle" href="#">Clientes</a>
                     <ul class="submenu" style="display: none;">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getCustomer') }}">Todos</a>
+                            <a class="nav-link" href="{{ route('getCustomer') }}">Todos os Clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Editar</a>
+                            <a class="nav-link" href="#">Editar Clientes</a>
                         </li>
                     </ul>
                 </li>
@@ -37,10 +37,10 @@
                     <a class="nav-link users-toggle" href="#">Usuários</a>
                     <ul class="submenu" style="display: none;">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getUser') }}">Todos</a>
+                            <a class="nav-link" href="{{ route('getUser') }}">Todos os Usuários</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('createUser') }}">Cadastrar</a>
+                            <a class="nav-link" href="{{ route('createUser') }}">Cadastrar Usuários</a>
                         </li>
                     </ul>
                 </li>

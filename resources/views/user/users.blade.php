@@ -12,8 +12,8 @@
             </div>
         @endif
         <h1 class="title">
-            Usuários
-            <a href="{{ route('createUser') }}" class="btn btn-primary float-right">Cadastrar</a>
+            {{ __('Usuários') }}
+            <a href="{{ route('createUser') }}" class="btn btn-primary float-right">{{ __('Cadastrar') }}</a>
         </h1>  
         @if (count($paginator) > 0)
             <div class="card shadow-sm">        
@@ -21,9 +21,9 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Ações</th>
+                                <th>{{ __('Nome') }}</th>
+                                <th>{{ __('Email') }}</th>
+                                <th>{{ __('Ações') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,7 +32,7 @@
                                     <td>{{ $user['name'] }}</td>
                                     <td>{{ $user['email'] }}</td>
                                     <td>
-                                        <a href="{{ url('/editUser/' . $user['id']) }}" class="btn btn-primary btn-sm float-right">Editar</a>
+                                        <a href="{{ url('/editUser/' . $user['id']) }}" class="btn btn-primary btn-sm float-right">{{ __('Editar') }}</a>
                                     </td>                                                         
                                 </tr>
                             @endforeach
@@ -44,7 +44,7 @@
                 </div>
             </div>
         @else
-            <div class="alert alert-info" role="alert">Não há usuários disponíveis.</div>
+            <div class="alert alert-info" role="alert">{{ __('Não há usuários disponíveis.') }}</div>
         @endif
     </div>
 @endsection

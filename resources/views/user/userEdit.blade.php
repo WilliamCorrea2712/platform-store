@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="title">Editar Usuário</h1>
+        <h1 class="title">{{ __('Editar Usuário') }}</h1>
         <div class="row justify-content-center align-items-center">
             <div class="col-md-12">
                 <div class="card shadow-sm">
@@ -20,18 +20,18 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="name">Nome:</label>
+                                <label for="name">{{ __('Nome:') }}</label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{ $users[0]['name'] }}" required>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email:</label>
+                                <label for="email">{{ __('Email:') }}</label>
                                 <input type="email" class="form-control" id="email" name="email" value="{{ $users[0]['email'] }}" required>
                             </div>
                             <div class="form-group">
-                                <label for="password">Senha:</label>
+                                <label for="password">{{ __('Senha:') }}</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button type="submit" class="btn btn-primary">{{ __('Salvar') }}</button>
                         </div>
                     </form>
                 </div>

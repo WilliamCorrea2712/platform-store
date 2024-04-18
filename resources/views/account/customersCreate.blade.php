@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mb-6 title">Cadastrar</h1>
+        <h1 class="mb-6 title">{{ __('Cadastrar') }}</h1>
         <div class="row justify-content-center align-items-center">
             <div class="col-md-12">
                 <div class="card shadow-sm">
@@ -21,53 +21,62 @@
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="name">Nome:</label>
+                                    <label for="name">{{ __('Nome:') }}</label>
                                     <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="email">Email:</label>
+                                    <label for="email">{{ __('Email:') }}</label>
                                     <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="phone_number">Número de Telefone:</label>
+                                    <label for="phone_number">{{ __('Número de Telefone:') }}</label>
                                     <input type="text" class="form-control" id="phone_number" name="phone_number" required pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" title="O telefone deve estar no formato (XX) XXXXX-XXXX">
                                 </div>                                                     
                                 <div class="form-group col-md-6">
-                                    <label for="rg_ie">RG/IE:</label>
+                                    <label for="rg_ie">{{ __('RG/IE:') }}</label>
                                     <input type="text" class="form-control" id="rg_ie" name="rg_ie" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="birth_date">Data de Nascimento:</label>
+                                    <label for="birth_date">{{ __('Data de Nascimento:') }}</label>
                                     <input type="date" class="form-control" id="birth_date" name="birth_date" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="cnpj_cpf">CNPJ/CPF:</label>
+                                    <label for="cnpj_cpf">{{ __('CNPJ/CPF:') }}</label>
                                     <input type="text" class="form-control" id="cnpj_cpf" name="cnpj_cpf" required pattern="[0-9]+" title="Apenas números são permitidos">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="type_person">Tipo de Pessoa:</label>
+                                    <label for="type_person">{{ __('Tipo de Pessoa:') }}</label>
                                     <select class="form-control" id="type_person" name="type_person" required>
-                                        <option value="1">Pessoa Física</option>
-                                        <option value="2">Pessoa Jurídica</option>
+                                        <option value="1">{{ __('Pessoa Física') }}</option>
+                                        <option value="2">{{ __('Pessoa Jurídica') }}</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="sex">Sexo:</label>
+                                    <label for="sex">{{ __('Sexo:') }}</label>
                                     <select class="form-control" id="sex" name="sex" required>
-                                        <option value="M">Masculino</option>
-                                        <option value="F">Feminino</option>
-                                        <option value="O">Outro</option>
+                                        <option value="M">{{ __('Masculino') }}</option>
+                                        <option value="F">{{ __('Feminino') }}</option>
+                                        <option value="O">{{ __('Outro') }}</option>
                                     </select>
                                 </div>
                             </div>
-                            <!-- Fim dos campos adicionais -->
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="password">{{ __('Senha:') }}</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="confirmPassword">{{ __('Confirme a Senha:') }}</label>
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">{{ __('Enviar') }}</button>
                         </div>
                     </form>
                 </div>
