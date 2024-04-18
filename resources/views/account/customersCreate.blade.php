@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mb-6 title">Cadastrar Cliente</h1>
+        <h1 class="mb-6 title">Cadastrar</h1>
         <div class="row justify-content-center align-items-center">
             <div class="col-md-12">
                 <div class="card shadow-sm">
@@ -49,7 +49,6 @@
                                     <input type="text" class="form-control" id="cnpj_cpf" name="cnpj_cpf" required pattern="[0-9]+" title="Apenas números são permitidos">
                                 </div>
                             </div>
-                            <!-- Mais campos aqui -->
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="type_person">Tipo de Pessoa:</label>

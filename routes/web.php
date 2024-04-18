@@ -31,12 +31,12 @@ Route::middleware(['web'])->group(function () {
         Route::get('/getUser', [UserController::class, 'getUsers'])->name('getUser');
         Route::get('/editUser/{id}', [UserController::class, 'edit'])->name('editUser');
         Route::post('/updateUser/{id}', [UserController::class, 'update'])->name('updateUser');
-        Route::get('/users/create', [UserController::class, 'create'])->name('createUser');
-        Route::post('/users/store', [UserController::class, 'storeUser'])->name('storeUser');
+        Route::get('/user/users/create', [UserController::class, 'create'])->name('createUser');
+        Route::post('/user/users/store', [UserController::class, 'storeUser'])->name('storeUser');
         
-        Route::get('/getCustomer', [CustomerController::class, 'getCustomers'])->name('getCustomer');
-        Route::get('/customers/create', [CustomerController::class, 'create'])->name('createCustomer');
-        Route::post('/customers/store', [CustomerController::class, 'storeCustomer'])->name('storeCustomer');
+        Route::get('//getCustomer', [CustomerController::class, 'getCustomers'])->name('getCustomer');
+        Route::get('/account/customers/create', [CustomerController::class, 'create'])->name('createCustomer');
+        Route::post('/account/customers/store', [CustomerController::class, 'storeCustomer'])->name('storeCustomer');
         
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
     });

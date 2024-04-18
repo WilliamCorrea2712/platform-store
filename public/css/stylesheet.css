@@ -115,7 +115,7 @@
 }
 
 .container-fluid > .row {
-    min-height: calc(100vh - 56px);
+    min-height: auto;
     overflow-y: auto;
     padding-right: 0 !important;
 }

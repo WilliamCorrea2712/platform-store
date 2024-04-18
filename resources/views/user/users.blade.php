@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         @if(!empty($error))
@@ -7,18 +6,15 @@
                 {{ $error }}
             </div>
         @endif
-
         @if(session('success'))
             <div class="alert alert-success" role="alert">
                 {{ session('success') }}
             </div>
         @endif
-
         <h1 class="title">
-            Todos Clientes
-            <a href="{{ route('createCustomer') }}" class="btn btn-primary float-right">Cadastrar</a>
-        </h1>        
-
+            Usuários
+            <a href="{{ route('createUser') }}" class="btn btn-primary float-right">Cadastrar</a>
+        </h1>  
         @if (count($paginator) > 0)
             <div class="card shadow-sm">        
                 <div style="overflow-x:auto;">
@@ -27,21 +23,16 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Email</th>
-                                <th>Contato</th>
-                                <th>Status</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($paginator as $customer)
+                            @foreach ($paginator as $user)
                                 <tr>
-                                    <td>{{ $customer['name'] }}</td>
-                                    <td>{{ $customer['email'] }}</td>
-                                    <td>{{ $customer['phone_number'] }}</td>
-                                    <td>{{ $customer['status'] == 1 ? 'Habilitado' : 'Desabilitado' }}</td>
-
+                                    <td>{{ $user['name'] }}</td>
+                                    <td>{{ $user['email'] }}</td>
                                     <td>
-                                        <a href="{{ url('/editCustomer/' . $customer['id']) }}" class="btn btn-primary btn-sm float-right">Editar</a>
+                                        <a href="{{ url('/editUser/' . $user['id']) }}" class="btn btn-primary btn-sm float-right">Editar</a>
                                     </td>                                                         
                                 </tr>
                             @endforeach
@@ -53,9 +44,7 @@
                 </div>
             </div>
         @else
-            <div class="alert alert-info" role="alert">
-                Não há clientes disponíveis.
-            </div>
+            <div class="alert alert-info" role="alert">Não há usuários disponíveis.</div>
         @endif
     </div>
 @endsection

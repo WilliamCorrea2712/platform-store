@@ -50,7 +50,7 @@ class UserController extends Controller
             ['path' => route('getUser')]
         );
 
-        return view('users', compact('paginator', 'error'));
+        return view('user.users', compact('paginator', 'error'));
     }
 
     public function create()
@@ -58,7 +58,7 @@ class UserController extends Controller
         $users = [];
         $error = '';
 
-        return view('usersCreate', compact('users', 'error')); 
+        return view('user.usersCreate', compact('users', 'error')); 
     }
 
     public function storeUser(Request $request)
@@ -107,7 +107,7 @@ class UserController extends Controller
             $error = $response->json()['error'] ?? 'Erro desconhecido ao tentar recuperar usuários.';
         }
     
-        return view('userEdit', compact('users', 'error'));  
+        return view('user.userEdit', compact('users', 'error'));  
     }
     
 

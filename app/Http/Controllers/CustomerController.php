@@ -49,7 +49,7 @@ class CustomerController extends Controller
             ['path' => route('getCustomer')]
         );
 
-        return view('customers', compact('paginator', 'error'));
+        return view('account.customers', compact('paginator', 'error'));
     }
 
     public function create()
@@ -57,7 +57,7 @@ class CustomerController extends Controller
         $customers = [];
         $error = '';
 
-        return view('customersCreate', compact('customers', 'error')); 
+        return view('account.customersCreate', compact('customers', 'error')); 
     }
 
     public function storeCustomer(Request $request)
