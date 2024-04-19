@@ -26,7 +26,7 @@
                             <a class="nav-link" href="{{ route('getBrands') }}">Marcas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Produto</a>
+                            <a class="nav-link" href="{{ route('getProducts') }}">Produto</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Estoque</a>

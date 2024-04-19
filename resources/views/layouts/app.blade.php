@@ -38,7 +38,7 @@
             <div class="col-md-2 menu d-lg-block">
                 @include('includes.menu')
             </div>
-            <div class="col-md-10">
+            <div class="col-md-10 margin-bottom">
                 @yield('content')
             </div>
         </div>

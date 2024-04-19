@@ -35,7 +35,12 @@
                                 </div>-->
                                 <div class="form-group col-md-3">
                                     <label for="parent_id">{{ __('Categoria Pai:') }}</label>
-                                    <input type="text" class="form-control" id="parent_id" name="parent_id">
+                                    <select class="form-control" id="parent_id" name="parent_id">
+                                        <option value="">{{ __('Selecione uma categoria pai') }}</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="sort_order">{{ __('Ordem:') }}</label>

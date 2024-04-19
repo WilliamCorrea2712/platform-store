@@ -32,13 +32,20 @@
                                             <button class="btn btn-outline-secondary" type="button">Upload</button>
                                         </div>
                                     </div>
-                                </div>-->
+                                </div>-->                                
                                 <div class="form-group col-md-3">
                                     <label for="parent_id">{{ __('Categoria Pai:') }}</label>
-                                    <input type="text" class="form-control" id="parent_id" name="parent_id" value="{{ $categories[0]['parent_id'] }}">
-                                </div>
+                                    <select class="form-control" id="parent_id" name="parent_id">
+                                        <option value="">{{ __('Selecione uma categoria pai') }}</option>
+                                        @foreach($categoriesFather as $father)
+                                            @if($categories[0]['id'] !== $father['id'])
+                                                <option value="{{ $father['id'] }}" @if($categories[0]['parent_id'] == $father['id']) selected @endif>{{ $father['name'] }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>                                                                
                                 <div class="form-group col-md-2">
-                                    <label for="sort_order">{{ __('Ordem de Classificação:') }}</label>
+                                    <label for="sort_order">{{ __('Ordem:') }}</label>
                                     <input type="text" class="form-control" id="sort_order" name="sort_order" value="{{ $categories[0]['sort_order'] }}">
                                 </div>
                                 <div class="form-group col-md-2">

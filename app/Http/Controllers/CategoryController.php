@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Http\Controllers\Helpers\HelperController;
 
 class CategoryController extends Controller
 {
@@ -53,12 +54,15 @@ class CategoryController extends Controller
     }
 
     public function create()
-    {  
-        $categories = [];
+    {
+        $helperController = new HelperController();
+        $categories = $helperController->getAllCategories();
+
         $error = '';
 
-        return view('product.categoriesCreate', compact('categories', 'error')); 
+        return view('product.categoriesCreate', compact('categories', 'error'));  
     }
+
 
     public function storeCategory(Request $request)
     {
@@ -104,17 +108,20 @@ class CategoryController extends Controller
     
             if (isset($apiData['message']['categories'])) {
                 $categories = $apiData['message']['categories'];
+
+                $helperController = new HelperController();
+                $categoriesFather = $helperController->getAllCategories();
             } else {
                 $categories = [];
+                $categoriesFather = [];
             }
         } else {
             $error = $response->json()['error'] ?? 'Erro desconhecido ao tentar recuperar categoria.';
         }
 
-        return view('product.categoryEdit', compact('categories', 'error'));  
+        return view('product.categoryEdit', compact('categories', 'categoriesFather', 'error'));  
     }
     
-
     public function update(Request $request, $id)
     {
         $apiUrl = config('api.url');

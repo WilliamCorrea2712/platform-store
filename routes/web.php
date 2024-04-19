@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
 use App\Http\Middleware\AuthenticateWithApi;
 use App\Http\Controllers\CustomerController;
@@ -55,6 +56,12 @@ Route::middleware(['web'])->group(function () {
         Route::post('/product/brands/store', [BrandController::class, 'storeBrand'])->name('storeBrand');
         Route::get('/editBrand/{id}', [BrandController::class, 'edit'])->name('editBrand');
         Route::post('/updateBrand/{id}', [BrandController::class, 'update'])->name('updateBrand');
+
+        Route::get('/getProduct', [ProductController::class, 'getProducts'])->name('getProducts');
+        Route::get('/product/products/create', [ProductController::class, 'create'])->name('createProducts');
+        Route::post('/product/products/store', [ProductController::class, 'storeProduct'])->name('storeProduct');
+        Route::get('/editProduct/{id}', [ProductController::class, 'edit'])->name('editProduct');
+        Route::post('/updateProduct/{id}', [ProductController::class, 'update'])->name('updateProduct');
         
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 

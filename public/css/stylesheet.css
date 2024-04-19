@@ -40,6 +40,10 @@
     float: right !important;
 }
 
+.margin-bottom {
+    margin-bottom: 100px;
+}
+
 .bg-primary {
     background-color: #2a3033 !important;
 }
@@ -64,8 +68,8 @@
 }
 
 .card-header {
-    background-color: #939699;
-    color: white;
+    background-color: #eaebec;
+    color: rgb(65, 63, 63);
 }
 
 .card-body {
@@ -109,9 +113,13 @@
     padding: 10px 0;
     z-index: 1000;
 }
+.container {
+    max-width: 100%;
+}
 
-.bg-light {
-    background-color: rgb(29, 34, 37) !important;
+.container h1 {
+    padding: 15px 25px;
+    text-align: left;
 }
 
 .container-fluid > .row {
@@ -120,17 +128,12 @@
     padding-right: 0 !important;
 }
 
+.bg-light {
+    background-color: rgb(29, 34, 37) !important;
+}
+
 .selected {
     background-color: rgb(52 58 64) !important;
-}
-
-.container {
-    max-width: 100%;
-}
-
-.container h1 {
-    padding: 15px 25px;
-    text-align: left;
 }
 
 .container-fluid {
@@ -183,4 +186,34 @@
 .page-item.active .page-link {
     background-color: #276eb9;
     border-color: #276eb9;
+}
+
+/* TABS */
+.nav-tabs .nav-item {
+    border: none;
+}
+
+.nav-tabs .nav-link {
+    color: #333;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: #5a5a5c !important;
+    border: none;
+    border-bottom: 3px solid #5a5a5c;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.tab-content {
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+
+.tab-color {
+    color: #77787a !important;
 }

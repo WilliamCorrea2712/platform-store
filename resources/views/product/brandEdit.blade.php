@@ -20,7 +20,7 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-row">
-                                <div class="form-group col-md-5">
+                                <div class="form-group col-md-6">
                                     <label for="name">{{ __('Nome:') }}</label>
                                     <input type="text" class="form-control" id="name" name="name" value="{{ $brands[0]['name'] }}" required>
                                 </div>
@@ -33,11 +33,11 @@
                                         </div>
                                     </div>
                                 </div>-->
-                                <div class="form-group col-md-2">
-                                    <label for="sort_order">{{ __('Ordem de Classificação:') }}</label>
+                                <div class="form-group col-md-3">
+                                    <label for="sort_order">{{ __('Ordem:') }}</label>
                                     <input type="text" class="form-control" id="sort_order" name="sort_order" value="{{ $brands[0]['sort_order'] }}">
                                 </div>
-                                <div class="form-group col-md-2">
+                                <div class="form-group col-md-3">
                                     <label for="status">{{ __('Status:') }}</label>
                                     <input type="text" class="form-control" id="status" name="status" value="{{ $brands[0]['status'] }}">
                                 </div>
