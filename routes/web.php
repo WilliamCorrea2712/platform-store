@@ -1,13 +1,15 @@
 <?php
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Middleware\AuthenticateWithApi;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ContactController;
+use App\Http\Middleware\AuthenticateWithApi;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
@@ -41,6 +43,18 @@ Route::middleware(['web'])->group(function () {
         Route::post('/account/customers/store', [CustomerController::class, 'storeCustomer'])->name('storeCustomer');
         Route::get('/editCustomer/{id}', [CustomerController::class, 'edit'])->name('editCustomer');
         Route::post('/updateCustomer/{id}', [CustomerController::class, 'update'])->name('updateCustomer');
+
+        Route::get('/getCategory', [CategoryController::class, 'getCategories'])->name('getCategories');
+        Route::get('/product/categories/create', [CategoryController::class, 'create'])->name('createCategories');
+        Route::post('/product/categories/store', [CategoryController::class, 'storeCategory'])->name('storeCategory');
+        Route::get('/editCategory/{id}', [CategoryController::class, 'edit'])->name('editCategory');
+        Route::post('/updateCategory/{id}', [CategoryController::class, 'update'])->name('updateCategory');
+
+        Route::get('/getBrand', [BrandController::class, 'getBrands'])->name('getBrands');
+        Route::get('/product/brands/create', [BrandController::class, 'create'])->name('createBrands');
+        Route::post('/product/brands/store', [BrandController::class, 'storeBrand'])->name('storeBrand');
+        Route::get('/editBrand/{id}', [BrandController::class, 'edit'])->name('editBrand');
+        Route::post('/updateBrand/{id}', [BrandController::class, 'update'])->name('updateBrand');
         
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 

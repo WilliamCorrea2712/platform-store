@@ -23,7 +23,7 @@
                             <tr>
                                 <th>{{ __('Nome') }}</th>
                                 <th>{{ __('Email') }}</th>
-                                <th>{{ __('Ações') }}</th>
+                                <th class="float-right">{{ __('Ações') }}</th>
                             </tr>
                         </thead>
                         <tbody>

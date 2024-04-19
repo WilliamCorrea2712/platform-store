@@ -12,31 +12,30 @@
             </div>
         @endif
         <h1 class="title">
-            {{ __('Clientes') }}
-            <a href="{{ route('createCustomer') }}" class="btn btn-primary float-right">{{ __('Cadastrar') }}</a>
-        </h1>      
+            {{ __('Marcas') }}
+            <a href="{{ route('createBrands') }}" class="btn btn-primary float-right">{{ __('Cadastrar') }}</a>
+        </h1>  
         @if (count($paginator) > 0)
             <div class="card shadow-sm">        
-                <div class="table-responsive">
+                <div style="overflow-x:auto;">
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th>{{ __('ID') }}</th>
                                 <th>{{ __('Nome') }}</th>
-                                <th>{{ __('Email') }}</th>
-                                <th>{{ __('Contato') }}</th>
                                 <th>{{ __('Status') }}</th>
                                 <th class="float-right">{{ __('Ações') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($paginator as $customer)
+                            @foreach ($paginator as $brand)
                                 <tr>
-                                    <td>{{ $customer['name'] }}</td>
-                                    <td>{{ $customer['email'] }}</td>
-                                    <td>{{ $customer['phone_number'] }}</td>
-                                    <td>{{ $customer['status'] == 1 ? 'Habilitado' : 'Desabilitado' }}</td>
+                                    <td>{{ $brand['id'] }}</td>
+                                    <td>{{ $brand['name'] }}</td>
+                                    <!--<td>{!! Illuminate\Support\Str::limit($brand['description'], $limit = 10, $end = '...') !!}</td>-->
+                                    <td>{{ $brand['status'] == 1 ? 'Habilitado' : 'Desabilitado' }}</td>
                                     <td>
-                                        <a href="{{ url('/editCustomer/' . $customer['id']) }}" class="btn btn-primary btn-sm float-right">Editar</a>
+                                        <a href="{{ url('/editBrand/' . $brand['id']) }}" class="btn btn-primary btn-sm float-right">{{ __('Editar') }}</a>
                                     </td>                                                         
                                 </tr>
                             @endforeach
@@ -48,7 +47,7 @@
                 </div>
             </div>
         @else
-            <div class="alert alert-info" role="alert">{{ __('Não há clientes disponíveis.') }}</div>
+            <div class="alert alert-info" role="alert">{{ __('Não há marcas disponíveis.') }}</div>
         @endif
     </div>
 @endsection
