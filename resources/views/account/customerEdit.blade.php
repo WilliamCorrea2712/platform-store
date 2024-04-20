@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<script src="{{ asset('js/addAddress.js') }}"></script>
 
 @section('content')
     <div class="container">
@@ -123,17 +124,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#addAddress').click(function() {
-                var addressHtml = $('.address').first().clone();
-                addressHtml.find('input[type=text]').val('');
-                $('.addresses-section').append(addressHtml);
-            });
-        });
-    </script>
 @endsection

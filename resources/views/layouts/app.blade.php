@@ -57,5 +57,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script src="{{ asset('js/theme.js') }}"></script>
+    <script src="{{ asset('js/addAddress.js') }}"></script>
 </body>
 </html>
