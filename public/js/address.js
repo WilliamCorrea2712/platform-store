@@ -37,32 +37,4 @@ $(document).ready(function () {
             </div>`;
         $(".addresses-section").append(addressHtml);
     });
-
-    $(".addresses-section").on("click", ".delete-address", function () {
-        var addressId = $(this).data("address-id");
-        var customerId = $(this).data("customer-id");
-        var csrfToken = $('meta[name="csrf-token"]').attr("content");
-        if (
-            addressId &&
-            confirm(
-                "Tem certeza que deseja excluir este endereço, esta ação é irreversivel?"
-            )
-        ) {
-            $.ajax({
-                url: "/account/deleteAddress",
-                type: "POST",
-                data: {
-                    _token: csrfToken,
-                    address_id: addressId,
-                    customer_id: customerId,
-                },
-                success: function (response) {
-                    location.reload();
-                },
-                error: function (xhr, status, error) {
-                    console.error(xhr.responseText);
-                },
-            });
-        }
-    });
 });

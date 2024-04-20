@@ -1,16 +1,15 @@
 function toggleTheme() {
     var body = document.body;
     var themeToggle = document.getElementById("theme-toggle");
-
     var currentTheme = body.classList.contains("dark-theme") ? "dark" : "light";
 
     if (currentTheme === "dark") {
         body.classList.remove("dark-theme");
-        themeToggle.innerText = "Dark";
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         localStorage.setItem("themePreference", "light");
     } else {
         body.classList.add("dark-theme");
-        themeToggle.innerText = "Light";
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         localStorage.setItem("themePreference", "dark");
     }
 }
@@ -24,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (currentTheme === "dark") {
         document.body.classList.add("dark-theme");
-        document.getElementById("theme-toggle").innerText = "Light";
+        document.getElementById("theme-toggle").innerHTML =
+            '<i class="fas fa-sun"></i>';
     }
 });

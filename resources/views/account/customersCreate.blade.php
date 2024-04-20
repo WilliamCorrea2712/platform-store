@@ -76,7 +76,7 @@
                                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">{{ __('Enviar') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('Cadastrar') }}</button>
                         </div>
                     </form>
                 </div>

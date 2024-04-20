@@ -1,10 +1,9 @@
 @extends('layouts.app')
-<script src="{{ asset('js/addAddress.js') }}"></script>
 
 @section('content')
     <div class="container">
         <h1 class="title">
-            {{ __('Editar Cliente') }}
+            {{ __('Editar') }}
             <button type="submit" form="editForm" class="btn btn-primary float-right">{{ __('Salvar') }}</button>
             @if(isset($customer['id']))
                 <button type="button" class="btn btn-danger delete-customer float-right" data-customer-id="{{ $customer['id'] }}">Deletar</button>                                       

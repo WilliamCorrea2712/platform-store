@@ -142,4 +142,35 @@ class BrandController extends Controller
             'meta_title' => $request->meta_title, 'meta_keyword' => $request->meta_keyword]]]);
         }
     }
+
+    public function deleteBrand(Request $request)
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $id = $request->input('brand_id');
+        $errors = []; 
+
+        $responseBrand = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->delete($apiUrl . 'product/deleteBrand', [
+            'brand_id' => $id,
+        ]);
+
+        if (!$responseBrand->successful()) {
+            $errorResponse = $responseBrand->json();
+            if (isset($errorResponse['error'])) {
+                $errors[] = $errorResponse['error'];
+            } else {
+                $errors[] = 'Erro desconhecido ao excluir o Marca.';
+            }
+        }
+
+        if (!empty($errors)) {
+            return redirect()->route('editBrand', ['id' => $id])->with(['errors' => $errors]);
+        } else {
+            return response()->json(['success' => true]);            
+        }        
+    }
 }

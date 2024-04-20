@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'Platform EAM' }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
 </head>
 <body>
@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <button id="theme-toggle">{{ _('Dark') }}</button>
+                            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
                         </li>                                               
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('about') }}">{{ _('Sobre') }}</a>
@@ -59,6 +59,6 @@
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script src="{{ asset('js/theme.js') }}"></script>
     <script src="{{ asset('js/address.js') }}"></script>
-    <script src="{{ asset('js/customer.js') }}"></script>
+    <script src="{{ asset('js/deletes.js') }}"></script>
 </body>
 </html>

@@ -101,6 +101,7 @@ class CategoryController extends Controller
         ])->get($apiUrl . 'product/getCategories&id=' . $id);
     
         $categories = [];
+        $categoriesFather = [];
         $error = '';
     
         if ($response->successful()) {
@@ -151,5 +152,36 @@ class CategoryController extends Controller
             'status' => $request->status, 'description' => $request->description, 'meta_description' => $request->meta_description, 
             'meta_title' => $request->meta_title, 'meta_keyword' => $request->meta_keyword]]]);
         }
+    }
+
+    public function deleteCategory(Request $request)
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $id = $request->input('category_id');
+        $errors = []; 
+
+        $responseCategory = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->delete($apiUrl . 'product/deleteCategory', [
+            'category_id' => $id,
+        ]);
+
+        if (!$responseCategory->successful()) {
+            $errorResponse = $responseCategory->json();
+            if (isset($errorResponse['error'])) {
+                $errors[] = $errorResponse['error'];
+            } else {
+                $errors[] = 'Erro desconhecido ao excluir o Categoria.';
+            }
+        }
+
+        if (!empty($errors)) {
+            return redirect()->route('editCategory', ['id' => $id])->with(['errors' => $errors]);
+        } else {
+            return response()->json(['success' => true]);            
+        }        
     }
 }

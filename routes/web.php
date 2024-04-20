@@ -38,6 +38,7 @@ Route::middleware(['web'])->group(function () {
         Route::post('/updateUser/{id}', [UserController::class, 'update'])->name('updateUser');
         Route::get('/user/users/create', [UserController::class, 'create'])->name('createUser');
         Route::post('/user/users/store', [UserController::class, 'storeUser'])->name('storeUser');
+        Route::post('/user/deleteUser', [UserController::class, 'deleteUser'])->name('deleteUser');
         
         Route::get('/getCustomer', [CustomerController::class, 'getCustomers'])->name('getCustomer');
         Route::get('/account/customers/create', [CustomerController::class, 'create'])->name('createCustomer');
@@ -52,12 +53,14 @@ Route::middleware(['web'])->group(function () {
         Route::post('/product/categories/store', [CategoryController::class, 'storeCategory'])->name('storeCategory');
         Route::get('/editCategory/{id}', [CategoryController::class, 'edit'])->name('editCategory');
         Route::post('/updateCategory/{id}', [CategoryController::class, 'update'])->name('updateCategory');
+        Route::post('/product/deleteCategory', [CategoryController::class, 'deleteCategory'])->name('deleteCategory');
 
         Route::get('/getBrand', [BrandController::class, 'getBrands'])->name('getBrands');
         Route::get('/product/brands/create', [BrandController::class, 'create'])->name('createBrands');
         Route::post('/product/brands/store', [BrandController::class, 'storeBrand'])->name('storeBrand');
         Route::get('/editBrand/{id}', [BrandController::class, 'edit'])->name('editBrand');
         Route::post('/updateBrand/{id}', [BrandController::class, 'update'])->name('updateBrand');
+        Route::post('/product/deleteBrand', [BrandController::class, 'deleteBrand'])->name('deleteBrand');
 
         Route::get('/getProduct', [ProductController::class, 'getProducts'])->name('getProducts');
         Route::get('/product/products/create', [ProductController::class, 'create'])->name('createProducts');

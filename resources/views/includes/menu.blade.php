@@ -11,9 +11,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('getCustomer') }}">Todos os Clientes</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Editar Clientes</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -38,9 +35,6 @@
                     <ul class="submenu" style="display: none;">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('getUser') }}">Todos os Usuários</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('createUser') }}">Cadastrar Usuários</a>
                         </li>
                     </ul>
                 </li>

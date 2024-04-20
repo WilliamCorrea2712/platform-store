@@ -133,4 +133,35 @@ class UserController extends Controller
             return redirect()->route('editUser', ['id' => $id])->with(['error' => $errorMessage, 'users' => [['id' => $id, 'name' => $request->name, 'email' => $request->email]]]);
         }
     }
+
+    public function deleteUser(Request $request)
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $id = $request->input('user_id');
+        $errors = []; 
+
+        $responseUser = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->delete($apiUrl . 'user/deleteUser', [
+            'user_id' => $id,
+        ]);
+
+        if (!$responseUser->successful()) {
+            $errorResponse = $responseUser->json();
+            if (isset($errorResponse['error'])) {
+                $errors[] = $errorResponse['error'];
+            } else {
+                $errors[] = 'Erro desconhecido ao excluir o Usuário.';
+            }
+        }
+
+        if (!empty($errors)) {
+            return redirect()->route('editUser', ['id' => $id])->with(['errors' => $errors]);
+        } else {
+            return response()->json(['success' => true]);            
+        }        
+    }
 }
