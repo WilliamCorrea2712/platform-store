@@ -12,20 +12,23 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">EAM</a>
+                <a class="navbar-brand" href="#">{{ _('EAM') }}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about') }}">Sobre</a>
+                            <button id="theme-toggle">{{ _('Dark') }}</button>
+                        </li>                                               
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('about') }}">{{ _('Sobre') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact') }}">Contato</a>
+                            <a class="nav-link" href="{{ route('contact') }}">{{ _('Contato') }}</a>
                         </li>                        
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}">Sair</a>
+                            <a class="nav-link" href="{{ route('logout') }}">{{ _('Sair') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -53,5 +56,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <script src="{{ asset('js/theme.js') }}"></script>
 </body>
 </html>
