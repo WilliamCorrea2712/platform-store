@@ -39,12 +39,13 @@ Route::middleware(['web'])->group(function () {
         Route::get('/user/users/create', [UserController::class, 'create'])->name('createUser');
         Route::post('/user/users/store', [UserController::class, 'storeUser'])->name('storeUser');
         
-        Route::get('//getCustomer', [CustomerController::class, 'getCustomers'])->name('getCustomer');
+        Route::get('/getCustomer', [CustomerController::class, 'getCustomers'])->name('getCustomer');
         Route::get('/account/customers/create', [CustomerController::class, 'create'])->name('createCustomer');
         Route::post('/account/customers/store', [CustomerController::class, 'storeCustomer'])->name('storeCustomer');
         Route::get('/editCustomer/{id}', [CustomerController::class, 'edit'])->name('editCustomer');
         Route::post('/updateCustomer/{id}', [CustomerController::class, 'update'])->name('updateCustomer');
         Route::post('/account/deleteAddress', [CustomerController::class, 'deleteAddress'])->name('deleteAddress');
+        Route::post('/account/deleteCustomer', [CustomerController::class, 'deleteCustomer'])->name('deleteCustomer');
 
         Route::get('/getCategory', [CategoryController::class, 'getCategories'])->name('getCategories');
         Route::get('/product/categories/create', [CategoryController::class, 'create'])->name('createCategories');

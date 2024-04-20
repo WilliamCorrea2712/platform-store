@@ -104,9 +104,11 @@ class CustomerController extends Controller
 
         if ($response->successful()) {
             $apiData = $response->json();
-
+    
             if (isset($apiData['message']['customers'][$id])) {
                 $customer = $apiData['message']['customers'][$id];
+            } else {
+                return redirect()->route('account.customers')->with(compact('paginator', 'error'));
             }
         } else {
             $error = $response->json()['error'] ?? 'Erro desconhecido ao tentar recuperar o cliente.';
@@ -186,6 +188,37 @@ class CustomerController extends Controller
             return redirect()->route('editCustomer', ['id' => $id])->with('success', 'Cliente atualizado com sucesso!');
         }
     }  
+
+    public function deleteCustomer(Request $request)
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $id = $request->input('customer_id');
+        $errors = []; 
+
+        $responseCustomer = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->delete($apiUrl . 'account/deleteCustomer', [
+            'customer_id' => $id,
+        ]);
+
+        if (!$responseCustomer->successful()) {
+            $errorResponse = $responseCustomer->json();
+            if (isset($errorResponse['error'])) {
+                $errors[] = $errorResponse['error'];
+            } else {
+                $errors[] = 'Erro desconhecido ao excluir o cliente.';
+            }
+        }
+
+        if (!empty($errors)) {
+            return redirect()->route('editCustomer', ['id' => $id])->with(['errors' => $errors]);
+        } else {
+            return response()->json(['success' => true]);            
+        }        
+    }
     
     public function deleteAddress(Request $request)
     {

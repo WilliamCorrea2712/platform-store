@@ -59,5 +59,6 @@
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script src="{{ asset('js/theme.js') }}"></script>
     <script src="{{ asset('js/address.js') }}"></script>
+    <script src="{{ asset('js/customer.js') }}"></script>
 </body>
 </html>
