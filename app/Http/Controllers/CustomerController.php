@@ -193,7 +193,7 @@ class CustomerController extends Controller
         $apiToken = config('api.token');
 
         $addressId = $request->input('address_id');
-        $customerId = $request->input('customer_id');
+        $id = $request->input('customer_id');
         $errors = []; 
 
         $responseAddress = Http::withHeaders([
@@ -213,9 +213,9 @@ class CustomerController extends Controller
         }
 
         if (!empty($errors)) {
-            return redirect()->route('editCustomer', ['id' => $customerId])->with(['errors' => $errors]);
+            return redirect()->route('editCustomer', ['id' => $id])->with(['errors' => $errors]);
         } else {
-            return redirect()->route('editCustomer', ['id' => $customerId])->with('success', 'Cliente atualizado com sucesso!');
+            return redirect()->route('editCustomer', ['id' => $id])->with('success', 'Cliente atualizado com sucesso!');
         }        
     }
 }
