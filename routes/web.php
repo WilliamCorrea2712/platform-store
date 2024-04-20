@@ -44,6 +44,7 @@ Route::middleware(['web'])->group(function () {
         Route::post('/account/customers/store', [CustomerController::class, 'storeCustomer'])->name('storeCustomer');
         Route::get('/editCustomer/{id}', [CustomerController::class, 'edit'])->name('editCustomer');
         Route::post('/updateCustomer/{id}', [CustomerController::class, 'update'])->name('updateCustomer');
+        Route::post('/account/deleteAddress', [CustomerController::class, 'deleteAddress'])->name('deleteAddress');
 
         Route::get('/getCategory', [CategoryController::class, 'getCategories'])->name('getCategories');
         Route::get('/product/categories/create', [CategoryController::class, 'create'])->name('createCategories');

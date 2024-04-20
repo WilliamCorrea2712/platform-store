@@ -12,7 +12,9 @@
                 <div class="card shadow-sm">
                     @if(session('errors'))
                         <div class="alert alert-danger" role="alert">
-                            {{ session('errors') }}
+                            @foreach(session('errors') as $error)
+                                <div>{{ $error }}</div>
+                            @endforeach
                         </div>
                     @endif
                     @if(session('success'))
@@ -107,13 +109,14 @@
                                             </div>                                                                                                                             
                                             <div class="form-group col-md-3">
                                                 <label for="zip_code">{{ __('CEP') }}:</label>
-                                                <input type="text" class="form-control" name="zip_code[]" value="{{ $address['zip_code'] }}" required>
+                                                <input type="text" class="form-control" name="zip_code[]" maxlength="9" value="{{ $address['zip_code'] }}" required>
                                             </div>  
                                             <div class="form-group col-md-3">
                                                 <label for="country">{{ __('País') }}:</label>
                                                 <input type="text" class="form-control" name="country[]" value="{{ $address['country'] }}" required>
                                             </div>                                          
-                                        </div>                                        
+                                        </div> 
+                                        <button type="button" class="btn btn-danger delete-address" data-customer-id="{{ $customer['id'] }}" data-address-id="{{ $address['id'] }}">Excluir Endereço</button>                                       
                                     </div>
                                 @endforeach
                             </div>                        

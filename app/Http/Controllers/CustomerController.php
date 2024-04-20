@@ -185,5 +185,37 @@ class CustomerController extends Controller
         } else {
             return redirect()->route('editCustomer', ['id' => $id])->with('success', 'Cliente atualizado com sucesso!');
         }
-    }    
+    }  
+    
+    public function deleteAddress(Request $request)
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $addressId = $request->input('address_id');
+        $customerId = $request->input('customer_id');
+        $errors = []; 
+
+        $responseAddress = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->delete($apiUrl . 'account/deleteAddress', [
+            'address_id' => $addressId,
+        ]);
+
+        if (!$responseAddress->successful()) {
+            $errorResponse = $responseAddress->json();
+            if (isset($errorResponse['error'])) {
+                $errors[] = $errorResponse['error'];
+            } else {
+                $errors[] = 'Erro desconhecido ao excluir o endereço.';
+            }
+        }
+
+        if (!empty($errors)) {
+            return redirect()->route('editCustomer', ['id' => $customerId])->with(['errors' => $errors]);
+        } else {
+            return redirect()->route('editCustomer', ['id' => $customerId])->with('success', 'Cliente atualizado com sucesso!');
+        }        
+    }
 }
