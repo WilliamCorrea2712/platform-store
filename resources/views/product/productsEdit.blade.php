@@ -3,7 +3,13 @@
 
 @section('content')
     <div class="container">
-        <h1 class="title">{{ __('Editar Produto') }}</h1>
+        <h1 class="title">
+            {{ __('Editar') }}
+            <button type="submit" class="btn btn-primary float-right">{{ __('Salvar') }}</button>
+            @if(isset($products[0]['id']))
+                <button type="button" class="btn btn-danger delete-product float-right" data-product-id="{{ $products[0]['id'] }}">Deletar</button>                                       
+            @endif
+        </h1>
         <div class="row justify-content-center align-items-center">
             <div class="col-md-12">
                 <div class="card shadow-sm">
@@ -17,136 +23,201 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    <div class="card-header font-weight-bold">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active tab-color" id="dados-tab" data-toggle="tab" href="#dados" role="tab" aria-controls="dados" aria-selected="true">Dados</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link tab-color" id="estoque-tab" data-toggle="tab" href="#estoque" role="tab" aria-controls="estoque" aria-selected="false">Estoque</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link tab-color" id="imagens-tab" data-toggle="tab" href="#imagens" role="tab" aria-controls="imagens" aria-selected="false">Imagens</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
-                                <form action="{{ route('updateProduct', ['id' => $products[0]['id']]) }}" method="POST">
-                                    @csrf
-                                    <div class="card-body">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="name">{{ __('Nome:') }}</label>
-                                                <input type="text" class="form-control" id="name" name="name" value="{{ $products[0]['name'] }}" required>
+                    @if(isset($products[0]['id']))
+                        <div class="card-header font-weight-bold">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active tab-color" id="dados-tab" data-toggle="tab" href="#dados" role="tab" aria-controls="dados" aria-selected="true">Dados</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tab-color" id="stock-tab" data-toggle="tab" href="#stock" role="tab" aria-controls="stock" aria-selected="false">Estoque</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tab-color" id="images-tab" data-toggle="tab" href="#images" role="tab" aria-controls="images" aria-selected="false">Imagens</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
+                                    <form action="{{ route('updateProduct', ['id' => $products[0]['id']]) }}" method="POST">
+                                        @csrf
+                                        <div class="card-body">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="name">{{ __('Nome:') }}</label>
+                                                    <input type="text" class="form-control" id="name" name="name" value="{{ $products[0]['name'] }}" required>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="sort_order">{{ __('Ordem:') }}</label>
+                                                    <input type="text" class="form-control" id="sort_order" name="sort_order" value="{{ $products[0]['sort_order'] }}">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="status">{{ __('Status:') }}</label>
+                                                    <select class="form-control" id="status" name="status">
+                                                        <option value="1" {{ $products[0]['status'] == 1 ? 'selected' : '' }}>{{ __('Habilitado') }}</option>
+                                                        <option value="0" {{ $products[0]['status'] == 0 ? 'selected' : '' }}>{{ __('Desabilitado') }}</option>
+                                                    </select>
+                                                </div>                                                                
                                             </div>
-                                            <div class="form-group col-md-3">
-                                                <label for="sort_order">{{ __('Ordem:') }}</label>
-                                                <input type="text" class="form-control" id="sort_order" name="sort_order" value="{{ $products[0]['sort_order'] }}">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="price">{{ __('Preço:') }}</label>
+                                                    <input type="text" class="form-control" id="price" name="price" value="{{ $products[0]['price'] }}">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="cost_price">{{ __('Preço de Custo:') }}</label>
+                                                    <input type="text" class="form-control" id="cost_price" name="cost_price" value="{{ $products[0]['cost_price'] }}">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="brand_id">{{ __('Marca:') }}</label>
+                                                    <select class="form-control" id="brand_id" name="brand_id">
+                                                        <option value="">{{ __('Selecione uma marca') }}</option>
+                                                        @foreach($brands as $brand)
+                                                            <option value="{{ $brand['id'] }}" @if($products[0]['brand_id'] == $brand['id']) selected @endif>{{ $brand['name'] }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>                                 
                                             </div>
-                                            <div class="form-group col-md-3">
-                                                <label for="status">{{ __('Status:') }}</label>
-                                                <select class="form-control" id="status" name="status">
-                                                    <option value="1" {{ $products[0]['status'] == 1 ? 'selected' : '' }}>{{ __('Habilitado') }}</option>
-                                                    <option value="0" {{ $products[0]['status'] == 0 ? 'selected' : '' }}>{{ __('Desabilitado') }}</option>
-                                                </select>
-                                            </div>                                                                
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="price">{{ __('Preço:') }}</label>
-                                                <input type="text" class="form-control" id="price" name="price" value="{{ $products[0]['price'] }}">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-3">
+                                                    <label for="height">{{ __('Altura:') }}</label>
+                                                    <input type="text" class="form-control" id="height" name="height" value="{{ $products[0]['height'] }}">
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="width">{{ __('Largura:') }}</label>
+                                                    <input type="text" class="form-control" id="width" name="width" value="{{ $products[0]['width'] }}">
+                                                </div> 
+                                                <div class="form-group col-md-2">
+                                                    <label for="length">{{ __('Comprimento:') }}</label>
+                                                    <input type="text" class="form-control" id="length" name="length" value="{{ $products[0]['length'] }}">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <label for="sku">{{ __('SKU:') }}</label>
+                                                    <input type="text" class="form-control" id="sku" name="sku" value="{{ $products[0]['sku'] }}">
+                                                </div>  
+                                                <div class="form-group col-md-2">
+                                                    <label for="weight">{{ __('Peso:') }}</label>
+                                                    <input type="text" class="form-control" id="weight" name="weight" value="{{ $products[0]['weight'] }}">
+                                                </div>                                                                                       
                                             </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="cost_price">{{ __('Preço de Custo:') }}</label>
-                                                <input type="text" class="form-control" id="cost_price" name="cost_price" value="{{ $products[0]['cost_price'] }}">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="category_id">{{ __('Categoria(s):') }}</label>
+                                                    <select class="form-control" id="category_id" name="category_id[]" multiple>
+                                                        <option value="">{{ __('Selecione uma ou mais categorias') }}</option>
+                                                        @foreach($categories as $category)
+                                                            <option value="{{ $category['id'] }}" @if(in_array($category['id'], $products[0]['categories'])) selected @endif>{{ $category['name'] }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div> 
                                             </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="brand_id">{{ __('Marca:') }}</label>
-                                                <select class="form-control" id="brand_id" name="brand_id">
-                                                    <option value="">{{ __('Selecione uma marca') }}</option>
-                                                    @foreach($brands as $brand)
-                                                        <option value="{{ $brand['id'] }}" @if($products[0]['brand_id'] == $brand['id']) selected @endif>{{ $brand['name'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>                                 
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-3">
-                                                <label for="height">{{ __('Altura:') }}</label>
-                                                <input type="text" class="form-control" id="height" name="height" value="{{ $products[0]['height'] }}">
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <label for="width">{{ __('Largura:') }}</label>
-                                                <input type="text" class="form-control" id="width" name="width" value="{{ $products[0]['width'] }}">
-                                            </div> 
-                                            <div class="form-group col-md-2">
-                                                <label for="length">{{ __('Comprimento:') }}</label>
-                                                <input type="text" class="form-control" id="length" name="length" value="{{ $products[0]['length'] }}">
-                                            </div>
-                                            <div class="form-group col-md-2">
-                                                <label for="sku">{{ __('SKU:') }}</label>
-                                                <input type="text" class="form-control" id="sku" name="sku" value="{{ $products[0]['sku'] }}">
+                                            <div class="form-row">                                 
+                                                <div class="form-group col-md-6">
+                                                    <label for="description_resume">{{ __('Descrição Resumida:') }}</label>
+                                                    <input type="text" class="form-control" id="description_resume" name="description_resume" value="{{ $products[0]['description_resume'] }}">
+                                                </div>  
+                                                <div class="form-group col-md-6">
+                                                    <label for="tags">{{ __('Tags:') }}</label>
+                                                    <input type="text" class="form-control" id="tags" name="tags" value="{{ $products[0]['tags'] }}">
+                                                </div>                                                                                         
                                             </div>  
-                                            <div class="form-group col-md-2">
-                                                <label for="weight">{{ __('Peso:') }}</label>
-                                                <input type="text" class="form-control" id="weight" name="weight" value="{{ $products[0]['weight'] }}">
-                                            </div>                                                                                       
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="category_id">{{ __('Categoria(s):') }}</label>
-                                                <select class="form-control" id="category_id" name="category_id[]" multiple>
-                                                    <option value="">{{ __('Selecione uma ou mais categorias') }}</option>
-                                                    @foreach($categories as $category)
-                                                        <option value="{{ $category['id'] }}" @if(in_array($category['id'], $products[0]['categories'])) selected @endif>{{ $category['name'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div> 
-                                        </div>
-                                        <div class="form-row">                                 
-                                            <div class="form-group col-md-6">
-                                                <label for="description_resume">{{ __('Descrição Resumida:') }}</label>
-                                                <input type="text" class="form-control" id="description_resume" name="description_resume" value="{{ $products[0]['description_resume'] }}">
-                                            </div>  
-                                            <div class="form-group col-md-6">
-                                                <label for="tags">{{ __('Tags:') }}</label>
-                                                <input type="text" class="form-control" id="tags" name="tags" value="{{ $products[0]['tags'] }}">
-                                            </div>                                                                                         
-                                        </div>  
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="description">{{ __('Descrição:') }}</label>
-                                                <textarea class="form-control ckeditor" id="description" name="description">{{ $products[0]['description'] }}</textarea>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="description">{{ __('Descrição:') }}</label>
+                                                    <textarea class="form-control ckeditor" id="description" name="description">{{ $products[0]['description'] }}</textarea>
+                                                </div>
                                             </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="meta_description">{{ __('Meta Descrição:') }}</label>
+                                                    <input type="text" class="form-control" id="meta_description" name="meta_description" value="{{ $products[0]['meta_description'] }}">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="meta_title">{{ __('Meta Título:') }}</label>
+                                                    <input type="text" class="form-control" id="meta_title" name="meta_title" value="{{ $products[0]['meta_title'] }}">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="meta_keyword">{{ __('Meta Palavra-chave:') }}</label>
+                                                    <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" value="{{ $products[0]['meta_keyword'] }}">
+                                                </div>
+                                            </div>                                        
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="meta_description">{{ __('Meta Descrição:') }}</label>
-                                                <input type="text" class="form-control" id="meta_description" name="meta_description" value="{{ $products[0]['meta_description'] }}">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="meta_title">{{ __('Meta Título:') }}</label>
-                                                <input type="text" class="form-control" id="meta_title" name="meta_title" value="{{ $products[0]['meta_title'] }}">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="meta_keyword">{{ __('Meta Palavra-chave:') }}</label>
-                                                <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" value="{{ $products[0]['meta_keyword'] }}">
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">{{ __('Salvar') }}</button>
+                                    </form>                                    
+                                </div>
+                                <div class="tab-pane fade" id="stock" role="tabpanel" aria-labelledby="stock-tab">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ _('Atributo') }}</th>
+                                                    <th>{{ _('Variação') }}</th>
+                                                    <th>{{ _('Quantidade') }}</th>
+                                                    <th class="text-center">{{ _('Reservado') }}</th>
+                                                    <th>{{ _('Add/Desc') }}</th>
+                                                    <th>{{ _('Valor') }}</th>
+                                                    <th>{{ _('Ações') }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php $color = true; @endphp
+                                                @foreach ($products[0]['stock'] as $stock)
+                                                    @if ($stock['parent_attribute_id'] === null)
+                                                        @php $color = !$color; @endphp
+                                                        <tr class="{{ $color ? 'even-row' : 'odd-row' }} main-item">
+                                                            <td class="col-2">{{ $stock['name'] }}</td>
+                                                            <td class="col-3"><strong>{{ $stock['value'] }}</strong></td>
+                                                            <td class="col-2">
+                                                                <input type="number" class="form-control" value="{{ $stock['quantity'] }}" @disabled(true)>
+                                                            </td>
+                                                            <td class="col-1"></td>
+                                                            <td class="col-1">
+                                                                <select class="form-control">
+                                                                    <option value="+">+</option>
+                                                                    <option value="-">-</option>
+                                                                </select>
+                                                            </td>
+                                                            <td class="col-2"><input type="number" class="form-control" value="{{ $stock['additional_value'] ?? '' }}"></td>
+                                                            <td class="col-1">
+                                                                <button class="btn btn-danger btn-sm delete-stock">{{ _('Excluir')  }}</button>
+                                                            </td>
+                                                        </tr>
+                                                    @else
+                                                        <tr class="{{ $color ? 'even-row' : 'odd-row' }}">
+                                                            <td class="col-2"></td>
+                                                            <td class="col-3">{{ $stock['value'] }}</td>
+                                                            <td class="col-2">
+                                                                <input type="number" class="form-control" value="{{ $stock['quantity'] }}">
+                                                            </td>
+                                                            <td class="col-1 text-center">{{ $stock['stock_cart'] }}</td>
+                                                            <td class="col-1">
+                                                                <select class="form-control">
+                                                                    <option value="+">+</option>
+                                                                    <option value="-">-</option>
+                                                                </select>
+                                                            </td>
+                                                            <td class="col-2"><input type="number" class="form-control" value="{{ $stock['additional_value'] ?? '' }}"></td>
+                                                            <td class="col-1">
+                                                                <button class="btn btn-danger btn-sm delete-stock">{{ _('Excluir')  }}</button>
+                                                            </td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="estoque" role="tabpanel" aria-labelledby="estoque-tab">
-                                <!-- Conteúdo da tab de Estoque -->
-                            </div>
-                            <div class="tab-pane fade" id="imagens" role="tabpanel" aria-labelledby="imagens-tab">
-                                <!-- Conteúdo da tab de Imagens -->
+                                </div>                                                                                                                                                                                      
+                                <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+                                    <!-- Conteúdo da tab de Imagens -->
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @else
+                        <div class="alert alert-info" role="alert">
+                            {{ __('Produto não encontrado!') }}
+                            <a href="{{ route('getProducts') }}" class="btn btn-primary float-right">{{ __('Voltar') }}</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

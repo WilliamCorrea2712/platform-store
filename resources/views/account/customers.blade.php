@@ -30,7 +30,7 @@
                         </thead>
                         <tbody>
                             @foreach ($paginator as $customer)
-                                <tr>
+                                <tr class="custom-row">
                                     <td>{{ $customer['name'] }}</td>
                                     <td>{{ $customer['email'] }}</td>
                                     <td>{{ $customer['phone_number'] }}</td>

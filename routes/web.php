@@ -12,6 +12,10 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::middleware(['web'])->group(function () {

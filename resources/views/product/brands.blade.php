@@ -29,7 +29,7 @@
                         </thead>
                         <tbody>
                             @foreach ($paginator as $brand)
-                                <tr>
+                                <tr class="custom-row">
                                     <td>{{ $brand['id'] }}</td>
                                     <td>{{ $brand['name'] }}</td>
                                     <!--<td>{!! Illuminate\Support\Str::limit($brand['description'], $limit = 10, $end = '...') !!}</td>-->

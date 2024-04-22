@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                             @foreach ($paginator as $user)
-                                <tr>
+                                <tr class="custom-row">
                                     <td>{{ $user['name'] }}</td>
                                     <td>{{ $user['email'] }}</td>
                                     <td>

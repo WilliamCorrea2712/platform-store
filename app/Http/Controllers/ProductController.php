@@ -63,6 +63,8 @@ class ProductController extends Controller
         ])->get($apiUrl . 'product/getProducts&id=' . $id);
     
         $products = [];
+        $categories = [];
+        $brands = [];
         $error = '';
     
         if ($response->successful()) {
@@ -83,5 +85,36 @@ class ProductController extends Controller
         }
 
         return view('product.productsEdit', compact('products', 'categories', 'brands', 'error'));  
+    }
+
+    public function deleteProduct(Request $request)
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $id = $request->input('product_id');
+        $errors = []; 
+
+        $responseProduct = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->delete($apiUrl . 'user/deleteProduct', [
+            'product_id' => $id,
+        ]);
+
+        if (!$responseProduct->successful()) {
+            $errorResponse = $responseProduct->json();
+            if (isset($errorResponse['error'])) {
+                $errors[] = $errorResponse['error'];
+            } else {
+                $errors[] = 'Erro desconhecido ao excluir o Produto.';
+            }
+        }
+
+        if (!empty($errors)) {
+            return redirect()->route('editProduct', ['id' => $id])->with(['errors' => $errors]);
+        } else {
+            return response()->json(['success' => true]);            
+        }        
     }
 }

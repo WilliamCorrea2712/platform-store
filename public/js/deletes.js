@@ -130,4 +130,30 @@ $(document).ready(function () {
             });
         }
     });
+
+    $(".container").on("click", ".delete-product", function () {
+        var Id = $(this).data("product-id");
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+        if (
+            Id &&
+            confirm(
+                "Tem certeza que deseja excluir este produto, esta ação é irreversivel?"
+            )
+        ) {
+            $.ajax({
+                url: "/product/deleteProduct",
+                type: "POST",
+                data: {
+                    _token: csrfToken,
+                    product_id: Id,
+                },
+                success: function (response) {
+                    window.location.href = "/getProduct";
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                },
+            });
+        }
+    });
 });
