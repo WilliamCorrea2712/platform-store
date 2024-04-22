@@ -147,68 +147,126 @@
                                 </div>
                                 <div class="tab-pane fade" id="stock" role="tabpanel" aria-labelledby="stock-tab">
                                     <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>{{ _('Atributo') }}</th>
-                                                    <th>{{ _('Variação') }}</th>
-                                                    <th>{{ _('Quantidade') }}</th>
-                                                    <th class="text-center">{{ _('Reservado') }}</th>
-                                                    <th>{{ _('Add/Desc') }}</th>
-                                                    <th>{{ _('Valor') }}</th>
-                                                    <th>{{ _('Ações') }}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @php $color = true; @endphp
-                                                @foreach ($products[0]['stock'] as $stock)
-                                                    @if ($stock['parent_attribute_id'] === null)
-                                                        @php $color = !$color; @endphp
-                                                        <tr class="{{ $color ? 'even-row' : 'odd-row' }} main-item">
-                                                            <td class="col-2">{{ $stock['name'] }}</td>
-                                                            <td class="col-3"><strong>{{ $stock['value'] }}</strong></td>
-                                                            <td class="col-2">
-                                                                <input type="number" class="form-control" value="{{ $stock['quantity'] }}" @disabled(true)>
-                                                            </td>
-                                                            <td class="col-1"></td>
-                                                            <td class="col-1">
-                                                                <select class="form-control">
-                                                                    <option value="+">+</option>
-                                                                    <option value="-">-</option>
-                                                                </select>
-                                                            </td>
-                                                            <td class="col-2"><input type="number" class="form-control" value="{{ $stock['additional_value'] ?? '' }}"></td>
-                                                            <td class="col-1">
-                                                                <button class="btn btn-danger btn-sm delete-stock">{{ _('Excluir')  }}</button>
-                                                            </td>
-                                                        </tr>
-                                                    @else
-                                                        <tr class="{{ $color ? 'even-row' : 'odd-row' }}">
-                                                            <td class="col-2"></td>
-                                                            <td class="col-3">{{ $stock['value'] }}</td>
-                                                            <td class="col-2">
-                                                                <input type="number" class="form-control" value="{{ $stock['quantity'] }}">
-                                                            </td>
-                                                            <td class="col-1 text-center">{{ $stock['stock_cart'] }}</td>
-                                                            <td class="col-1">
-                                                                <select class="form-control">
-                                                                    <option value="+">+</option>
-                                                                    <option value="-">-</option>
-                                                                </select>
-                                                            </td>
-                                                            <td class="col-2"><input type="number" class="form-control" value="{{ $stock['additional_value'] ?? '' }}"></td>
-                                                            <td class="col-1">
-                                                                <button class="btn btn-danger btn-sm delete-stock">{{ _('Excluir')  }}</button>
-                                                            </td>
-                                                        </tr>
-                                                    @endif
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                        @if($products[0]['stock'])
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="align-middle">{{ _('Atributo') }}</th>
+                                                        <th class="align-middle">{{ _('Variação') }}</th>
+                                                        <th class="align-middle">{{ _('Quantidade') }}</th>
+                                                        <th class="align-middle text-center">{{ _('Reservado') }}</th>
+                                                        <th class="align-middle">{{ _('Add/Desc') }}</th>
+                                                        <th class="align-middle">{{ _('Valor') }}</th>
+                                                        <th class="align-middle">{{ _('Ações') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @php  
+                                                        $color = true;
+                                                        $attribute_id = null; 
+                                                        $stockSId = []; 
+                                                    @endphp
+                                                    @foreach ($products[0]['stock'] as $stock)                                                                                                             
+                                                        @if ($stock['parent_attribute_id'] === null)
+
+                                                            @php 
+                                                                $color = !$color; 
+                                                                $attribute_id = $stock['attribute_id']; 
+
+                                                                if (!isset($stockSId[$attribute_id])) {
+                                                                    $stockSId[$attribute_id] = [];
+                                                                }
+                                                                
+                                                                $stockSId[$attribute_id][] = $stock['stock_id']; 
+                                                            @endphp
+
+                                                            <tr class="{{ $color ? 'even-row' : 'odd-row' }} main-item">
+                                                                <td class="col-2 align-middle">{{ $stock['name'] }}</td>
+                                                                <td class="col-3 align-middle">{{ $stock['value'] }}</td>
+                                                                <td class="col-2 align-middle">
+                                                                    <input type="number" class="form-control" value="{{ $stock['quantity'] }}" @disabled(true)>
+                                                                </td>
+                                                                <td class="col-1 align-middle"></td>
+                                                                <td class="col-1 align-middle"></td>
+                                                                <td class="col-2 align-middle"></td>
+                                                                <td class="col-1 align-middle">
+                                                                    <button class="btn btn-danger btn-sm delete-stock" 
+                                                                    data-stock-id="{{ json_encode($stockSId[$attribute_id]) }}" 
+                                                                    data-product-id="{{ $products[0]['id'] }}" 
+                                                                    data-attribute-id="{{ $stock['attribute_id'] }}">
+                                                                    {{ _('Excluir')  }}
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        @else
+                                                            @if($stockSId[$attribute_id] === $stock['parent_attribute_id'])
+                                                                @php $stockSId[$attribute_id] = [$stock['stock_id']]; @endphp
+                                                            @else
+                                                                @php $stockSId[$attribute_id][] = $stock['stock_id']; @endphp
+                                                            @endif
+                                                            <tr class="{{ $color ? 'even-row' : 'odd-row' }}">
+                                                                <td class="col-2 align-middle"></td>
+                                                                <td class="col-3 align-middle">{{ $stock['value'] }}</td>
+                                                                <td class="col-2 align-middle">
+                                                                    <input type="number" class="form-control" value="{{ $stock['quantity'] }}">
+                                                                </td>
+                                                                <td class="col-1 align-middle text-center">{{ $stock['stock_cart'] }}</td>
+                                                                <td class="col-1 align-middle">
+                                                                    <select class="form-control">
+                                                                        <option value="+">{{ _('+') }}</option>
+                                                                        <option value="-">{{ _('-') }}</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td class="col-2 align-middle"><input type="number" class="form-control" value="{{ $stock['additional_value'] ?? '' }}"></td>
+                                                                <td class="col-1 align-middle">
+                                                                    <button class="btn btn-danger btn-sm delete-stock" 
+                                                                    data-stock-id="[{{ $stock['stock_id'] }}]" 
+                                                                    data-product-id="{{ $products[0]['id'] }}" 
+                                                                    data-attribute-id="{{ $stock['attribute_id'] }}">
+                                                                    {{ _('Excluir')  }}
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        @endif
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        @else
+                                            <div class="alert alert-info" role="alert">{{ __('Não há estoque para este produto!') }}</div> 
+                                        @endif
                                     </div>
-                                </div>                                                                                                                                                                                      
+                                </div>                                                                                                                                                                                                                    
                                 <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
-                                    <!-- Conteúdo da tab de Imagens -->
+                                    <div class="table-responsive">
+                                        @if($products[0]['images'])
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>{{ _('Imagem') }}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="preview-images">
+                                                                @foreach ($products[0]['images'] as $image)
+                                                                    @php
+                                                                        $imageUrl = env('API_IMAGE_URL') . $image['image_url'];
+                                                                        $imagePath = str_replace('\\', '/', $imageUrl);
+                                                                    @endphp
+                                                                    <div class="image">
+                                                                        <img src="{{ $imagePath }}" alt="{{ $image['image_name'] }}" class="img-thumbnail" />
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        @else
+                                            <div class="alert alert-info" role="alert">{{ __('Não há images para este produto!') }}</div> 
+                                        @endif
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>

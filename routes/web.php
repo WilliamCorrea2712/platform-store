@@ -71,6 +71,8 @@ Route::middleware(['web'])->group(function () {
         Route::post('/product/products/store', [ProductController::class, 'storeProduct'])->name('storeProduct');
         Route::get('/editProduct/{id}', [ProductController::class, 'edit'])->name('editProduct');
         Route::post('/updateProduct/{id}', [ProductController::class, 'update'])->name('updateProduct');
+        Route::post('/product/deleteProduct', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
+        Route::post('/product/deleteStock', [ProductController::class, 'deleteStock'])->name('deleteStock');
         
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 

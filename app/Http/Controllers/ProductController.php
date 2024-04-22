@@ -117,4 +117,40 @@ class ProductController extends Controller
             return response()->json(['success' => true]);            
         }        
     }
+
+    public function deleteStock(Request $request)
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $id = $request->input('stock_id');
+        $product_id = $request->input('product_id');
+        $attribute_id = $request->input('attribute_id');
+
+        $errors = []; 
+
+        $responseStock = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->delete($apiUrl . 'product/deleteStockOptions', [
+            'stock_id' => $id,
+            'product_id' => $product_id,
+            'attribute_id' => $attribute_id,
+        ]);
+
+        if (!$responseStock->successful()) {
+            $errorResponse = $responseStock->json();
+            if (isset($errorResponse['error'])) {
+                $errors[] = $errorResponse['error'];
+            } else {
+                $errors[] = 'Erro desconhecido ao excluir o Estoque.';
+            }
+        }
+
+        if (!empty($errors)) {
+            return redirect()->route('editProduct', ['id' => $id])->with(['errors' => $errors]);
+        } else {
+            return response()->json(['success' => true]);            
+        }        
+    }
 }

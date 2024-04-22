@@ -156,4 +156,34 @@ $(document).ready(function () {
             });
         }
     });
+
+    $(".container").on("click", ".delete-stock", function () {
+        var Id = $(this).data("stock-id");
+        var product_id = $(this).data("product-id");
+        var attribute_id = $(this).data("attribute-id");
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+        if (
+            Id &&
+            confirm(
+                "Tem certeza que deseja excluir esta grade de estoque, esta ação é irreversivel?"
+            )
+        ) {
+            $.ajax({
+                url: "/product/deleteStock",
+                type: "POST",
+                data: {
+                    _token: csrfToken,
+                    stock_id: Id,
+                    product_id: product_id,
+                    attribute_id: attribute_id,
+                },
+                success: function (response) {
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                },
+            });
+        }
+    });
 });
