@@ -20,15 +20,15 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="name">{{ __('Nome:') }}</label>
+                                <label for="name">{{ __('Nome:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                 <input type="text" class="form-control" id="name" name="name" required>
                             </div>
                             <div class="form-group">
-                                <label for="email">{{ __('Email:') }}</label>
+                                <label for="email">{{ __('Email:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                 <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="form-group">
-                                <label for="password">{{ __('Senha:') }}</label>
+                                <label for="password">{{ __('Senha:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <button type="submit" class="btn btn-primary">{{ __('Enviar') }}</button>
