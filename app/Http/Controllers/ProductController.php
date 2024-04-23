@@ -217,4 +217,43 @@ class ProductController extends Controller
             return response()->json(['success' => true], 200);
         }     
     }
+
+    public function addProductImages(Request $request)
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $productId = $request->input('product_id');
+
+        if (!$request->hasFile('images')) {
+            return response()->json(['success' => false, 'error' => 'Nenhuma imagem foi enviada'], 400);
+        }
+
+        $images = $request->file('images');
+        $imagesData = [];
+
+        foreach ($images as $image) {
+            $imagesData[] = [
+                'name' => $image->getClientOriginalName(),
+                'tmp_name' => $image->getPathname(),
+                'type' => $image->getClientMimeType(),
+                'error' => $image->getError(),
+                'size' => $image->getSize(),
+            ];
+        }
+
+        $responseImages = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->post($apiUrl . 'product/addProductImages', [
+            'product_id' => $productId,
+            'images' => $imagesData,
+        ]);
+
+        if ($responseImages->successful()) {
+            return response()->json(['success' => true, 'message' => 'Imagens adicionadas com sucesso!']);
+        } else {
+            return response()->json(['success' => false, 'error' => $responseImages['error']], $responseImages->status());
+        }
+    }
 }

@@ -74,6 +74,7 @@ Route::middleware(['web'])->group(function () {
         Route::post('/product/deleteProduct', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
         Route::post('/product/deleteStock', [ProductController::class, 'deleteStock'])->name('deleteStock');
         Route::post('/product/addStock', [ProductController::class, 'addStock'])->name('addStock');
+        Route::post('/product/addProductImages',[ProductController::class, 'addProductImages'] )->name('addProductImages');
         
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 

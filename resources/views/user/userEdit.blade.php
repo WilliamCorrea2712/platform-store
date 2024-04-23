@@ -37,7 +37,11 @@
                                 <div class="form-group">
                                     <label for="password">{{ __('Senha:') }}  <span class="text-danger">{{ __('*') }}</span></label>
                                     <input type="password" class="form-control" id="password" name="password" required>
-                                </div>                                
+                                </div>  
+                                <div class="form-group">
+                                    <label for="token">{{ __('Token:') }}</label>
+                                    <input type="text" class="form-control" id="token" name="token" value="{{ $users[0]['token'] }}" @disabled(true)>
+                                </div>                              
                             </div>
                         </form>
                     @else

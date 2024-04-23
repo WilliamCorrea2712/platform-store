@@ -242,37 +242,49 @@
                                     </div>
                                 </div>                                                                                                                                                                                                                    
                                 <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
-                                    <div class="table-responsive">
-                                        @if($products[0]['images'])
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>{{ _('Imagem') }}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="preview-images">
-                                                                @foreach ($products[0]['images'] as $image)
-                                                                    @php
-                                                                        $imageUrl = env('API_IMAGE_URL') . $image['image_url'];
-                                                                        $imagePath = str_replace('\\', '/', $imageUrl);
-                                                                    @endphp
-                                                                    <div class="image">
-                                                                        <img src="{{ $imagePath }}" alt="{{ $image['image_name'] }}" class="img-thumbnail" />
-                                                                    </div>
-                                                                @endforeach
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        @else
-                                            <div class="alert alert-info" role="alert">{{ __('Não há images para este produto!') }}</div> 
-                                        @endif
+                                    <div class="container">
+                                        <div id="message-api" class="alert alert-warning" role="alert" style="display: none"></div>
+                                        <div class="row">
+                                            <div class="col-md-6 text-left">
+                                                <button type="button" class="btn btn-primary" data-product-id="{{ $products[0]['id'] }}" id="selectImagesBtn">{{ _('Selecionar Imagens') }}</button>
+                                            </div>
+                                        </div>
+                                        <div id="imagePreview" class="mt-4" style="display: none;">                                            
+                                            <div id="previewContainer" class="row mt-3"></div>
+                                        </div>
+                                        <div id="selectedImagesMsg" class="mt-3" style="display: none;"></div>
+                                        <div class="table-responsive mt-4">
+                                            @if($products[0]['images'])
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>{{ _('Imagens do Produto') }}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="preview-images">
+                                                                    @foreach ($products[0]['images'] as $image)
+                                                                        @php
+                                                                            $imageUrl = env('API_IMAGE_URL') . $image['image_url'];
+                                                                            $imagePath = str_replace('\\', '/', $imageUrl);
+                                                                        @endphp
+                                                                        <div class="image">
+                                                                            <img src="{{ $imagePath }}" alt="{{ $image['image_name'] }}" class="img-thumbnail" />
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            @else
+                                                <div class="alert alert-info" role="alert">{{ _('Não há imagens para este produto!') }}</div> 
+                                            @endif
+                                        </div>
                                     </div>                                    
-                                </div>
+                                </div>                                                                                                
                             </div>
                         </div>
                     @else

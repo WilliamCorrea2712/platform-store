@@ -96,3 +96,88 @@ $(document).ready(function () {
         document.getElementById("productForm").submit();
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    document
+        .getElementById("selectImagesBtn")
+        .addEventListener("click", function () {
+            const input = document.createElement("input");
+            input.type = "file";
+            input.accept = "image/*";
+            input.multiple = true;
+            input.click();
+
+            const productId = $(this).data("product-id");
+            var csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+            input.addEventListener("change", function () {
+                const images = Array.from(input.files);
+                const selectedImagesMsg =
+                    document.getElementById("selectedImagesMsg");
+                const imagePreview = document.getElementById("imagePreview");
+                const previewContainer =
+                    document.getElementById("previewContainer");
+
+                let saveBtn = document.getElementById("saveBtn");
+
+                if (!saveBtn) {
+                    saveBtn = document.createElement("button");
+                    saveBtn.id = "saveBtn";
+                    saveBtn.classList.add("btn", "btn-success");
+                    saveBtn.textContent = "Enviar Imagen(s)";
+                    saveBtn.addEventListener("click", function () {
+                        const formData = new FormData();
+                        images.forEach((image, index) => {
+                            formData.append(`images[]`, image);
+                        });
+
+                        formData.append("product_id", productId);
+                        formData.append("_token", csrfToken);
+
+                        fetch(`/product/addProductImages`, {
+                            method: "POST",
+                            body: formData,
+                        })
+                            .then((response) => {
+                                if (response.ok) {
+                                    $("#message-api")
+                                        .text("Imagens enviadas com sucesso!")
+                                        .show();
+                                    location.reload();
+                                } else {
+                                    console.error(
+                                        "Erro ao enviar imagens:",
+                                        response.statusText
+                                    );
+                                    response.text().then((text) => {
+                                        $("#message-api").text(text).show();
+                                        console.log("Corpo da resposta:", text);
+                                    });
+                                }
+                            })
+                            .catch((error) => {
+                                console.error("Erro ao enviar imagens:", error);
+                            });
+                    });
+
+                    selectedImagesMsg.appendChild(saveBtn);
+                }
+
+                selectedImagesMsg.style.display = "block";
+                imagePreview.style.display = "block";
+                previewContainer.innerHTML = "";
+                images.forEach((image) => {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const img = document.createElement("img");
+                        img.src = e.target.result;
+                        img.classList.add("img-thumbnail", "mr-2", "mb-2");
+                        img.style.width = "200px";
+                        img.style.marginLeft = "17px";
+                        previewContainer.appendChild(img);
+                    };
+                    reader.readAsDataURL(image);
+                });
+            });
+        });
+});

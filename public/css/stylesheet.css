@@ -450,3 +450,30 @@ table.table {
     background-color: rgb(12 16 18);
     color: #ddd5d5;
 }
+
+#imageInput {
+    display: none;
+}
+
+#imageUploadForm button {
+    margin-top: 10px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.preview-images {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.preview-images .image {
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+
+.preview-images img {
+    max-width: 200px;
+    max-height: 200px;
+}
