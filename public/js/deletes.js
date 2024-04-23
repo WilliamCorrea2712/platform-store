@@ -186,4 +186,33 @@ $(document).ready(function () {
             });
         }
     });
+
+    $(".container").on("click", ".delete-image", function () {
+        var Id = $(this).data("image-id");
+        var product_id = $(this).data("product-id");
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+        if (
+            Id &&
+            confirm(
+                "Tem certeza que deseja excluir esta imagem, esta ação é irreversível?"
+            )
+        ) {
+            $.ajax({
+                url: "/product/deleteImage",
+                type: "POST",
+                data: {
+                    _token: csrfToken,
+                    image_id: Id,
+                    product_id: product_id,
+                },
+                success: function (response) {
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                },
+            });
+        }
+    });
 });

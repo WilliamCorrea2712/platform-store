@@ -74,6 +74,7 @@ $(document).ready(function () {
                     $("#message-error-success")
                         .text("Estoque adicionado com sucesso!")
                         .show();
+                    location.reload();
                 } else {
                     $("#message-error-success")
                         .text("Erro Desconhecido!")
@@ -150,7 +151,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                         response.statusText
                                     );
                                     response.text().then((text) => {
-                                        $("#message-api").text(text).show();
+                                        $("#message-api")
+                                            .text(
+                                                text.length > 50
+                                                    ? text.slice(0, 130) + "..."
+                                                    : text
+                                            )
+                                            .show();
                                         console.log("Corpo da resposta:", text);
                                     });
                                 }

@@ -244,15 +244,17 @@
                                 <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
                                     <div class="container">
                                         <div id="message-api" class="alert alert-warning" role="alert" style="display: none"></div>
-                                        <div class="row">
-                                            <div class="col-md-6 text-left">
-                                                <button type="button" class="btn btn-primary" data-product-id="{{ $products[0]['id'] }}" id="selectImagesBtn">{{ _('Selecionar Imagens') }}</button>
+                                        <div class="container-fluid">
+                                            <div class="row justify-content-center align-items-center">
+                                                <div class="col-md-6">
+                                                    <button type="button" class="btn btn-primary btn-lg btn-block" data-product-id="{{ $products[0]['id'] }}" id="selectImagesBtn">{{ _('Selecionar Imagens') }}</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div id="imagePreview" class="mt-4" style="display: none;">                                            
-                                            <div id="previewContainer" class="row mt-3"></div>
-                                        </div>
-                                        <div id="selectedImagesMsg" class="mt-3" style="display: none;"></div>
+                                            <div id="imagePreview" class="mt-4" style="display: none;">                                            
+                                                <div id="previewContainer" class="row mt-3"></div>
+                                            </div>
+                                            <div id="selectedImagesMsg" class="mt-3" style="display: none;"></div>
+                                        </div>                                        
                                         <div class="table-responsive mt-4">
                                             @if($products[0]['images'])
                                                 <table class="table">
@@ -262,28 +264,30 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="preview-images">
-                                                                    @foreach ($products[0]['images'] as $image)
-                                                                        @php
-                                                                            $imageUrl = env('API_IMAGE_URL') . $image['image_url'];
-                                                                            $imagePath = str_replace('\\', '/', $imageUrl);
-                                                                        @endphp
-                                                                        <div class="image">
+                                                        @foreach ($products[0]['images'] as $image)
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center image-item">
+                                                                        <div class="preview-images mr-3">
+                                                                            @php
+                                                                                $imageUrl = env('API_IMAGE_URL') . $image['image_url'];
+                                                                                $imagePath = str_replace('\\', '/', $imageUrl);
+                                                                            @endphp
                                                                             <img src="{{ $imagePath }}" alt="{{ $image['image_name'] }}" class="img-thumbnail" />
                                                                         </div>
-                                                                    @endforeach
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                                        <button type="button" class="btn btn-danger delete-image" data-image-id="{{ $image['image_id'] }}" data-product-id="{{ $products[0]['id'] }}">{{ _('Excluir') }}</button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
+                                                                                                       
                                                 </table>
                                             @else
                                                 <div class="alert alert-info" role="alert">{{ _('Não há imagens para este produto!') }}</div> 
                                             @endif
                                         </div>
-                                    </div>                                    
+                                    </div>                                                                        
                                 </div>                                                                                                
                             </div>
                         </div>

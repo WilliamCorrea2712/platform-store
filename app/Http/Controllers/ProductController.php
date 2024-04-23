@@ -256,4 +256,37 @@ class ProductController extends Controller
             return response()->json(['success' => false, 'error' => $responseImages['error']], $responseImages->status());
         }
     }
+
+    public function deleteImage(Request $request)
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $id = $request->input('image_id');
+        $product_id = $request->input('product_id');
+        $errors = []; 
+
+        $responseImages = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->delete($apiUrl . 'product/deleteProductImages', [
+            'product_id' => $product_id,
+            'image_id' => $id,
+        ]);
+
+        if (!$responseImages->successful()) {
+            $errorResponse = $responseImages->json();
+            if (isset($errorResponse['error'])) {
+                $errors[] = $errorResponse['error'];
+            } else {
+                $errors[] = 'Erro desconhecido ao excluir a Imagem.';
+            }
+        }
+
+        if (!empty($errors)) {
+            return redirect()->route('editProduct', ['id' => $product_id])->with(['errors' => $errors]);
+        } else {
+            return response()->json(['success' => true]);            
+        }        
+    }
 }
