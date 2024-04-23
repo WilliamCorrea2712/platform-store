@@ -60,5 +60,6 @@
     <script src="{{ asset('js/theme.js') }}"></script>
     <script src="{{ asset('js/address.js') }}"></script>
     <script src="{{ asset('js/deletes.js') }}"></script>
+    <script src="{{ asset('js/product.js') }}"></script>
 </body>
 </html>

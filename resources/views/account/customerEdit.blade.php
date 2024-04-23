@@ -30,42 +30,42 @@
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
-                                        <label for="name">{{ __('Nome') }}:</label>
+                                        <label for="name">{{ __('Nome') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <input type="text" class="form-control" id="name" name="name" value="{{ $customer['name'] }}" required>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="email">{{ __('Email') }}:</label>
+                                        <label for="email">{{ __('Email') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <input type="email" class="form-control" id="email" name="email" value="{{ $customer['email'] }}" readonly>
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="phone_number">{{ __('Número de Telefone') }}:</label>
+                                        <label for="phone_number">{{ __('Número de Telefone') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ $customer['phone_number'] }}" required>
                                     </div>
                                 </div>
                                 <div class="form-row">                                
                                     <div class="form-group col-md-3">
-                                        <label for="birth_date">{{ __('Data de Nascimento') }}:</label>
+                                        <label for="birth_date">{{ __('Data de Nascimento') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{ $customer['birth_date'] }}" required>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="cnpj_cpf">{{ __('CNPJ/CPF') }}:</label>
+                                        <label for="cnpj_cpf">{{ __('CNPJ/CPF') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <input type="text" class="form-control" id="cnpj_cpf" name="cnpj_cpf" value="{{ $customer['cnpj_cpf'] }}" required>
                                     </div>
                                     <div class="form-group col-md-5">
-                                        <label for="rg_ie">{{ __('RG/IE') }}:</label>
+                                        <label for="rg_ie">{{ __('RG/IE') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <input type="text" class="form-control" id="rg_ie" name="rg_ie" value="{{ $customer['rg_ie'] }}" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
-                                        <label for="type_person">{{ __('Tipo de Pessoa') }}:</label>
+                                        <label for="type_person">{{ __('Tipo de Pessoa') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <select class="form-control" id="type_person" name="type_person" required>
                                             <option value="1" {{ $customer['type_person'] == '1' ? 'selected' : '' }}>{{ __('Física') }}</option>
                                             <option value="2" {{ $customer['type_person'] == '2' ? 'selected' : '' }}>{{ __('Jurídica') }}</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="sex">{{ __('Sexo') }}:</label>
+                                        <label for="sex">{{ __('Sexo') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <select class="form-control" id="sex" name="sex" required>
                                             <option value="M" {{ $customer['sex'] == 'M' ? 'selected' : '' }}>{{ __('Masculino') }}</option>
                                             <option value="F" {{ $customer['sex'] == 'F' ? 'selected' : '' }}>{{ __('Feminino') }}</option>
@@ -73,11 +73,11 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="password">{{ __('Senha') }}:</label>
+                                        <label for="password">{{ __('Senha') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <input type="password" class="form-control" id="password" name="password" required>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="confirmPassword">{{ __('Confirme a Senha') }}:</label>
+                                        <label for="confirmPassword">{{ __('Confirme a Senha') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                                     </div>
                                 </div>
@@ -89,33 +89,33 @@
                                             <input type="hidden" name="address_id[]" value="{{ $address['id'] }}">
                                             <div class="form-row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="nameAddress">{{ __('Nome') }}:</label>
+                                                    <label for="nameAddress">{{ __('Nome') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" name="nameAddress[]" value="{{ $address['nameAddress'] }}" required>
                                                 </div>
                                                 <div class="form-group col-md-5">
-                                                    <label for="street">{{ __('Rua') }}:</label>
+                                                    <label for="street">{{ __('Rua') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" name="street[]" value="{{ $address['street'] }}" required>
                                                 </div>  
                                                 <div class="form-group col-md-3">
-                                                    <label for="number">{{ __('Número') }}:</label>
+                                                    <label for="number">{{ __('Número') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" name="number[]" value="{{ $address['number'] }}" required>
                                                 </div>                                          
                                             </div>
                                             <div class="form-row">                                            
                                                 <div class="form-group col-md-3">
-                                                    <label for="city">{{ __('Cidade') }}:</label>
+                                                    <label for="city">{{ __('Cidade') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" name="city[]" value="{{ $address['city'] }}" required>
                                                 </div>   
                                                 <div class="form-group col-md-3">
-                                                    <label for="state">{{ __('Estado') }}:</label>
+                                                    <label for="state">{{ __('Estado') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" name="state[]" value="{{ $address['state'] }}" required>
                                                 </div>                                                                                                                             
                                                 <div class="form-group col-md-3">
-                                                    <label for="zip_code">{{ __('CEP') }}:</label>
+                                                    <label for="zip_code">{{ __('CEP') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" name="zip_code[]" maxlength="9" value="{{ $address['zip_code'] }}" required>
                                                 </div>  
                                                 <div class="form-group col-md-3">
-                                                    <label for="country">{{ __('País') }}:</label>
+                                                    <label for="country">{{ __('País') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" name="country[]" value="{{ $address['country'] }}" required>
                                                 </div>                                          
                                             </div> 

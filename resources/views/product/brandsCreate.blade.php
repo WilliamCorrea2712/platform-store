@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="name">{{ __('Nome:') }}</label>
+                                    <label for="name">{{ __('Nome:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                     <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                                 <!--<div class="form-group col-md-5">
@@ -38,7 +38,7 @@
                                     <input type="text" class="form-control" id="sort_order" name="sort_order">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="status">{{ __('Status:') }}</label>
+                                    <label for="status">{{ __('Status:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                     <select class="form-control" id="status" name="status">
                                         <option value="1">{{ __('Habilitado') }}</option>
                                         <option value="0">{{ __('Desabilitado') }}</option>

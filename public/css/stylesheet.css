@@ -63,17 +63,22 @@
     text-decoration: underline;
 }
 
+.login {
+    background: -webkit-linear-gradient(left, #3f3f3f, #4b4a4a) !important;
+    color: rgb(65, 63, 63);
+}
+
 /* Estilos para o card */
 .card {
     border: none;
 }
 
 .card-header {
-    background: -webkit-linear-gradient(left, #dbdbdb, #c9c7c7);
+    background: -webkit-linear-gradient(left, #f3f3f3, #f1f1f1);
     color: rgb(65, 63, 63);
-    border-top: 1px solid #cacacb;
-    border-right: 1px solid #cacacb;
-    border-left: 1px solid #cacacb;
+    border-top: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
+    border-left: 1px solid #e3e3e3;
 }
 
 .card-body {
@@ -430,4 +435,18 @@ table.table {
         display: block;
         margin: 0 auto 10px auto;
     }
+}
+
+#stockForm {
+    display: none;
+}
+
+#addStockBtn,
+#saveStockBtn {
+    margin: 0px 0px 15px 5px;
+}
+
+.highlighted {
+    background-color: rgb(12 16 18);
+    color: #ddd5d5;
 }

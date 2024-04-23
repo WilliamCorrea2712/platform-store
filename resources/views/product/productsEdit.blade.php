@@ -5,7 +5,7 @@
     <div class="container">
         <h1 class="title">
             {{ __('Editar') }}
-            <button type="submit" class="btn btn-primary float-right">{{ __('Salvar') }}</button>
+            <button type="submit" class="btn btn-primary float-right" id="saveProduct">{{ __('Salvar') }}</button>
             @if(isset($products[0]['id']))
                 <button type="button" class="btn btn-danger delete-product float-right" data-product-id="{{ $products[0]['id'] }}">Deletar</button>                                       
             @endif
@@ -40,12 +40,12 @@
                         <div class="card-body">
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
-                                    <form action="{{ route('updateProduct', ['id' => $products[0]['id']]) }}" method="POST">
+                                    <form id="productForm" action="{{ route('updateProduct', ['id' => $products[0]['id']]) }}" method="POST">
                                         @csrf
                                         <div class="card-body">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="name">{{ __('Nome:') }}</label>
+                                                    <label for="name">{{ __('Nome:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" id="name" name="name" value="{{ $products[0]['name'] }}" required>
                                                 </div>
                                                 <div class="form-group col-md-3">
@@ -62,7 +62,7 @@
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="price">{{ __('Preço:') }}</label>
+                                                    <label for="price">{{ __('Preço:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" id="price" name="price" value="{{ $products[0]['price'] }}">
                                                 </div>
                                                 <div class="form-group col-md-4">
@@ -81,15 +81,15 @@
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-3">
-                                                    <label for="height">{{ __('Altura:') }}</label>
+                                                    <label for="height">{{ __('Altura:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" id="height" name="height" value="{{ $products[0]['height'] }}">
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="width">{{ __('Largura:') }}</label>
+                                                    <label for="width">{{ __('Largura:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" id="width" name="width" value="{{ $products[0]['width'] }}">
                                                 </div> 
                                                 <div class="form-group col-md-2">
-                                                    <label for="length">{{ __('Comprimento:') }}</label>
+                                                    <label for="length">{{ __('Comprimento:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" id="length" name="length" value="{{ $products[0]['length'] }}">
                                                 </div>
                                                 <div class="form-group col-md-2">
@@ -97,7 +97,7 @@
                                                     <input type="text" class="form-control" id="sku" name="sku" value="{{ $products[0]['sku'] }}">
                                                 </div>  
                                                 <div class="form-group col-md-2">
-                                                    <label for="weight">{{ __('Peso:') }}</label>
+                                                    <label for="weight">{{ __('Peso:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                                     <input type="text" class="form-control" id="weight" name="weight" value="{{ $products[0]['weight'] }}">
                                                 </div>                                                                                       
                                             </div>
@@ -145,7 +145,12 @@
                                         </div>
                                     </form>                                    
                                 </div>
-                                <div class="tab-pane fade" id="stock" role="tabpanel" aria-labelledby="stock-tab">
+                                <div class="tab-pane fade" id="stock" role="tabpanel" aria-labelledby="stock-tab">                                    
+                                    <form id="stockForm" class="highlighted-form">
+                                        <div class="stock-section"></div>
+                                        <button type="button" id="saveStockBtn" data-product-id="{{ $products[0]['id'] }}" class="btn btn-success">{{ _('Salvar Estoque') }}</button>
+                                    </form> 
+                                    <button id="addStockBtn" class="btn btn-primary">{{ _('Adicionar Grade') }}</button>                                                                     
                                     <div class="table-responsive">
                                         @if($products[0]['stock'])
                                             <table class="table">

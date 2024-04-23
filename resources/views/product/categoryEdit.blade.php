@@ -28,7 +28,7 @@
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
-                                        <label for="name">{{ __('Nome:') }}</label>
+                                        <label for="name">{{ __('Nome:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <input type="text" class="form-control" id="name" name="name" value="{{ $categories[0]['name'] }}" required>
                                     </div>
                                     <!--<div class="form-group col-md-6">
@@ -56,7 +56,7 @@
                                         <input type="text" class="form-control" id="sort_order" name="sort_order" value="{{ $categories[0]['sort_order'] }}">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="status">{{ __('Status:') }}</label>
+                                        <label for="status">{{ __('Status:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                         <input type="text" class="form-control" id="status" name="status" value="{{ $categories[0]['status'] }}">
                                     </div>
                                 </div>  
