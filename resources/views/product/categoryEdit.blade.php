@@ -4,7 +4,7 @@
     <div class="container">
         <h1 class="title">
             {{ __('Editar') }}
-            <button type="submit" class="btn btn-primary float-right">{{ __('Salvar') }}</button>
+            <button type="button" class="btn btn-primary submit-form float-right" data-form-id="categoryForm">{{ __('Salvar') }}</button>
             @if(isset($categories[0]['id']))
                 <button type="button" class="btn btn-danger delete-category float-right" data-category-id="{{ $categories[0]['id'] }}">Deletar</button>                                       
             @endif
@@ -23,7 +23,7 @@
                         </div>
                     @endif
                     @if(isset($categories[0]['id']))
-                        <form action="{{ route('updateCategory', ['id' => $categories[0]['id']]) }}" method="POST">
+                        <form id="categoryForm" action="{{ route('updateCategory', ['id' => $categories[0]['id']]) }}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-row">

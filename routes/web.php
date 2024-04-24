@@ -8,6 +8,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
 use App\Http\Middleware\AuthenticateWithApi;
+use App\Http\Middleware\BreadcrumbMiddleware;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
@@ -18,7 +19,7 @@ Route::get('/', function () {
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-Route::middleware(['web'])->group(function () {
+Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
     Route::get('/', function () {
         if (session()->has('api_token')) {
             return redirect()->route('dashboard');

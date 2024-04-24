@@ -28,14 +28,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($paginator as $brand)
+                            @foreach ($paginator as $product)
                                 <tr class="custom-row">
-                                    <td>{{ $brand['id'] }}</td>
-                                    <td>{{ $brand['name'] }}</td>
-                                    <!--<td>{!! Illuminate\Support\Str::limit($brand['description'], $limit = 10, $end = '...') !!}</td>-->
-                                    <td>{{ $brand['status'] == 1 ? 'Habilitado' : 'Desabilitado' }}</td>
+                                    <td>{{ $product['id'] }}</td>
+                                    <td>{{ $product['name'] }}</td>
+                                    <!--<td>{!! Illuminate\Support\Str::limit($product['description'], $limit = 10, $end = '...') !!}</td>-->
+                                    <td>{{ $product['status'] == 1 ? 'Habilitado' : 'Desabilitado' }}</td>
                                     <td>
-                                        <a href="{{ url('/editProduct/' . $brand['id']) }}" class="btn btn-primary btn-sm float-right">{{ __('Editar') }}</a>
+                                        <a href="{{ route('editProduct', ['id' => $product['id']]) }}" class="btn btn-primary btn-sm float-right">{{ __('Editar') }}</a>
                                     </td>                                                         
                                 </tr>
                             @endforeach

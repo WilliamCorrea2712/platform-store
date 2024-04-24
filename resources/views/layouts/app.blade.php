@@ -43,6 +43,25 @@
                 @include('includes.menu')
             </div>
             <div class="col-md-10 margin-bottom">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <button class="float-right back" onclick="goBack()">{{ _('Voltar') }}<span> / </span></button>
+                        @php $first = true; @endphp
+                        @foreach ($breadcrumbs as $breadcrumb)
+                            @if ($breadcrumb['label'] === 'Home' && !$first)
+                                @continue
+                            @endif
+                            <li class="breadcrumb-item">
+                                @if (!empty($breadcrumb['route']))
+                                    <a href="{{ route($breadcrumb['route'], $breadcrumb['params'] ?? []) }}">{{ $breadcrumb['label'] }}</a>
+                                @else
+                                    {{ $breadcrumb['label'] }}
+                                @endif
+                            </li>
+                            @php $first = false; @endphp
+                        @endforeach
+                    </ol>
+                </nav>                 
                 @yield('content')
             </div>
         </div>
@@ -61,5 +80,6 @@
     <script src="{{ asset('js/address.js') }}"></script>
     <script src="{{ asset('js/deletes.js') }}"></script>
     <script src="{{ asset('js/product.js') }}"></script>
+    <script src="{{ asset('js/edit.js') }}"></script>
 </body>
 </html>

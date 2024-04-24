@@ -27,3 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             '<i class="fas fa-sun"></i>';
     }
 });
+
+function goBack() {
+    window.history.back();
+}

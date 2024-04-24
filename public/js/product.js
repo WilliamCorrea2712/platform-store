@@ -92,10 +92,6 @@ $(document).ready(function () {
             },
         });
     });
-
-    $(".container").on("click", "#saveProduct", function () {
-        document.getElementById("productForm").submit();
-    });
 });
 
 document.addEventListener("DOMContentLoaded", function () {

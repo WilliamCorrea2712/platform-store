@@ -5,7 +5,7 @@
     <div class="container">
         <h1 class="title">
             {{ __('Editar') }}
-            <button type="submit" class="btn btn-primary float-right" id="saveProduct">{{ __('Salvar') }}</button>
+            <button type="button" class="btn btn-primary submit-form float-right" data-form-id="productForm">{{ __('Salvar') }}</button>
             @if(isset($products[0]['id']))
                 <button type="button" class="btn btn-danger delete-product float-right" data-product-id="{{ $products[0]['id'] }}">Deletar</button>                                       
             @endif
@@ -244,7 +244,7 @@
                                 <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
                                     <div class="container">
                                         <div id="message-api" class="alert alert-warning" role="alert" style="display: none"></div>
-                                        <div class="container-fluid">
+                                        <div class="container-fluid imagesProduct">
                                             <div class="row justify-content-center align-items-center">
                                                 <div class="col-md-6">
                                                     <button type="button" class="btn btn-primary btn-lg btn-block" data-product-id="{{ $products[0]['id'] }}" id="selectImagesBtn">{{ _('Selecionar Imagens') }}</button>

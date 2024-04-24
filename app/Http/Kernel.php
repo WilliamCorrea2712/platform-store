@@ -27,6 +27,7 @@ class Kernel extends HttpKernel
     protected $middlewareGroups = [
         'web' => [
             \App\Http\Middleware\VerifyCsrfToken::class,
+            \App\Http\Middleware\BreadcrumbMiddleware::class,
         ],
 
         'api' => [
@@ -48,6 +49,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'breadcrumbs' => \App\Http\Middleware\BreadcrumbMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

@@ -143,45 +143,48 @@ class CustomerController extends Controller
         }
 
         $errors = [];
+
+        if($request->input('street')){
         
-        foreach ($request->input('street') as $key => $street) {
-            
-            if (isset($request->input('address_id')[$key])) {
-                $addressId = $request->input('address_id')[$key];
-                $responseAddress = Http::withHeaders([
-                    'Authorization' => 'Bearer ' . $apiToken,
-                    'Accept' => 'application/json',
-                ])->patch($apiUrl . 'account/editAddress', [
-                    'address_id' => $addressId,
-                    'street' => $street,
-                    'city' => $request->input('city')[$key],
-                    'state' => $request->input('state')[$key],
-                    'zip_code' => $request->input('zip_code')[$key],
-                    'name' => $request->input('nameAddress')[$key],
-                    'number' => $request->input('number')[$key],
-                    'country' => $request->input('country')[$key],
-                ]);
-            } else {
-                $responseAddress = Http::withHeaders([
-                    'Authorization' => 'Bearer ' . $apiToken,
-                    'Accept' => 'application/json',
-                ])->post($apiUrl . 'account/addAddress', [
-                    'customer_id' => $id,
-                    'street' => $street,
-                    'city' => $request->input('city')[$key],
-                    'state' => $request->input('state')[$key],
-                    'zip_code' => $request->input('zip_code')[$key],
-                    'name' => $request->input('nameAddress')[$key],
-                    'number' => $request->input('number')[$key],
-                    'country' => $request->input('country')[$key],
-                ]);
-            }
-            
-            if (!$responseAddress->successful()) {
-                $errors[] = $responseAddress['error'];
-            }
-        }        
-        
+            foreach ($request->input('street') as $key => $street) {
+                
+                if (isset($request->input('address_id')[$key])) {
+                    $addressId = $request->input('address_id')[$key];
+                    $responseAddress = Http::withHeaders([
+                        'Authorization' => 'Bearer ' . $apiToken,
+                        'Accept' => 'application/json',
+                    ])->patch($apiUrl . 'account/editAddress', [
+                        'address_id' => $addressId,
+                        'street' => $street,
+                        'city' => $request->input('city')[$key],
+                        'state' => $request->input('state')[$key],
+                        'zip_code' => $request->input('zip_code')[$key],
+                        'name' => $request->input('nameAddress')[$key],
+                        'number' => $request->input('number')[$key],
+                        'country' => $request->input('country')[$key],
+                    ]);
+                } else {
+                    $responseAddress = Http::withHeaders([
+                        'Authorization' => 'Bearer ' . $apiToken,
+                        'Accept' => 'application/json',
+                    ])->post($apiUrl . 'account/addAddress', [
+                        'customer_id' => $id,
+                        'street' => $street,
+                        'city' => $request->input('city')[$key],
+                        'state' => $request->input('state')[$key],
+                        'zip_code' => $request->input('zip_code')[$key],
+                        'name' => $request->input('nameAddress')[$key],
+                        'number' => $request->input('number')[$key],
+                        'country' => $request->input('country')[$key],
+                    ]);
+                }
+                
+                if (!$responseAddress->successful()) {
+                    $errors[] = $responseAddress['error'];
+                }
+            }                                
+        }
+
         if (!empty($errors)) {
             return redirect()->route('editCustomer', ['id' => $id])->with(['errors' => $errors]);
         } else {

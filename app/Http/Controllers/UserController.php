@@ -110,7 +110,6 @@ class UserController extends Controller
         return view('user.userEdit', compact('users', 'error'));  
     }
     
-
     public function update(Request $request, $id)
     {
         $apiUrl = config('api.url');

@@ -2,19 +2,19 @@
 @section('content')
     <div class="container">
         @if(!empty($error))
-            <div class="alert alert-danger" role="alert">
-                {{ $error }}
-            </div>
+        <div class="alert alert-danger" role="alert">
+            {{ $error }}
+        </div>
         @endif
         @if(session('success'))
-            <div class="alert alert-success" role="alert">
-                {{ session('success') }}
-            </div>
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
         @endif
         <h1 class="title">
             {{ __('Usuários') }}
             <a href="{{ route('createUser') }}" class="btn btn-primary float-right">{{ __('Cadastrar') }}</a>
-        </h1>  
+        </h1>        
         @if (count($paginator) > 0)
             <div class="card shadow-sm">        
                 <div style="overflow-x:auto;">
