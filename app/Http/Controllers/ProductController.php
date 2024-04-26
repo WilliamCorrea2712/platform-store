@@ -10,7 +10,7 @@ use App\Http\Controllers\Helpers\HelperController;
 use Illuminate\Support\Facades\Log;
 class ProductController extends Controller
 {
-    public function getProducts()
+    public function getProduct()
     {
         $perPage = 8;
         $currentPage = request()->query('page', 1);
@@ -48,7 +48,7 @@ class ProductController extends Controller
             $total,
             $perPage,
             $currentPage,
-            ['path' => route('getProducts')]
+            ['path' => route('getProduct')]
         );
 
         return view('product.products', compact('paginator', 'error'));

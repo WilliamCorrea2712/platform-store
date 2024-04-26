@@ -17,13 +17,13 @@
                     <a class="nav-link products-toggle" href="#">Produtos</a>
                     <ul class="submenu" style="display: none;">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getCategories') }}">Categorias</a>
+                            <a class="nav-link" href="{{ route('getCategory') }}">Categorias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getBrands') }}">Marcas</a>
+                            <a class="nav-link" href="{{ route('getBrand') }}">Marcas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getProducts') }}">Produto</a>
+                            <a class="nav-link" href="{{ route('getProduct') }}">Produto</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Estoque</a>

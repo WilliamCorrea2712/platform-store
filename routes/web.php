@@ -53,21 +53,21 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
         Route::post('/account/deleteAddress', [CustomerController::class, 'deleteAddress'])->name('deleteAddress');
         Route::post('/account/deleteCustomer', [CustomerController::class, 'deleteCustomer'])->name('deleteCustomer');
 
-        Route::get('/getCategory', [CategoryController::class, 'getCategories'])->name('getCategories');
+        Route::get('/getCategory', [CategoryController::class, 'getCategory'])->name('getCategory');
         Route::get('/product/categories/create', [CategoryController::class, 'create'])->name('createCategories');
         Route::post('/product/categories/store', [CategoryController::class, 'storeCategory'])->name('storeCategory');
         Route::get('/editCategory/{id}', [CategoryController::class, 'edit'])->name('editCategory');
         Route::post('/updateCategory/{id}', [CategoryController::class, 'update'])->name('updateCategory');
         Route::post('/product/deleteCategory', [CategoryController::class, 'deleteCategory'])->name('deleteCategory');
 
-        Route::get('/getBrand', [BrandController::class, 'getBrands'])->name('getBrands');
+        Route::get('/getBrand', [BrandController::class, 'getBrand'])->name('getBrand');
         Route::get('/product/brands/create', [BrandController::class, 'create'])->name('createBrands');
         Route::post('/product/brands/store', [BrandController::class, 'storeBrand'])->name('storeBrand');
         Route::get('/editBrand/{id}', [BrandController::class, 'edit'])->name('editBrand');
         Route::post('/updateBrand/{id}', [BrandController::class, 'update'])->name('updateBrand');
         Route::post('/product/deleteBrand', [BrandController::class, 'deleteBrand'])->name('deleteBrand');
 
-        Route::get('/getProduct', [ProductController::class, 'getProducts'])->name('getProducts');
+        Route::get('/getProduct', [ProductController::class, 'getProduct'])->name('getProduct');
         Route::get('/product/products/create', [ProductController::class, 'create'])->name('createProducts');
         Route::post('/product/products/store', [ProductController::class, 'storeProduct'])->name('storeProduct');
         Route::get('/editProduct/{id}', [ProductController::class, 'edit'])->name('editProduct');

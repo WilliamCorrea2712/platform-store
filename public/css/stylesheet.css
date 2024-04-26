@@ -522,17 +522,10 @@ table.table {
     background: -webkit-linear-gradient(left, #f5f5f5, #f5f5f5);
 }
 
-.breadcrumb .back {
-    float: right;
-    border: none;
-    cursor: pointer;
-    color: #007bff;
-    background: transparent;
-    outline: none;
-    box-shadow: none;
-    line-height: 1;
+.breadcrumb-item {
+    margin-left: 10px;
 }
-.breadcrumb .back span {
-    margin: 0px 5px;
-    color: #727171;
+
+.breadcrumb-item + .breadcrumb-item {
+    margin-left: 0px;
 }

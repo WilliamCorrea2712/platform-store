@@ -74,7 +74,7 @@
                     @else
                         <div class="alert alert-info" role="alert">
                             {{ __('Marca não encontrada!') }}
-                            <a href="{{ route('getBrands') }}" class="btn btn-primary float-right">{{ __('Voltar') }}</a>
+                            <a href="{{ route('getBrand') }}" class="btn btn-primary float-right">{{ __('Voltar') }}</a>
                         </div>
                     @endif
                 </div>

@@ -7,51 +7,79 @@ use Illuminate\Support\Facades\Route;
 
 class BreadcrumbMiddleware
 {
-    private $breadcrumbLabels = [
-        'dashboard' => 'Home',
-        'getProducts' => 'Produtos',
-        'editProduct' => 'Editar Produto',
-        'createProduct' => 'Cadastrar Produto',
-        'getCategories' => 'Categorias',
-        'editCategory' => 'Editar Categoria',
-        'createCategories' => 'Cadastrar Categoria',
-        'getBrands' => 'Marcas',
-        'editBrand' => 'Editar Marca',
-        'createBrands' => 'Cadastrar Marca',
-        'getUser' => 'Usuários',
-        'editUser' => 'Editar Usuário',
-        'createUser' => 'Cadastrar Usuário',
-        'getCustomer' => 'Clientes',
-        'editCustomer' => 'Editar Cliente',
-        'createCustomer' => 'Cadastrar Cliente',
-    ];
-
     public function handle($request, Closure $next)
     {
-        $breadcrumbs = collect();
-        $breadcrumbs->push(['route' => 'dashboard', 'label' => 'Home']);
-        
-        $route = Route::current();
-
-        $routeName = $route->getName();
-
-        $label = $this->breadcrumbLabels[$routeName] ?? '';
-
-        $params = $this->getRouteParameters($route);
-
-        $breadcrumbs->push(['route' => $routeName, 'label' => $label, 'params' => $params]);
+        $breadcrumbs = $this->generateBreadcrumbs(Route::currentRouteName());
 
         view()->share('breadcrumbs', $breadcrumbs);
 
         return $next($request);
     }
 
-    private function getRouteParameters($route)
+    private function generateBreadcrumbs($routeName)
     {
-        if (isset($route->parameters['id'])) {
-            return ['id' => $route->parameters['id']];
+        $breadcrumbs = collect();
+        $breadcrumbData = $this->getBreadcrumbData($routeName);
+
+        if (!empty($breadcrumbData)) {
+            $breadcrumbs->push(['label' => 'Home', 'route' => 'dashboard']);
+            foreach ($breadcrumbData as $data) {
+                if ($data['label'] && $data['route']) {
+                    $params = $data['params'] ?? null;
+                    if ($params && Route::current()->parameter('id')) {
+                        $params = ['id' => Route::current()->parameter('id')];
+                    }
+                    $breadcrumbs->push(['label' => $data['label'], 'route' => $data['route'], 'params' => $params]);
+                }
+            }
         }
-        
-        return [];
+
+        return $breadcrumbs;
+    }
+
+    private function getBreadcrumbData($routeName)
+    {
+        $breadcrumbData = [
+            'dashboard' => [
+                ['label' => 'Dashboard', 'route' => 'dashboard']
+            ],
+            'getProduct' => [
+                ['label' => 'Produtos', 'route' => 'getProduct']
+            ],
+            'editProduct' => [
+                ['label' => 'Produtos', 'route' => 'getProduct'],
+                ['label' => 'Editar Produto', 'route' => 'editProduct', 'params' => true]
+            ],
+            'getUser' => [
+                ['label' => 'Usuários', 'route' => 'getUser']
+            ],
+            'editUser' => [
+                ['label' => 'Usuários', 'route' => 'getUser'],
+                ['label' => 'Editar Usuário', 'route' => 'editUser', 'params' => true]
+            ],
+            'getCategory' => [
+                ['label' => 'Categorias', 'route' => 'getCategory']
+            ],
+            'editCategory' => [
+                ['label' => 'Categorias', 'route' => 'getCategory'],
+                ['label' => 'Editar Categoria', 'route' => 'editCategory', 'params' => true]
+            ],
+            'getBrand' => [
+                ['label' => 'Marcas', 'route' => 'getBrand']
+            ],
+            'editBrand' => [
+                ['label' => 'Marcas', 'route' => 'getBrand'],
+                ['label' => 'Editar Marca', 'route' => 'editBrand', 'params' => true]
+            ],
+            'getCustomer' => [
+                ['label' => 'Clientes', 'route' => 'getCustomer']
+            ],
+            'editCustomer' => [
+                ['label' => 'Clientes', 'route' => 'getCustomer'],
+                ['label' => 'Editar Cliente', 'route' => 'editCustomer', 'params' => true]
+            ]
+        ];
+
+        return $breadcrumbData[$routeName] ?? [];
     }
 }

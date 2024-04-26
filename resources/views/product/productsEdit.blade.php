@@ -297,7 +297,7 @@
                     @else
                         <div class="alert alert-info" role="alert">
                             {{ __('Produto não encontrado!') }}
-                            <a href="{{ route('getProducts') }}" class="btn btn-primary float-right">{{ __('Voltar') }}</a>
+                            <a href="{{ route('getProduct') }}" class="btn btn-primary float-right">{{ __('Voltar') }}</a>
                         </div>
                     @endif
                 </div>

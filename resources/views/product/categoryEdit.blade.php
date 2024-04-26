@@ -85,7 +85,7 @@
                     @else
                         <div class="alert alert-info" role="alert">
                             {{ __('Categoria não encontrada!') }}
-                            <a href="{{ route('getCategories') }}" class="btn btn-primary float-right">{{ __('Voltar') }}</a>
+                            <a href="{{ route('getCategory') }}" class="btn btn-primary float-right">{{ __('Voltar') }}</a>
                         </div>
                     @endif
                 </div>

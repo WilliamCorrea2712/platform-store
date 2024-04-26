@@ -36,7 +36,6 @@
             </div>
         </nav>
     </header>
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2 menu d-lg-block">
@@ -45,7 +44,6 @@
             <div class="col-md-10 margin-bottom">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <button class="float-right back" onclick="goBack()">{{ _('Voltar') }}<span> / </span></button>
                         @php $first = true; @endphp
                         @foreach ($breadcrumbs as $breadcrumb)
                             @if ($breadcrumb['label'] === 'Home' && !$first)

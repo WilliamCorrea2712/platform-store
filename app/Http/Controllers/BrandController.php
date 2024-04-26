@@ -8,7 +8,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class BrandController extends Controller
 {
-    public function getBrands()
+    public function getBrand()
     {
         $perPage = 8;
         $currentPage = request()->query('page', 1);
@@ -46,7 +46,7 @@ class BrandController extends Controller
             $total,
             $perPage,
             $currentPage,
-            ['path' => route('getBrands')]
+            ['path' => route('getBrand')]
         );
 
         return view('product.brands', compact('paginator', 'error'));
@@ -79,7 +79,7 @@ class BrandController extends Controller
         ]);
 
         if ($response->successful()) {
-            return redirect()->route('getBrands')->with('success', $response->json()['message'] ?? 'Marca criada com sucesso.');
+            return redirect()->route('getBrand')->with('success', $response->json()['message'] ?? 'Marca criada com sucesso.');
         } else {
             $errorMessage = $response->json()['error'] ?? 'Erro desconhecido ao criar marca.';
             return redirect()->route('createBrand')->with('error', $errorMessage);

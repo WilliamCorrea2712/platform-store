@@ -9,7 +9,7 @@ use App\Http\Controllers\Helpers\HelperController;
 
 class CategoryController extends Controller
 {
-    public function getCategories()
+    public function getCategory()
     {
         $perPage = 8;
         $currentPage = request()->query('page', 1);
@@ -47,7 +47,7 @@ class CategoryController extends Controller
             $total,
             $perPage,
             $currentPage,
-            ['path' => route('getCategories')]
+            ['path' => route('getCategory')]
         );
 
         return view('product.categories', compact('paginator', 'error'));
@@ -84,7 +84,7 @@ class CategoryController extends Controller
         ]);
 
         if ($response->successful()) {
-            return redirect()->route('getCategories')->with('success', $response->json()['message'] ?? 'Categoria criada com sucesso.');
+            return redirect()->route('getCategory')->with('success', $response->json()['message'] ?? 'Categoria criada com sucesso.');
         } else {
             $errorMessage = $response->json()['error'] ?? 'Erro desconhecido ao criar categoria.';
             return redirect()->route('createCategory')->with('error', $errorMessage);
