@@ -234,3 +234,26 @@ $(document).ready(function () {
         });
     });
 });
+
+$(document).ready(function () {
+    var urlParams = new URLSearchParams(window.location.search);
+    var activeTab = urlParams.get("tab");
+
+    if (activeTab) {
+        $('#myTab a[href="#' + activeTab + '"]').tab("show");
+    }
+
+    $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
+        var targetTabId = $(e.target).attr("href").substring(1);
+        var currentUrl = window.location.href;
+        var updatedUrl;
+
+        if (currentUrl.includes("?")) {
+            updatedUrl = currentUrl.replace(/(tab=)[^\&]+/, "$1" + targetTabId);
+        } else {
+            updatedUrl = currentUrl + "?tab=" + targetTabId;
+        }
+
+        window.history.replaceState({}, document.title, updatedUrl);
+    });
+});
