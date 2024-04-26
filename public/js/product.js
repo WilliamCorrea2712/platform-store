@@ -184,3 +184,53 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 });
+
+$(document).ready(function () {
+    $("#btnOpenCreatePopup").click(function () {
+        $("#createProductModal").modal("show");
+    });
+
+    var formSubmitting = false;
+
+    $("#submitButton").click(function (event) {
+        if (formSubmitting) {
+            event.preventDefault();
+            return;
+        }
+
+        formSubmitting = true;
+
+        event.preventDefault();
+
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+        var formData = {
+            name: $("#productName").val(),
+            description: $("#productDescription").val(),
+            price: $("#productPrice").val(),
+            weight: $("#productWeight").val(),
+            _token: csrfToken,
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/product/products/store",
+            data: formData,
+            dataType: "json",
+            encode: true,
+            success: function (data) {
+                window.location.href = "/editProduct/" + data.product_id;
+            },
+            error: function (xhr, status, error) {
+                var errorMessage =
+                    xhr.responseJSON && xhr.responseJSON.error
+                        ? xhr.responseJSON.error
+                        : error;
+                $("#message-return").text(errorMessage).show();
+            },
+            complete: function () {
+                formSubmitting = false;
+            },
+        });
+    });
+});

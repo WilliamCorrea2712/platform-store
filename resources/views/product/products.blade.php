@@ -13,7 +13,7 @@
         @endif
         <h1 class="title">
             {{ __('Produtos') }}
-            <a href="{{ route('createProducts') }}" class="btn btn-primary float-right">{{ __('Cadastrar') }}</a>
+            <a href="#" id="btnOpenCreatePopup" class="btn btn-primary float-right">{{ __('Cadastrar') }}</a>
         </h1>  
         @if (count($paginator) > 0)
             <div class="card shadow-sm">        
@@ -50,4 +50,40 @@
             <div class="alert alert-info" role="alert">{{ __('Não há produtos disponíveis.') }}</div>
         @endif
     </div>
+    <div class="modal fade" id="createProductModal" tabindex="-1" role="dialog" aria-labelledby="createProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createProductModalLabel">{{ _('Cadastrar Produto') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="message-return" class="alert alert-warning" role="alert" style="display: none"></div>
+                    <form id="createProductForm">
+                        <div class="form-group">
+                            <label for="productName">{{ _('Nome do Produto') }}</label>
+                            <input type="text" class="form-control" id="productName" name="productName" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="productPrice">{{ _('Preço') }}</label>
+                                <input type="text" class="form-control" id="productPrice" name="productPrice" required pattern="\d+(\.\d{1)?" title="Formato válido: 13.9">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="productWeight">{{ _('Peso') }}</label>
+                                <input type="text" class="form-control" id="productWeight" name="productWeight" required pattern="\d+(\.\d{1})?" title="Formato válido: 0.5">
+                            </div>                            
+                        </div>
+                        <div class="form-group">
+                            <label for="productDescription">{{ _('Descrição') }}</label>
+                            <textarea class="form-control" id="productDescription" name="productDescription" required></textarea>
+                        </div>
+                        <button type="submit" id="submitButton" class="btn btn-primary">{{ _('Salvar') }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>    
 @endsection

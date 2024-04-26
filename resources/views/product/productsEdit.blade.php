@@ -107,11 +107,14 @@
                                                     <select class="form-control" id="category_id" name="category_id[]" multiple>
                                                         <option value="">{{ __('Selecione uma ou mais categorias') }}</option>
                                                         @foreach($categories as $category)
-                                                            <option value="{{ $category['id'] }}" @if(in_array($category['id'], $products[0]['categories'])) selected @endif>{{ $category['name'] }}</option>
+                                                            @php
+                                                                $selected = ($products[0]['categories'] && in_array($category['id'], $products[0]['categories'])) ? 'selected' : '';
+                                                            @endphp
+                                                            <option value="{{ $category['id'] }}" {{ $selected }}>{{ $category['name'] }}</option>
                                                         @endforeach
                                                     </select>
-                                                </div> 
-                                            </div>
+                                                </div>
+                                            </div>                                        
                                             <div class="form-row">                                 
                                                 <div class="form-group col-md-6">
                                                     <label for="description_resume">{{ __('Descrição Resumida:') }}</label>

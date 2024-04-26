@@ -363,6 +363,10 @@
     color: #353535;
 }
 
+.dark-theme .modal-content {
+    background: -webkit-linear-gradient(left, #272727, #2c2c2c);
+}
+
 #theme-toggle {
     background-color: transparent;
     border: none;

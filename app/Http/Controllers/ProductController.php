@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\Helpers\HelperController;
@@ -52,6 +53,82 @@ class ProductController extends Controller
 
         return view('product.products', compact('paginator', 'error'));
     }
+
+    public function create()
+    {  
+        $customers = [];
+        $error = '';
+
+        return view('account.productsCreate', compact('products', 'error')); 
+    }
+
+    public function storeProduct(Request $request)
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->post($apiUrl . 'product/addProduct', [
+            'name' => $request->input('name')?$request->input('name'):'',
+            'description' => $request->input('description')?$request->input('description'):'',
+            'price' => $request->input('price')?$request->input('price'):0,
+            'weight' => $request->input('weight')?$request->input('weight'):$request->input('weight'),
+        ]);
+
+        if ($response->failed()) {
+            return response()->json(['error' => $response->body()], $response->status());
+        } else {
+            $product_id = $response->json()['product_id'] ?? null;
+            if ($product_id) {
+                return response()->json(['product_id' => $product_id]);
+            } else {
+                return response()->json(['success' => true], 200);
+            }
+        }     
+    }
+
+    /*public function storeProduct(Request $request)
+    {
+        try {
+            $apiUrl = config('api.url');
+            $apiToken = config('api.token');
+
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $apiToken,
+                'Accept' => 'application/json',
+            ])->timeout(3)
+            ->post($apiUrl . 'product/addProduct', [
+                'name' => $request->input('name'),
+                'description' => $request->input('description'),
+                'price' => $request->input('price'),
+                'weight' => $request->input('weight'),
+            ]);
+
+            if ($response->successful()) {
+                $product_id = $response->json()['product_id'] ?? null;
+
+                if ($product_id) {
+                    return response()->json(['product_id' => $product_id]);
+                } else {
+                    return response()->json(['error' => var_dump($response->status())], $response->status());
+                    return response()->json(['error' => 'Erro ao criar produto.'], 500);
+                }
+            } else {
+                if ($response->status() === 401) {
+                    return response()->json(['error' => 'Não autorizado. Verifique suas credenciais de API.'], 401);
+                }
+
+                $errorMessage = $response->json()['error'] ?? $response->status() .' - '. Response::$statusTexts[$response->status()];
+                return response()->json(['error' => $errorMessage], $response->status());
+            }
+        } catch (\Illuminate\Http\Client\RequestException $e) {
+            return response()->json(['error' => 'Erro na solicitação para a API: ' . $e->getMessage()], 500);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro interno do servidor: ' . $e->getMessage()], 500);
+        }
+    }*/
 
     public function edit($id){
         $apiUrl = config('api.url');
@@ -142,7 +219,7 @@ class ProductController extends Controller
         $responseProduct = Http::withHeaders([
             'Authorization' => 'Bearer ' . $apiToken,
             'Accept' => 'application/json',
-        ])->delete($apiUrl . 'user/deleteProduct', [
+        ])->delete($apiUrl . 'product/deleteProduct', [
             'product_id' => $id,
         ]);
 
