@@ -8,6 +8,39 @@ use Illuminate\Support\Facades\Http;
 
 class HelperController extends Controller
 {
+
+    public function getAllProducts()
+    {
+        $apiUrl = config('api.url');
+        $apiToken = config('api.token');
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $apiToken,
+            'Accept' => 'application/json',
+        ])->get($apiUrl . 'product/getProducts');
+
+        if ($response->successful()) {
+            $data = $response->json()['message']['products'] ?? [];
+
+            if (is_array($data)) {
+                $formattedProducts = [];
+
+                foreach ($data as $product) {
+                    $formattedProducts[] = [
+                        'id' => $product['id'],
+                        'name' => $product['name'],
+                    ];
+                }
+
+                return $formattedProducts;
+            } else {
+                return [];
+            }
+        } else {
+            return [];
+        }
+    }
+
     public function getAllCategories()
     {
         $apiUrl = config('api.url');

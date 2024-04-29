@@ -63,7 +63,6 @@ class CategoryController extends Controller
         return view('product.categoriesCreate', compact('categories', 'error'));  
     }
 
-
     public function storeCategory(Request $request)
     {
         $apiUrl = config('api.url');

@@ -29,7 +29,15 @@
                             <a class="nav-link" href="#">Estoque</a>
                         </li>
                     </ul>
-                </li>                
+                </li>      
+                <li class="nav-item">
+                    <a class="nav-link config-toggle" href="#">Configurações</a>
+                    <ul class="submenu" style="display: none;">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('getListProduct') }}">Lista de Produtos</a>
+                        </li>
+                    </ul>
+                </li>           
                 <li class="nav-item">
                     <a class="nav-link users-toggle" href="#">Usuários</a>
                     <ul class="submenu" style="display: none;">
@@ -42,54 +50,3 @@
         </div>
     </div>
 </nav>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const usersToggle = document.querySelector('.users-toggle');
-        const productsToggle = document.querySelector('.products-toggle');
-        const customersToggle = document.querySelector('.customers-toggle');
-
-        const usersSubmenu = usersToggle.nextElementSibling;
-        const productsSubmenu = productsToggle.nextElementSibling;
-        const customersSubmenu = customersToggle.nextElementSibling;
-
-        usersSubmenu.style.display = 'none';
-        productsSubmenu.style.display = 'none';
-        customersSubmenu.style.display = 'none';
-
-        usersToggle.addEventListener('click', function(event) {
-            event.preventDefault();
-            toggleSubmenu(usersSubmenu);
-            resetSelected();
-            usersToggle.classList.add('selected');
-        });
-
-        productsToggle.addEventListener('click', function(event) {
-            event.preventDefault();
-            toggleSubmenu(productsSubmenu);
-            resetSelected();
-            productsToggle.classList.add('selected');
-        });
-
-        customersToggle.addEventListener('click', function(event) {
-            event.preventDefault();
-            toggleSubmenu(customersSubmenu);
-            resetSelected();
-            customersToggle.classList.add('selected');
-        });
-
-        function toggleSubmenu(submenu) {
-            if (submenu.style.display === 'none') {
-                submenu.style.display = 'block';
-            } else {
-                submenu.style.display = 'none';
-            }
-        }
-
-        function resetSelected() {
-            const selectedLinks = document.querySelectorAll('.nav-link.selected');
-            selectedLinks.forEach(link => {
-                link.classList.remove('selected');
-            });
-        }
-    });
-</script>

@@ -77,6 +77,13 @@ class BreadcrumbMiddleware
             'editCustomer' => [
                 ['label' => 'Clientes', 'route' => 'getCustomer'],
                 ['label' => 'Editar Cliente', 'route' => 'editCustomer', 'params' => true]
+            ],
+            'getListProduct' => [
+                ['label' => 'Lista de Produtos', 'route' => 'getListProduct']
+            ],
+            'editListProduct' => [
+                ['label' => 'Lista de Produtos', 'route' => 'getListProduct'],
+                ['label' => 'Editar Lista de Produtos', 'route' => 'editListProduct', 'params' => true]
             ]
         ];
 

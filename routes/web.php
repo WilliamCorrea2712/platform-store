@@ -12,6 +12,7 @@ use App\Http\Middleware\BreadcrumbMiddleware;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ListProductController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -77,7 +78,14 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
         Route::post('/product/addStock', [ProductController::class, 'addStock'])->name('addStock');
         Route::post('/product/addProductImages',[ProductController::class, 'addProductImages'] )->name('addProductImages');
         Route::post('/product/deleteImage', [ProductController::class, 'deleteImage'])->name('deleteImage');
-        
+
+        Route::get('/getListProduct', [ListProductController::class, 'getListProduct'])->name('getListProduct');
+        Route::get('/editListProduct/{id}', [ListProductController::class, 'edit'])->name('editListProduct');
+        Route::post('/updateListProduct/{id}', [ListProductController::class, 'update'])->name('updateListProduct');
+        Route::get('/product/listProduct/create', [ListProductController::class, 'create'])->name('createListProducts');
+        Route::post('/product/listProduct/store', [ListProductController::class, 'storeListProducts'])->name('storeListProducts');
+        Route::post('/product/deleteListProduct', [ListProductController::class, 'deleteListProduct'])->name('deleteListProduct');
+
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
         Route::get('/about', [AboutController::class, 'show'])->name('about');
