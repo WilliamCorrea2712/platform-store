@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('getListProduct') }}">Lista de Produtos</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('getSetting') }}">Gerais</a>
+                        </li>
                     </ul>
                 </li>           
                 <li class="nav-item">

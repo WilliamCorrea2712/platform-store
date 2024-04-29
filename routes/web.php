@@ -13,6 +13,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ListProductController;
+use App\Http\Controllers\SettingController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -85,6 +86,11 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
         Route::get('/product/listProduct/create', [ListProductController::class, 'create'])->name('createListProducts');
         Route::post('/product/listProduct/store', [ListProductController::class, 'storeListProducts'])->name('storeListProducts');
         Route::post('/product/deleteListProduct', [ListProductController::class, 'deleteListProduct'])->name('deleteListProduct');
+
+        Route::get('/getSetting', [SettingController::class, 'getSetting'])->name('getSetting');
+        Route::post('/updateSetting/{id}', [ListProductController::class, 'update'])->name('updateSetting');
+        Route::post('/config/deleteSetting', [ListProductController::class, 'deleteSetting'])->name('deleteSetting');
+        Route::post('/config/addSetting', [ListProductController::class, 'addSetting'])->name('addSetting');
 
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 

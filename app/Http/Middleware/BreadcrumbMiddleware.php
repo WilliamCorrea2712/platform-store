@@ -84,7 +84,10 @@ class BreadcrumbMiddleware
             'editListProduct' => [
                 ['label' => 'Lista de Produtos', 'route' => 'getListProduct'],
                 ['label' => 'Editar Lista de Produtos', 'route' => 'editListProduct', 'params' => true]
-            ]
+            ],
+            'getSetting' => [
+                ['label' => 'Configurações', 'route' => 'getSetting']
+            ],
         ];
 
         return $breadcrumbData[$routeName] ?? [];
