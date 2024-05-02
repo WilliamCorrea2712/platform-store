@@ -26,8 +26,15 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="sort_order">{{ __('Ordem:') }}</label>
-                                    <input type="text" class="form-control" id="sort_order" name="sort_order">
-                                </div>
+                                    <select class="form-control" id="sort_order" name="sort_order">
+                                        <option value="name">Nome</option>
+                                        <option value="randon">Aleatório</option>
+                                        <option value="date">Data</option>
+                                        <option value="price_asc">Preço (Menor para Maior)</option>
+                                        <option value="price_desc">Preço (Maior para Menor)</option>
+                                        <option value="sort_order">Ordem</option>
+                                    </select>
+                                </div>                                
                                 <div class="form-group col-md-3">
                                     <label for="status">{{ __('Status:') }} <span class="text-danger">{{ __('*') }}</span></label>
                                     <select class="form-control" id="status" name="status">

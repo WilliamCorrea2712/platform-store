@@ -3,7 +3,7 @@
 .title {
     font-family: "Arial", sans-serif;
     margin: 15px 0px;
-    box-shadow: 0px 0px 5px rgb(151 146 146 / 30%); /* Sombreamento ao redor */
+    box-shadow: 0px 0px 5px rgb(151 146 146 / 30%);
     background-color: #343a4000;
     color: #57585a;
     border-radius: 5px;
@@ -403,6 +403,11 @@
     line-height: inherit;
 }
 
+.dark-theme .title-setting {
+    background: -webkit-linear-gradient(left, #757575, #868686);
+    color: #f5f5f5;
+}
+
 .even-row {
     background-color: #fcfcfc;
 }
@@ -528,4 +533,65 @@ table.table {
 
 .breadcrumb-item + .breadcrumb-item {
     margin-left: 0px;
+}
+
+.title-setting {
+    padding: 0px 5px;
+    font-size: 20px;
+}
+
+.custom-th-width {
+    width: 30%;
+}
+
+.table {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.no-border-table th,
+.no-border-table td {
+    border: none;
+}
+
+.align-middle {
+    vertical-align: middle !important;
+}
+
+.table-responsive .table thead th {
+    vertical-align: bottom;
+    border-bottom: 0px;
+}
+
+.custom-group-heading {
+    color: #000;
+    cursor: pointer;
+    position: relative;
+    border: 0px;
+    background: -webkit-linear-gradient(left, #f7f7f7, #f3f3f3);
+    padding: 10px;
+}
+
+.custom-group-heading::after {
+    content: "\f078";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    font-size: 14px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.collapsed .custom-group-heading::after {
+    transform: translateY(-50%) rotate(-180deg);
+}
+
+.accordion .h3,
+.accordion h3 {
+    font-size: 1rem;
+}
+
+.width-35 {
+    width: 35%;
 }

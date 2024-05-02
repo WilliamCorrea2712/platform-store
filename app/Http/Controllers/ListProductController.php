@@ -81,7 +81,7 @@ class ListProductController extends Controller
         if ($response->successful()) {
             return redirect()->route('getListProduct')->with('success', $response->json()['message'] ?? 'Lista de Produtos criada com sucesso.');
         } else {
-            $errorMessage = $response->json()['error'] ?? 'Erro desconhecido ao criar lista de produtos.';
+            $errorMessage = $response->json()['message'] ?? 'Erro desconhecido ao criar lista de produtos.';
             return redirect()->route('createListProducts')->with('error', $errorMessage);
         }     
     }

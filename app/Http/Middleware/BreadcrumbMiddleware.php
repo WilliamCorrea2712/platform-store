@@ -57,6 +57,10 @@ class BreadcrumbMiddleware
                 ['label' => 'Usuários', 'route' => 'getUser'],
                 ['label' => 'Editar Usuário', 'route' => 'editUser', 'params' => true]
             ],
+            'createUser' => [
+                ['label' => 'Usuários', 'route' => 'getUser'],
+                ['label' => 'Cadastrar Usuário', 'route' => 'createUser']
+            ],  
             'getCategory' => [
                 ['label' => 'Categorias', 'route' => 'getCategory']
             ],
@@ -64,6 +68,10 @@ class BreadcrumbMiddleware
                 ['label' => 'Categorias', 'route' => 'getCategory'],
                 ['label' => 'Editar Categoria', 'route' => 'editCategory', 'params' => true]
             ],
+            'createCategories' => [
+                ['label' => 'Categorias', 'route' => 'getCategory'],
+                ['label' => 'Cadastrar Categoria', 'route' => 'createCategories']
+            ],            
             'getBrand' => [
                 ['label' => 'Marcas', 'route' => 'getBrand']
             ],
@@ -71,6 +79,10 @@ class BreadcrumbMiddleware
                 ['label' => 'Marcas', 'route' => 'getBrand'],
                 ['label' => 'Editar Marca', 'route' => 'editBrand', 'params' => true]
             ],
+            'createBrands' => [
+                ['label' => 'Marcas', 'route' => 'getBrand'],
+                ['label' => 'Cadastrar Marca', 'route' => 'createBrands']
+            ], 
             'getCustomer' => [
                 ['label' => 'Clientes', 'route' => 'getCustomer']
             ],
@@ -78,6 +90,10 @@ class BreadcrumbMiddleware
                 ['label' => 'Clientes', 'route' => 'getCustomer'],
                 ['label' => 'Editar Cliente', 'route' => 'editCustomer', 'params' => true]
             ],
+            'createCustomer' => [
+                ['label' => 'Clientes', 'route' => 'getCustomer'],
+                ['label' => 'Cadastrar Cliente', 'route' => 'createCustomer']
+            ], 
             'getListProduct' => [
                 ['label' => 'Lista de Produtos', 'route' => 'getListProduct']
             ],

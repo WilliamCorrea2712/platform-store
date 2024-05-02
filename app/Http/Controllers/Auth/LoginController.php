@@ -34,8 +34,7 @@ class LoginController extends Controller
                 return redirect()->intended('/dashboard');
             }
         } else {
-            $responseData = $response->json();
-            $errorMessage = $responseData['error'] ?? 'Erro desconhecido ao tentar fazer login. Por favor, tente novamente mais tarde.';
+            $errorMessage = $response->json() ?? 'Erro desconhecido ao tentar fazer login. Por favor, tente novamente mais tarde.';
         
             return back()->withErrors([
                 'email' => $errorMessage,   

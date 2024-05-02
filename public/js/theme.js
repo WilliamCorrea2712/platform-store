@@ -31,3 +31,27 @@ document.addEventListener("DOMContentLoaded", function () {
 function goBack() {
     window.history.back();
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const addSettingButton = document.querySelector("#addSettingButton");
+    const addSettingDiv = document.querySelector("#addSettingDiv");
+
+    addSettingButton.addEventListener("click", function () {
+        if (addSettingDiv.style.display === "none") {
+            addSettingDiv.style.display = "block";
+        } else {
+            addSettingDiv.style.display = "none";
+        }
+    });
+});
+
+$(document).ready(function () {
+    $(".setting-value").on("input", function () {
+        var settingId = $(this)
+            .closest("tr")
+            .find(".btn-edit")
+            .data("setting-id");
+        $(this).closest("tr").find(".btn-edit").addClass("d-none");
+        $(this).closest("tr").find(".btn-save-config").removeClass("d-none");
+    });
+});
