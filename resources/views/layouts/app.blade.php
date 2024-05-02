@@ -67,7 +67,7 @@
  
     <footer class="footer bg-dark text-light py-4">
         <div class="container text-center">
-            &copy; {{ date('Y') }} Plataforma EAM. Todos os direitos reservados.
+            &copy; {{ date('Y') }} {{ _('Plataforma EAM. Todos os direitos reservados.') }}
         </div>
     </footer>
 

@@ -80,7 +80,7 @@
                             <label for="productDescription">{{ _('Descrição') }}</label>
                             <textarea class="form-control" id="productDescription" name="productDescription" required></textarea>
                         </div>
-                        <button type="submit" id="submitButton" class="btn btn-primary">{{ _('Salvar') }}</button>
+                        <button type="submit" id="submitButton" class="btn btn-success">{{ _('Salvar') }}</button>
                     </form>
                 </div>
             </div>

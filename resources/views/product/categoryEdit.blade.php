@@ -4,7 +4,7 @@
     <div class="container">
         <h1 class="title">
             {{ __('Editar') }}
-            <button type="button" class="btn btn-primary submit-form float-right" data-form-id="categoryForm">{{ __('Salvar') }}</button>
+            <button type="button" class="btn btn-success submit-form float-right" data-form-id="categoryForm">{{ __('Salvar') }}</button>
             @if(isset($categories[0]['id']))
                 <button type="button" class="btn btn-danger delete-category float-right" data-category-id="{{ $categories[0]['id'] }}">Deletar</button>                                       
             @endif

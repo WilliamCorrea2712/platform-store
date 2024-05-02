@@ -43,64 +43,74 @@ class BreadcrumbMiddleware
             'dashboard' => [
                 ['label' => 'Dashboard', 'route' => 'dashboard']
             ],
+            'contact' => [
+                ['label' => 'Contato', 'route' => 'contact']
+            ],
+            'about' => [
+                ['label' => 'Sobre', 'route' => 'about']
+            ],
             'getProduct' => [
                 ['label' => 'Produtos', 'route' => 'getProduct']
             ],
             'editProduct' => [
                 ['label' => 'Produtos', 'route' => 'getProduct'],
-                ['label' => 'Editar Produto', 'route' => 'editProduct', 'params' => true]
+                ['label' => 'Editar', 'route' => 'editProduct', 'params' => true]
             ],
             'getUser' => [
                 ['label' => 'Usuários', 'route' => 'getUser']
             ],
             'editUser' => [
                 ['label' => 'Usuários', 'route' => 'getUser'],
-                ['label' => 'Editar Usuário', 'route' => 'editUser', 'params' => true]
+                ['label' => 'Editar', 'route' => 'editUser', 'params' => true]
             ],
             'createUser' => [
                 ['label' => 'Usuários', 'route' => 'getUser'],
-                ['label' => 'Cadastrar Usuário', 'route' => 'createUser']
+                ['label' => 'Cadastrar', 'route' => 'createUser']
             ],  
             'getCategory' => [
                 ['label' => 'Categorias', 'route' => 'getCategory']
             ],
             'editCategory' => [
                 ['label' => 'Categorias', 'route' => 'getCategory'],
-                ['label' => 'Editar Categoria', 'route' => 'editCategory', 'params' => true]
+                ['label' => 'Editar', 'route' => 'editCategory', 'params' => true]
             ],
             'createCategories' => [
                 ['label' => 'Categorias', 'route' => 'getCategory'],
-                ['label' => 'Cadastrar Categoria', 'route' => 'createCategories']
+                ['label' => 'Cadastrar', 'route' => 'createCategories']
             ],            
             'getBrand' => [
                 ['label' => 'Marcas', 'route' => 'getBrand']
             ],
             'editBrand' => [
                 ['label' => 'Marcas', 'route' => 'getBrand'],
-                ['label' => 'Editar Marca', 'route' => 'editBrand', 'params' => true]
+                ['label' => 'Editar', 'route' => 'editBrand', 'params' => true]
             ],
             'createBrands' => [
                 ['label' => 'Marcas', 'route' => 'getBrand'],
-                ['label' => 'Cadastrar Marca', 'route' => 'createBrands']
+                ['label' => 'Cadastrar', 'route' => 'createBrands']
             ], 
             'getCustomer' => [
                 ['label' => 'Clientes', 'route' => 'getCustomer']
             ],
             'editCustomer' => [
                 ['label' => 'Clientes', 'route' => 'getCustomer'],
-                ['label' => 'Editar Cliente', 'route' => 'editCustomer', 'params' => true]
+                ['label' => 'Editar', 'route' => 'editCustomer', 'params' => true]
             ],
             'createCustomer' => [
                 ['label' => 'Clientes', 'route' => 'getCustomer'],
-                ['label' => 'Cadastrar Cliente', 'route' => 'createCustomer']
+                ['label' => 'Cadastrar', 'route' => 'createCustomer']
             ], 
             'getListProduct' => [
                 ['label' => 'Lista de Produtos', 'route' => 'getListProduct']
             ],
             'editListProduct' => [
                 ['label' => 'Lista de Produtos', 'route' => 'getListProduct'],
-                ['label' => 'Editar Lista de Produtos', 'route' => 'editListProduct', 'params' => true]
+                ['label' => 'Editar', 'route' => 'editListProduct', 'params' => true]
             ],
+            'createListProducts' => [
+                ['label' => 'Lista de Produtos', 'route' => 'getListProduct'],
+                ['label' => 'Cadastrar', 'route' => 'createListProducts']
+            ], 
             'getSetting' => [
                 ['label' => 'Configurações', 'route' => 'getSetting']
             ],

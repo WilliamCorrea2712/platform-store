@@ -54,7 +54,7 @@
                                     </select>
                                 </div>                                                                                               
                             </div>
-                            <button type="submit" class="btn btn-primary">{{ __('Salvar') }}</button>
+                            <button type="submit" class="btn btn-success">{{ __('Salvar') }}</button>
                         </div>
                     </form>
                 </div>

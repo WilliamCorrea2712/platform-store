@@ -26,7 +26,9 @@ class SettingController extends Controller
 
             if (isset($apiData['message']['settings'])) {
                 $settings = $apiData['message']['settings'];
-                $settings = collect($settings);
+                $settings = collect($settings)->groupBy(function ($item) {
+                    return strtolower($item['group_name']);
+                });
             }
         } else {
             $error = $response->json()['error'] ?? 'Erro desconhecido ao tentar recuperar as configurações.';

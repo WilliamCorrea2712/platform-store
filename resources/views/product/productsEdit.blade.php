@@ -5,7 +5,7 @@
     <div class="container">
         <h1 class="title">
             {{ __('Editar') }}
-            <button type="button" class="btn btn-primary submit-form float-right" data-form-id="productForm">{{ __('Salvar') }}</button>
+            <button type="button" class="btn btn-success submit-form float-right" data-form-id="productForm">{{ __('Salvar') }}</button>
             @if(isset($products[0]['id']))
                 <button type="button" class="btn btn-danger delete-product float-right" data-product-id="{{ $products[0]['id'] }}">Deletar</button>                                       
             @endif

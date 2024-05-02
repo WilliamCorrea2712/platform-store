@@ -18,11 +18,11 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <div id="message-info" class="alert alert-success" role="alert" style="display: none"></div>
             @if(!empty($settings))
             <div class="card-body">                
-                    <button type="button" id="addSettingButton" class="btn btn-success mb-3">{{ __('Nova Configuração') }}</button>
-                    <div id="addSettingDiv" style="display: none;">
+                <div id="message-info" class="alert alert-success" role="alert" style="display: none"></div>
+                <button type="button" id="addSettingButton" class="btn btn-success mb-3">{{ __('Nova Configuração') }}</button>
+                <div id="addSettingDiv" style="display: none;">
                         <form action="{{ route('addSetting') }}" method="POST">
                             @csrf
                             <div class="form-row">
@@ -43,24 +43,15 @@
                                     <input type="text" class="form-control" id="group_name" name="group_name" required>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">{{ __('Adicionar') }}</button>
+                            <button type="submit" class="btn btn-success">{{ __('Adicionar') }}</button>
                         </form>
                     </div>                    
-                    <table class="table no-border-table">
-                        <thead>
-                            <tr>
-                                <th class="custom-th-width">{{ __('Nome / Chave') }}</th>
-                                <th class="text-center">{{ __('Valor') }}</th>
-                                <th class="text-center">{{ __('Ações') }}</th>
-                            </tr>
-                        </thead>
-                    </table>
-                    @foreach($settings->groupBy('group_name') as $group => $groupSettings)
+                     @foreach($settings as $group => $groupSettings)
                         <div class="accordion" id="accordion{{ Str::slug($group) }}">
                             <div class="card">
                                 <div class="card-header custom-group-heading" id="heading{{ Str::slug($group) }}" data-toggle="collapse" data-target="#collapse{{ Str::slug($group) }}" aria-expanded="true" aria-controls="collapse{{ Str::slug($group) }}">
                                     <h3 class="mb-0">
-                                        {{ $group }}
+                                        {{ ucfirst($group) }}
                                     </h3>
                                 </div>
                                 <div id="collapse{{ Str::slug($group) }}" class="collapse" aria-labelledby="heading{{ Str::slug($group) }}" data-parent="#accordion{{ Str::slug($group) }}">                                    

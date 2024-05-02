@@ -30,7 +30,7 @@
                                 <label for="message">Mensagem:</label>
                                 <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-success">Enviar</button>
                         </div>
                     </form>             
                 </div>
