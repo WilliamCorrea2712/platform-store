@@ -14,6 +14,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ListProductController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ReportController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -92,6 +93,11 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
         Route::delete('/config/deleteSetting', [SettingController::class, 'deleteSetting'])->name('deleteSetting');
         Route::post('/config/addSetting', [SettingController::class, 'addSetting'])->name('addSetting');
         Route::patch('/config/editSetting', [SettingController::class, 'editSetting'])->name('editSetting');
+
+        Route::get('/getReportProduct', [ReportController::class, 'getReportProduct'])->name('getReportProduct');
+        Route::get('/reportProducts', [ReportController::class, 'getReportProduct'])->name('reports.product');
+        Route::get('/getReportCustomer', [ReportController::class, 'getReportCustomer'])->name('getReportCustomer');     
+        Route::get('/reportCustomers', [ReportController::class, 'getReportCustomer'])->name('reports.customer');
 
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 

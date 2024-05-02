@@ -577,7 +577,9 @@ table.table {
 .align-middle {
     vertical-align: middle !important;
 }
-
+.card {
+    margin-top: 10px;
+}
 .table-responsive .table thead th {
     vertical-align: bottom;
     border-bottom: 0px;

@@ -114,6 +114,12 @@ class BreadcrumbMiddleware
             'getSetting' => [
                 ['label' => 'Configurações', 'route' => 'getSetting']
             ],
+            'getReportCustomer' => [
+                ['label' => 'Relatorio Cientes', 'route' => 'getReportCustomer']
+            ],
+            'getReportProduct' => [
+                ['label' => 'Relatorio Produtos', 'route' => 'getReportProduct']
+            ],
         ];
 
         return $breadcrumbData[$routeName] ?? [];

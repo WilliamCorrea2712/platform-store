@@ -25,9 +25,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('getProduct') }}">{{ _('Produto') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ _('Estoque') }}</a>
-                        </li>
                     </ul>
                 </li>      
                 <li class="nav-item">
@@ -46,6 +43,17 @@
                     <ul class="submenu" style="display: none;">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('getUser') }}">{{ _('Todos os Usuários') }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link report-toggle" href="#">{{ _('Relatórios ') }}<i class="fas fa-chevron-down smaller-arrow"></i></a></a>
+                    <ul class="submenu" style="display: none;">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('getReportCustomer') }}">{{ _('Clientes') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('getReportProduct') }}">{{ _('Produtos') }}</a>
                         </li>
                     </ul>
                 </li>

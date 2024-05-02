@@ -3,16 +3,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const productsToggle = document.querySelector(".products-toggle");
     const customersToggle = document.querySelector(".customers-toggle");
     const configToggle = document.querySelector(".config-toggle");
+    const reportToggle = document.querySelector(".report-toggle");
 
     const usersSubmenu = usersToggle.nextElementSibling;
     const productsSubmenu = productsToggle.nextElementSibling;
     const customersSubmenu = customersToggle.nextElementSibling;
     const configSubmenu = configToggle.nextElementSibling;
+    const reportSubmenu = reportToggle.nextElementSibling;
 
     usersSubmenu.style.display = "none";
     productsSubmenu.style.display = "none";
     customersSubmenu.style.display = "none";
     configSubmenu.style.display = "none";
+    reportSubmenu.style.display = "none";
 
     usersToggle.addEventListener("click", function (event) {
         event.preventDefault();
@@ -40,6 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleSubmenu(configSubmenu);
         resetSelected();
         configToggle.classList.add("selected");
+    });
+
+    reportToggle.addEventListener("click", function (event) {
+        event.preventDefault();
+        toggleSubmenu(reportSubmenu);
+        resetSelected();
+        reportToggle.classList.add("selected");
     });
 
     function toggleSubmenu(submenu) {
