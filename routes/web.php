@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ListProductController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -37,9 +38,7 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
     });
 
     Route::middleware([AuthenticateWithApi::class])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
         Route::get('/getUser', [UserController::class, 'getUsers'])->name('getUser');
         Route::get('/editUser/{id}', [UserController::class, 'edit'])->name('editUser');
@@ -100,6 +99,7 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
         Route::get('/reportCustomers', [ReportController::class, 'getReportCustomer'])->name('reports.customer');
 
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+        
 
         Route::get('/about', [AboutController::class, 'show'])->name('about');
         Route::get('/contact', [ContactController::class, 'show'])->name('contact');
