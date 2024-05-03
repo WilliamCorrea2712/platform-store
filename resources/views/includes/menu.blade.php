@@ -1,61 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav flex-column">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">{{ _('Dashboard') }}</a>
+                    <a class="nav-link" href="/home">{{ _('Home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link customers-toggle" href="#">{{ _('Clientes ') }}<i class="fas fa-chevron-down smaller-arrow"></i></a>
-                    <ul class="submenu" style="display: none;">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getCustomer') }}">{{ _('Todos os Clientes') }}</a>
-                        </li>
-                    </ul>
+                    <a class="nav-link" href="#">{{ _('Produtos') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link products-toggle" href="#">{{ _('Produtos ') }}<i class="fas fa-chevron-down smaller-arrow"></i></a></a>
-                    <ul class="submenu" style="display: none;">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getCategory') }}">{{ _('Categorias') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getBrand') }}">{{ _('Marcas') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getProduct') }}">{{ _('Produto') }}</a>
-                        </li>
-                    </ul>
-                </li>      
-                <li class="nav-item">
-                    <a class="nav-link config-toggle" href="#">{{ _('Configurações ') }}<i class="fas fa-chevron-down smaller-arrow"></i></a></a>
-                    <ul class="submenu" style="display: none;">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getSetting') }}">{{ _('Gerais') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getListProduct') }}">{{ _('Lista de Produtos') }}</a>
-                        </li>
-                    </ul>
-                </li>           
-                <li class="nav-item">
-                    <a class="nav-link users-toggle" href="#">{{ _('Usuários ') }}<i class="fas fa-chevron-down smaller-arrow"></i></a></a>
-                    <ul class="submenu" style="display: none;">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getUser') }}">{{ _('Todos os Usuários') }}</a>
-                        </li>
-                    </ul>
+                    <a class="nav-link" href="#">{{ _('Categoria 1') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link report-toggle" href="#">{{ _('Relatórios ') }}<i class="fas fa-chevron-down smaller-arrow"></i></a></a>
-                    <ul class="submenu" style="display: none;">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getReportCustomer') }}">{{ _('Clientes') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('getReportProduct') }}">{{ _('Produtos') }}</a>
-                        </li>
-                    </ul>
+                    <a class="nav-link" href="#">{{ _('Categoria 2') }}</a>
                 </li>
             </ul>
         </div>
