@@ -6,6 +6,7 @@ use App\Http\Middleware\AuthenticateWithApi;
 use App\Http\Middleware\BreadcrumbMiddleware;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     if (session()->has('api_token')) {
@@ -16,6 +17,7 @@ Route::get('/', function () {
 });
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
 
