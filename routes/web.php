@@ -7,6 +7,8 @@ use App\Http\Middleware\BreadcrumbMiddleware;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
     if (session()->has('api_token')) {
@@ -18,6 +20,12 @@ Route::get('/', function () {
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/{slug}', [PageController::class, 'show'])->name('page.show');
+
+Route::get('/menu', function () {
+    return view('includes.menu');
+})->name('menu');
+Route::get('/getSubcategories/{id}', [MenuController::class, 'getSubcategories']);
 
 Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
 

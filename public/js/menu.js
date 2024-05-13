@@ -1,69 +1,44 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const usersToggle = document.querySelector(".users-toggle");
-    const productsToggle = document.querySelector(".products-toggle");
-    const customersToggle = document.querySelector(".customers-toggle");
-    const configToggle = document.querySelector(".config-toggle");
-    const reportToggle = document.querySelector(".report-toggle");
-
-    const usersSubmenu = usersToggle.nextElementSibling;
-    const productsSubmenu = productsToggle.nextElementSibling;
-    const customersSubmenu = customersToggle.nextElementSibling;
-    const configSubmenu = configToggle.nextElementSibling;
-    const reportSubmenu = reportToggle.nextElementSibling;
-
-    usersSubmenu.style.display = "none";
-    productsSubmenu.style.display = "none";
-    customersSubmenu.style.display = "none";
-    configSubmenu.style.display = "none";
-    reportSubmenu.style.display = "none";
-
-    usersToggle.addEventListener("click", function (event) {
-        event.preventDefault();
-        toggleSubmenu(usersSubmenu);
-        resetSelected();
-        usersToggle.classList.add("selected");
+$(document).ready(function () {
+    $(".category-link").mouseenter(function () {
+        var categoryId = $(this).data("category-id");
+        loadSubcategories(categoryId);
     });
 
-    productsToggle.addEventListener("click", function (event) {
-        event.preventDefault();
-        toggleSubmenu(productsSubmenu);
-        resetSelected();
-        productsToggle.classList.add("selected");
+    $(".category-link").mouseleave(function () {
+        $("#subcategories-dropdown").hide();
     });
 
-    customersToggle.addEventListener("click", function (event) {
-        event.preventDefault();
-        toggleSubmenu(customersSubmenu);
-        resetSelected();
-        customersToggle.classList.add("selected");
-    });
-
-    configToggle.addEventListener("click", function (event) {
-        event.preventDefault();
-        toggleSubmenu(configSubmenu);
-        resetSelected();
-        configToggle.classList.add("selected");
-    });
-
-    reportToggle.addEventListener("click", function (event) {
-        event.preventDefault();
-        toggleSubmenu(reportSubmenu);
-        resetSelected();
-        reportToggle.classList.add("selected");
-    });
-
-    function toggleSubmenu(submenu) {
-        if (submenu.style.display === "none") {
-            submenu.style.display = "block";
-        } else {
-            submenu.style.display = "none";
-        }
-    }
-
-    function resetSelected() {
-        const selectedLinks = document.querySelectorAll(".nav-link.selected");
-        selectedLinks.forEach((link) => {
-            link.classList.remove("selected");
+    function loadSubcategories(categoryId) {
+        $.ajax({
+            url: "/getSubcategories/" + categoryId,
+            type: "GET",
+            data: { categoryId: categoryId },
+            success: function (response) {
+                var subcategories = response.subcategories;
+                if (subcategories && subcategories.length > 0) {
+                    var subcategoriesHtml =
+                        '<div class="dropdown-subcategories">';
+                    subcategories.forEach(function (subcategory) {
+                        subcategoriesHtml +=
+                            '<a class="dropdown-item" href="' +
+                            subcategory.url +
+                            '">' +
+                            subcategory.name +
+                            "</a>";
+                    });
+                    subcategoriesHtml += "</div>";
+                    $("#subcategories-dropdown").html(subcategoriesHtml).show();
+                } else {
+                    $("#subcategories-dropdown").hide();
+                }
+            },
+            error: function (xhr, status, error) {
+                var errorMessage =
+                    xhr.responseJSON && xhr.responseJSON.error
+                        ? xhr.responseJSON.error
+                        : error;
+                console.log(errorMessage);
+            },
         });
     }
 });

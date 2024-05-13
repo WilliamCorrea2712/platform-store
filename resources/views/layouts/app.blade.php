@@ -38,26 +38,7 @@
                 </div>
             </div>
         </nav>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light categories">
-            <div class="container">
-                <div class="collapse navbar-collapse" id="navbarCategories">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/home">{{ _('Home') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ _('Produtos') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ _('Categoria 1') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ _('Categoria 2') }}</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @include('includes.menu')        
     </header>
     <main>
         @yield('content')
@@ -77,24 +58,24 @@
                         <button type="submit" class="btn btn-primary mb-2">{{ _('Inscrever-se') }}</button>
                     </form>
                 </div>
-                <div class="col-md-3 border-right mb-4">
+                <div class="col-md-3 border-right mb-4 text-footer">
                     <h5>{{ _('Central de Atendimento') }}</h5>
                     <p>{{ _('Contato (16) 99125-2086') }}</p>
                     <p>{{ _('E-mail: william.correa.dev@gmail.com') }}</p>
                 </div>
-                <div class="col-md-3 border-right mb-4">
+                <div class="col-md-3 border-right mb-4 text-footer">
                     <h5>{{ _('Horário de Atendimento') }}</h5>
                     <p>{{ _('Segunda a Sexta, das 8:30h às 18h') }}</p>
                     <p>{{ _('Sábado e Feriados, das 9h às 14h') }}</p>
                 </div>
-                <div class="col-md-3 border-right mb-4">
+                <div class="col-md-3 border-right mb-4 text-footer">
                     <h5>{{ _('Institucional') }}</h5>
                     <p>{{ _('Fale Conosco') }}</p>
                     <p>{{ _('Troca e devolução') }}</p>
                     <p>{{ _('Política de Privacidade') }}</p>
                     <p>{{ _('Termos de Uso') }}</p>
                 </div>
-                <div class="col-md-3 mb-4">
+                <div class="col-md-3 mb-4 text-footer">
                     <h5>{{ _('Endereço') }}</h5>
                     <p>{{ _('Rua Geny Mozette Garcia') }}</p>
                     <p>{{ _('2090 - Franca - SP') }}</p>
@@ -105,5 +86,6 @@
     </footer>    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/menu.js') }}"></script>
 </body>
 </html>

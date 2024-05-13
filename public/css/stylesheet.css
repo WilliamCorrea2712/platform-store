@@ -1,3 +1,8 @@
+:root {
+    --cor-back1: #7c9fff;
+    --cor-back2: #8ba6ff;
+}
+
 .footer {
     position: relative;
     background: -webkit-linear-gradient(left, #f8f8f8, #f3f3f3);
@@ -39,6 +44,13 @@
 
 .border-right {
     border-right: 1px solid #5a5a5a;
+}
+
+.text-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .newsletter {
@@ -205,4 +217,72 @@
 .carousel-control-next,
 .carousel-control-prev {
     width: 3%;
+}
+
+.menu-categories {
+    background: -webkit-linear-gradient(left, #eeeeee, #e7e7e7);
+}
+.menu-categories .navbar-nav .nav-link {
+    color: #333;
+}
+
+.menu-categories .nav-item.dropdown .dropdown-menu {
+    background: -webkit-linear-gradient(left, #eeeeee, #e7e7e7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.menu-categories .dropdown-menu .dropdown-item {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.menu-categories .dropdown-menu .dropdown-item:hover {
+    background-color: #4e4e4e;
+}
+
+.menu-categories .navbar-nav .nav-link.dropdown-toggle::after {
+    display: none;
+}
+
+.menu-categories .nav-item.dropdown:hover .dropdown-menu.menu-categories {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+}
+
+.menu-categories .dropdown-menu.menu-categories {
+    background: -webkit-linear-gradient(left, #eeeeee, #e7e7e7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    padding: 10px 0;
+    width: auto;
+    display: none;
+    position: absolute;
+}
+
+.menu-categories .dropdown-menu.menu-categories .dropdown-item {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.3s;
+}
+
+.menu-categories .dropdown-menu.menu-categories .dropdown-item:hover {
+    background: -webkit-linear-gradient(left, #eeeeee, #e7e7e7);
+}
+
+.menu-categories .dropdown-menu.subcategories {
+    background: -webkit-linear-gradient(left, #eeeeee, #e7e7e7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    padding: 10px 0;
+    margin-left: -15px;
+    top: 0;
+    left: 100%;
 }
