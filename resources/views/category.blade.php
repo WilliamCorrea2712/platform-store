@@ -13,7 +13,9 @@
                                     $imageUrl = env('API_IMAGE_URL') . $firstImage['image_url'];
                                     $imagePath = str_replace('\\', '/', $imageUrl);
                                 @endphp
-                                <img src="{{ $imagePath }}" class="card-img-top product-image mx-auto" alt="Imagem do Produto">
+                                <a href="{{ $product['url'] }}">
+                                    <img src="{{ $imagePath }}" class="card-img-top product-image mx-auto" alt="Imagem do Produto">
+                                </a>
                             @else                            
                                 <img src="{{ asset('images/placeholder.png') }}" class="card-img-top product-image mx-auto" alt="Imagem do Produto">
                             @endif
