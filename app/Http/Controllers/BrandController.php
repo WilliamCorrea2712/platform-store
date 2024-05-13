@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Utils\ApiRequest;
 
-class CategoryController extends Controller
+class BrandController extends Controller
 {
     protected $apiRequest;
 
@@ -17,19 +17,19 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        $response = $this->apiRequest->sendRequest('get', 'product/getProductsCategory', [], ['id' => $id]);
+        $response = $this->apiRequest->sendRequest('get', 'product/getProductsBrand', [], ['id' => $id]);
 
         $message = $response->json()['message'] ?? null;
 
         if ($message && isset($message['products'])) {
             $products = $message['products']['products'];
-            $category_name = $message['products']['category_name'];
+            $brand_name = $message['products']['brand_name'];
         } else {
             $products = [];
-            $category_name = 'Produtos';
+            $brand_name = 'Produtos';
         }
 
-        return view('category', ['products' => $products, 'category_name' => $category_name]);
+        return view('brand', ['products' => $products, 'brand_name' => $brand_name]);
     }
 
 }

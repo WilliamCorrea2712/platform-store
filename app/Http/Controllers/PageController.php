@@ -24,7 +24,8 @@ class PageController extends Controller
             case 'product':
                 return view('product', ['id' => $data['id']]);
             case 'brand':
-                return view('brand', ['id' => $data['id']]);
+                $brandController = new BrandController($apiRequest);
+                return $brandController->show($data['id']);
             case 'category':
                 $categoryController = new CategoryController($apiRequest);
                 return $categoryController->show($data['id']);
