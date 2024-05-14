@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use App\Utils\ApiRequest;
 
 class BrandController extends Controller
@@ -31,5 +29,4 @@ class BrandController extends Controller
 
         return view('brand', ['products' => $products, 'brand_name' => $brand_name]);
     }
-
 }

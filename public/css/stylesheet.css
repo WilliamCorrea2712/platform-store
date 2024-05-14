@@ -286,3 +286,89 @@
     top: 0;
     left: 100%;
 }
+
+h1 {
+    text-align: left;
+}
+
+.product-content {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.description-images .product-image {
+    width: 80%;
+}
+
+.imgs-thumbnail {
+    margin-left: 5px;
+}
+
+.description-images .img-thumbnail {
+    width: 100px;
+    height: 100px;
+}
+
+.description-data {
+    padding: 50px;
+    font-size: 18px;
+}
+
+.description-data .stock-options {
+    font-size: 15px;
+}
+
+.description-price {
+    color: #0baf41;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+}
+
+.product-description {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 50px 0px 50px 0px;
+}
+
+.stock-options {
+    margin-top: 75px;
+}
+
+.stock-options h3 {
+    font-size: 1.2rem;
+}
+
+.stock-option {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 70%;
+    box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.1);
+}
+
+.option-name {
+    font-weight: bold;
+}
+
+.stock-label {
+    padding: 2px 0px 2px 15px;
+}
+
+.sub-options {
+    display: none;
+    margin-bottom: 15px;
+    width: 70%;
+    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.1);
+}
+
+.sub-option {
+    margin-left: 20px;
+}
+
+.stock-options .sub-options {
+    display: none;
+}
+
+.description-btn {
+    margin-top: 30px;
+}

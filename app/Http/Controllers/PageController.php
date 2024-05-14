@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Utils\ApiRequest;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 class PageController extends Controller
 {
@@ -22,7 +23,8 @@ class PageController extends Controller
 
         switch ($data['key']) {
             case 'product':
-                return view('product', ['id' => $data['id']]);
+                $ProductController = new ProductController($apiRequest);
+                return $ProductController->show($data['id']);
             case 'brand':
                 $brandController = new BrandController($apiRequest);
                 return $brandController->show($data['id']);
