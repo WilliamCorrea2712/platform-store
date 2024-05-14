@@ -83,6 +83,15 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 0 3px white;
 }
 
+.list-price {
+    color: #0baf41;
+    font-weight: 700;
+}
+
+.list-details {
+    margin-top: 15px;
+}
+
 /* Reset CSS */
 * {
     margin: 0;
@@ -297,7 +306,8 @@ h1 {
 }
 
 .description-images .product-image {
-    width: 80%;
+    width: 70%;
+    height: 70%;
 }
 
 .imgs-thumbnail {
@@ -310,7 +320,7 @@ h1 {
 }
 
 .description-data {
-    padding: 50px;
+    padding: 30px;
     font-size: 18px;
 }
 
@@ -318,20 +328,39 @@ h1 {
     font-size: 15px;
 }
 
+.description-data p {
+    margin-bottom: 0px;
+}
+
+.description-btn {
+    margin-top: 20px;
+}
+
+.description-btn button {
+    padding: 15px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
 .description-price {
     color: #0baf41;
-    font-size: 2.2rem;
-    margin-bottom: 30px;
+    font-size: 3rem;
+    margin-bottom: 30px !important;
 }
 
 .product-description {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.07);
     padding: 20px;
     margin: 50px 0px 50px 0px;
 }
 
+.product-description h2,
+.product-description div {
+    padding: 10px;
+}
+
 .stock-options {
-    margin-top: 75px;
+    margin-top: 50px;
 }
 
 .stock-options h3 {
@@ -356,7 +385,7 @@ h1 {
 
 .sub-options {
     display: none;
-    margin-bottom: 15px;
+    margin: 5px 0px 15px 0px;
     width: 70%;
     box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.1);
 }
@@ -365,10 +394,12 @@ h1 {
     margin-left: 20px;
 }
 
-.stock-options .sub-options {
-    display: none;
+.sub-option label,
+.sub-option input[type="radio"] {
+    margin-left: 10px;
+    cursor: pointer;
 }
 
-.description-btn {
-    margin-top: 30px;
+.stock-options .sub-options {
+    display: none;
 }

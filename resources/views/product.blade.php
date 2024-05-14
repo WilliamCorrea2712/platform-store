@@ -33,13 +33,13 @@
                 </div>            
             </div>        
             <div class="col-md-6 description-data">
-                <p class="description-price"><strong>{{ __('Preço') }}<br /> {{ 'R$ ' . number_format($product['price'], 2, ',', '.') }}</strong></p>
+                <p class="description-price"><strong> {{ 'R$ ' . number_format($product['price'], 2, ',', '.') }}</strong></p>
                 <p><strong>{{ __('SKU: ') }}</strong>{{ $product['sku'] }}</p>
                 <p><strong>{{ _('Compra Minima: ') }}</strong> {{ $product['minimum'] }}</p>
                 <p><strong>{{ _('Peso: ') }}</strong> {{ $product['weight'] }}</p> 
                 <p><br /><strong>{{ __('Resumo ') }}</strong><br /> {{ $product['description_resume'] }}</p>
                 <div class="stock-options">
-                    <h3>{{ _('Opções') }}</h3>
+                    <h3>{{ _('Escolha uma opção') }}</h3>
                     @foreach ($product['stock'] as $stock)
                         @if ($stock['parent_attribute_id'] === null)
                             <div class="stock-option" data-parent-id="{{ $stock['attribute_id'] }}" data-stock-id="{{ $stock['stock_id'] }}">
@@ -57,7 +57,7 @@
                             </div>
                         @endif
                     @endforeach
-                    <div class="col-md-6 description-btn">
+                    <div class="description-btn">
                         <button class="btn btn-primary add-to-cart">{{ _('Adicionar ao Carrinho') }}</button>
                         <button class="btn btn-success buy-now">{{ _('Comprar') }}</button>
                     </div>
