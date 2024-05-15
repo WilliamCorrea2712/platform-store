@@ -29,5 +29,4 @@ class CategoryController extends Controller
 
         return view('category', ['products' => $products, 'category_name' => $category_name]);
     }
-
 }

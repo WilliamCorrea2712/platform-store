@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Utils\ApiRequest;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ListController;
 
 class PageController extends Controller
 {
@@ -31,6 +32,9 @@ class PageController extends Controller
             case 'category':
                 $categoryController = new CategoryController($apiRequest);
                 return $categoryController->show($data['id']);
+            case 'list':
+                $listController = new ListController($apiRequest);
+                return $listController->show($data['id']);
             default:
                 return abort(404);
         }
