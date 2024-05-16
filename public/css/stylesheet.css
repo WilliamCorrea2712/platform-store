@@ -457,6 +457,9 @@ h1 {
 .login {
     padding-bottom: 5%;
 }
+.login form {
+    width: 50%;
+}
 
 .my-account {
     padding-left: 7px;
@@ -484,4 +487,11 @@ h1 {
 
 #addAddress {
     margin-bottom: 15px;
+}
+
+.margin-bottom-40 {
+    margin-bottom: 40px;
+}
+.message-info {
+    margin: 20px;
 }

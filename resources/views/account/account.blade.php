@@ -18,7 +18,7 @@
         @endif
         <div id="message-info" class="alert alert-warning" role="alert" style="display: none"></div>
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 margin-bottom-40">
                 <div class="list-group">
                     <a href="#my-account" class="list-group-item list-group-item-action active border-none">
                         {{ _('Minha Conta') }}

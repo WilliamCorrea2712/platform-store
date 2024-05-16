@@ -8,14 +8,14 @@
                     <div class="card-header border-none">
                         <h4>{{ __('Login') }}</h4>
                     </div>
-                    <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger" role="alert">
-                                @foreach ($errors->all() as $error)
-                                    {{ $error }}
-                                @endforeach
-                            </div>
-                        @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger message-info" role="alert">
+                            @foreach ($errors->all() as $error)
+                                {{ $error }}
+                            @endforeach
+                        </div>
+                    @endif
+                    <div class="card-body">                        
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="mb-3">
