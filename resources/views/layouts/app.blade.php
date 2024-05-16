@@ -30,10 +30,10 @@
                         </li>
                         @if(session()->has('api_token'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}">{{ _('Sair') }}</a>
+                                <a class="nav-link" href="{{ route('account') }}">{{ _('Minha Conta') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('account') }}">{{ _('Minha Conta') }}</a>
+                                <a class="nav-link" href="{{ route('logout') }}">{{ _('Sair') }}</a>
                             </li>
                         @else
                             <li class="nav-item">
