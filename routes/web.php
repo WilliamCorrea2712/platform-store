@@ -5,22 +5,25 @@ use App\Http\Controllers\ContactController;
 use App\Http\Middleware\AuthenticateWithApi;
 use App\Http\Middleware\BreadcrumbMiddleware;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\AccountController;
 
 Route::get('/', function () {
     if (session()->has('api_token')) {
-        return redirect()->route('dashboard');
+        return redirect()->route('account.account');
     } else {
-        return view('home');
+        return view('account.account');
     }
 });
 
-Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/{slug}', [PageController::class, 'show'])->name('page.show');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/create-account', [RegisterController::class, 'register'])->name('register');
+Route::post('/create', [RegisterController::class, 'create'])->name('create');
 
 Route::get('/menu', function () {
     return view('includes.menu');
@@ -32,6 +35,12 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
     Route::middleware([AuthenticateWithApi::class])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
+        Route::get('/account', [AccountController::class, 'account'])->name('account');
+        Route::get('/deleteAddress', [AccountController::class, 'deleteAddress'])->name('deleteAddress');
+        Route::post('/addAddress', [AccountController::class, 'addAddress'])->name('addAddress');
+        Route::post('/editCustomer/{id}', [AccountController::class, 'editCustomer'])->name('editCustomer');
+        Route::post('/editPassword', [AccountController::class, 'editPassword'])->name('editPassword');
+
         Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');        
 
         Route::get('/about', [AboutController::class, 'show'])->name('about');
@@ -40,3 +49,9 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
 
     });
 });
+
+Route::get('/{slug}', [PageController::class, 'show'])
+    ->where('slug', '^(?!login|register|menu|dashboard|about|contact|create-account|account)[\w-]+$')
+    ->name('page.show');
+
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');

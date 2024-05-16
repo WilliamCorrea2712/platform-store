@@ -18,7 +18,6 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ $product['name'] }}</h5>
                         <p class="card-text list-price">{{ _('Preço: ') }} {{ 'R$ ' . number_format($product['price'], 2, ',', '.') }}</p>
-                        <i class="card-text">{!! Illuminate\Support\Str::limit($product['description_resume'], $limit = 100, $end = '...') !!}</i>                        
                         <a href="{{ $product['url'] }}"><div class="btn btn-primary list-details">{{ _('Detalhes') }}</div></a>
                     </div>
                 </div>

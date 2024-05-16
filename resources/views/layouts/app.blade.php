@@ -28,11 +28,20 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">{{ _('Carrinho') }} <i class="fas fa-shopping-cart"></i></a>
                         </li>
+                        @if(session()->has('api_token'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}">{{ _('Sair') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('account') }}">{{ _('Minha Conta') }}</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">{{ _('Login') }}</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ _('Login') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ _('Cadastre-se') }}</a>
+                            <a class="nav-link" href="/create-account">{{ _('Cadastre-se') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -88,5 +97,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/menu.js') }}"></script>
     <script src="{{ asset('js/product.js') }}"></script>
+    <script src="{{ asset('js/theme.js') }}"></script>
+    <script src="{{ asset('js/address.js') }}"></script>
+    <script src="{{ asset('js/edit.js') }}"></script>
 </body>
 </html>

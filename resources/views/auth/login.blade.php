@@ -1,21 +1,19 @@
-@extends('layouts.guest')
+@extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-5 login">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow">
-                    <div class="card-header text-center bg-primary text-white login">
+                    <div class="card-header border-none">
                         <h4>{{ __('Login') }}</h4>
                     </div>
                     <div class="card-body">
                         @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+                            <div class="alert alert-danger" role="alert">
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                @endforeach
                             </div>
                         @endif
                         <form method="POST" action="{{ route('login') }}">

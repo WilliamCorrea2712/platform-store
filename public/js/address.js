@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#addAddress").click(function () {
         var addressHtml = `
-            <div class="address border rounded p-3 mb-3">
+            <div class="address shadow-sm rounded p-3 mb-3">
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="nameAddress">Nome <span class="text-danger">*</span></label>
@@ -33,8 +33,47 @@ $(document).ready(function () {
                         <label for="country">País <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="country[]" value="" required>
                     </div>                                          
-                </div>
+                </div>                
             </div>`;
-        $(".addresses-section").append(addressHtml);
+        $(".addresses-section").before(addressHtml);
+        $("#saveAddressButtonRow").show();
+    });
+
+    $("#saveAddressButtonRow").click(function () {
+        var formDataArray = [];
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+        $(".address").each(function () {
+            var formData = $(this).find("input").serialize();
+            formDataArray.push(formData);
+        });
+
+        formDataArray.push("_token=" + csrfToken);
+
+        $.ajax({
+            url: "/addAddress",
+            method: "POST",
+            data: formDataArray.join("&"),
+            success: function (response) {
+                $("#message-info")
+                    .text("Endereço adicionado com sucesso")
+                    .show();
+
+                setTimeout(function () {
+                    $("#message-info").fadeOut();
+                }, 2000);
+                window.location.href = "/account";
+            },
+            error: function (xhr, status, error) {
+                var errorMessage =
+                    xhr.responseJSON && xhr.responseJSON.error
+                        ? xhr.responseJSON.error
+                        : error;
+                $("#message-info").text(errorMessage).show();
+                setTimeout(function () {
+                    $("#message-info").fadeOut();
+                }, 3000);
+            },
+        });
     });
 });
