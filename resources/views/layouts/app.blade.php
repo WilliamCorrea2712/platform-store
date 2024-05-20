@@ -26,7 +26,7 @@
                     </ul>
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ _('Carrinho') }} <i class="fas fa-shopping-cart"></i></a>
+                            <a class="nav-link" href="/cart">{{ _('Carrinho') }} <i class="fas fa-shopping-cart"></i></a>
                         </li>
                         @if(session()->has('api_token'))
                             <li class="nav-item">
@@ -100,5 +100,6 @@
     <script src="{{ asset('js/theme.js') }}"></script>
     <script src="{{ asset('js/address.js') }}"></script>
     <script src="{{ asset('js/edit.js') }}"></script>
+    <script src="{{ asset('js/cart.js') }}"></script>
 </body>
 </html>

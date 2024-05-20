@@ -49,7 +49,7 @@
                                 @foreach ($product['stock'] as $subStock)
                                     @if ($subStock['parent_attribute_id'] === $stock['stock_id'])
                                         <div class="sub-option">
-                                            <input type="radio" id="stock{{ $subStock['stock_id'] }}" name="stock" value="{{ $subStock['stock_id'] }}">
+                                            <input type="radio" id="stock{{ $subStock['stock_id'] }}" name="stock" value="{{ $subStock['stock_id'] }}" data-id="{{ $subStock['stock_id'] ?? '' }}" data-attribute-id="{{ $subStock['attribute_id'] ?? '' }}">
                                             <label for="stock{{ $subStock['stock_id'] }}">{{ $subStock['value'] }}</label>
                                         </div>
                                     @endif
@@ -58,10 +58,18 @@
                         @endif
                     @endforeach
                     <div class="description-btn">
-                        <button class="btn btn-primary add-to-cart">{{ _('Adicionar ao Carrinho') }}</button>
+                        <form id="addToCartForm" action="{{ route('add_to_cart') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product['id'] }}">
+                            <input type="hidden" name="id" id="selectedId" value="">
+                            <input type="hidden" name="attribute_id" id="selectedAttributeId" value="">
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="operation" value="add">
+                            <button type="submit" class="btn btn-primary">{{ _('Adicionar ao Carrinho') }}</button>
+                        </form>
                         <button class="btn btn-success buy-now">{{ _('Comprar') }}</button>
                     </div>
-                </div>                             
+                </div>                            
             </div>
         </div>
         <div class="row mt-12 product-description">

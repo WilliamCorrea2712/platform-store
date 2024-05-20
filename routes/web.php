@@ -11,6 +11,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     if (session()->has('api_token')) {
@@ -51,7 +53,9 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
 });
 
 Route::get('/{slug}', [PageController::class, 'show'])
-    ->where('slug', '^(?!login|register|menu|dashboard|about|contact|create-account|account)[\w-]+$')
+    ->where('slug', '^(?!login|register|menu|dashboard|about|contact|create-account|account|cart)[\w-]+$')
     ->name('page.show');
 
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::post('/add_to_cart', [ProductController::class, 'addToCart'])->name('add_to_cart');
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
