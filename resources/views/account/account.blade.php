@@ -20,13 +20,12 @@
         <div class="row">
             <div class="col-lg-3 margin-bottom-40">
                 <div class="list-group">
-                    <a href="#my-account" class="list-group-item list-group-item-action active border-none">
+                    <a href="#my-account" id="link-my-account" class="list-group-item list-group-item-action active border-none">
                         {{ _('Minha Conta') }}
                     </a>
-                    <a href="#my-address" class="list-group-item list-group-item-action border-none">{{ _('Meus Endereços') }}</a>
-                    <a href="#my-orders" class="list-group-item list-group-item-action border-none">{{ _('Meus Pedidos') }}</a>
-                    <a href="#my-password" class="list-group-item list-group-item-action border-none">{{ _('Alterar Senha') }}</a>
-                    <a class="nav-link border-none" href="{{ route('logout') }}">{{ _('Sair') }}</a>
+                    <a href="#my-address" id="link-my-address" class="list-group-item list-group-item-action border-none">{{ _('Meus Endereços') }}</a>
+                    <a href="#my-orders" id="link-my-orders" class="list-group-item list-group-item-action border-none">{{ _('Meus Pedidos') }}</a>
+                    <a href="#my-password" id="link-my-password" class="list-group-item list-group-item-action border-none">{{ _('Alterar Senha') }}</a>                    
                 </div>
             </div>
             <div class="col-lg-9">

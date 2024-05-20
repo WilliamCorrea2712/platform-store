@@ -4,7 +4,6 @@
     $categories = $response->getData()['categories'] ?? [];
     $error = $response->getData()->error ?? '';
 ?>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light menu-categories">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,14 +23,18 @@
                             <div class="col-md-12">
                                 <ul class="list-unstyled">
                                     @foreach($categories as $category)
-                                        @if(empty($category['parent_id']))
-                                            <li class="category-container">
-                                                <a class="dropdown-item category-link" href="{{ $category['url'] }}" data-category-id="{{ $category['id'] }}">{{ $category['name'] }}</a>
-                                            </li>
-                                        @endif
+                                        <li class="category-container">
+                                            <a class="dropdown-item category-link" href="{{ $category['url'] }}" data-category-id="{{ $category['id'] }}">{{ $category['name'] }}</a>
+                                            <ul class="list-unstyled ml-3 subcategories">
+                                                @foreach($category['subcategories'] as $subcategory)
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ $subcategory['url'] }}">{{ $subcategory['name'] }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
                                     @endforeach
                                 </ul>
-                                <div id="subcategories-dropdown" class="dropdown-menu subcategories" aria-labelledby="navbarDropdownAllCategories"></div>
                             </div>
                         </div>
                     </div>                                       
@@ -40,5 +43,3 @@
         </div>
     </div>
 </nav>
-<div id="subcategories-dropdown" class="dropdown-menu" aria-labelledby="navbarDropdownAllCategories"></div>
-

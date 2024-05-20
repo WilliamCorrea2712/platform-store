@@ -48,10 +48,10 @@ class AccountController extends Controller
         }
 
         if (!empty($errors)) {
-            return redirect()->route('account')->with(['errors' => $errors]);
+            return redirect()->route('account', ['tab' => 'my-address'])->with(['errors' => $errors]);
         } else {
-            return redirect()->route('account')->with('success', 'Endereço excluido com sucesso!');
-        }  
+            return redirect()->route('account', ['tab' => 'my-address'])->with('success', 'Endereço excluido com sucesso!');
+        }   
     }
 
     function addAddress(Request $request){
@@ -90,11 +90,11 @@ class AccountController extends Controller
                  
             }                                
         }  
-        
+
         if ($response->failed()) {
             return response()->json(['error' => $response->body()], $response->status());
         } else {
-            return redirect()->route('account')->with('success', 'Endereço adicionado com sucesso!');
+            return redirect()->route('account', ['tab' => 'my-address'])->with('success', 'Endereço adicionado com sucesso!');
         } 
     }
 
@@ -134,7 +134,7 @@ class AccountController extends Controller
         if ($response->failed()) {
             return response()->json(['error' => $response->body()], $response->status());
         } else {
-            return response()->json(['success' => true], 200);
-        } 
+            return response()->json(['success' => true, 'tab' => 'my-address'], 200);
+        }
     }
 }

@@ -62,7 +62,7 @@ $(document).ready(function () {
                 setTimeout(function () {
                     $("#message-info").fadeOut();
                 }, 2000);
-                window.location.href = "/account";
+                window.location.reload();
             },
             error: function (xhr, status, error) {
                 var errorMessage =

@@ -18,6 +18,9 @@ class HomeController extends Controller
         $bannerController = new BannerController();
         $banners = $bannerController->index();
 
+        $productsList = array();
+        $nameList = 'Produtos';
+
         $responseList = $this->apiRequest->sendRequest('get', 'product/getAllProductLists' );
 
         if ($responseList->successful()) {
@@ -30,9 +33,6 @@ class HomeController extends Controller
                     if($products['name'] == 'Home'){
                         $productsList = json_decode($products['products']);
                         $nameList = $products['name'];
-                    } else {
-                        $productsList = array();
-                        $nameList = 'Produtos';
                     }
                 }
             } else {
@@ -47,6 +47,7 @@ class HomeController extends Controller
 
         if($productsList){
             $response = $this->apiRequest->sendRequest('get', 'product/getProducts', [], ['id' => $productsList] );
+
             
             if ($response->successful()) {
                 $apiData = $response->json();

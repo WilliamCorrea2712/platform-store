@@ -52,7 +52,7 @@
 
             <h2 class="meus-dados-title">{{ _('Endereços') }}</h2>
             @foreach ($customer['addresses'] as $address)
-            <div class="my-address shadow-sm">
+            <div class="my-address">
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="nameAddress">{{ _('Responsável') }}</label>

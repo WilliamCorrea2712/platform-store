@@ -270,7 +270,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .menu-categories .dropdown-menu.menu-categories {
@@ -281,6 +281,7 @@
     width: auto;
     display: none;
     position: absolute;
+    z-index: 9999;
 }
 
 .menu-categories .dropdown-menu.menu-categories .dropdown-item {
@@ -326,6 +327,7 @@ h1 {
 
 .imgs-thumbnail {
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .description-images .img-thumbnail {
@@ -421,7 +423,9 @@ h1 {
 .content-section {
     margin-bottom: 30px;
 }
-
+.list-group-item + .list-group-item {
+    box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.5);
+}
 .list-group-item {
     border-radius: 0;
 }
@@ -479,6 +483,7 @@ h1 {
 
 .my-address {
     margin: 20px 0px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.03);
 }
 
 .my-address .form-row {

@@ -2,8 +2,6 @@
 namespace App\Http\Controllers;
 
 use App\Utils\ApiRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log; 
 
 class MenuController extends Controller
 {
@@ -36,10 +34,8 @@ class MenuController extends Controller
         return view('includes.menu', compact('categories', 'error'));
     }
 
-    public function getSubcategories(Request $request)
+    public function getSubcategories($id)
     {
-        $id = $request->input('categoryId');
-
         $response = $this->apiRequest->sendRequest('get', 'product/getCategories', [], ['parent_id' => $id]);
 
         if ($response->successful()) {
