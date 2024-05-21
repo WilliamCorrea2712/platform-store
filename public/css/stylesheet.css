@@ -507,26 +507,36 @@ h1 {
     padding-right: 10%;
 }
 
+.title-cart {
+    font-size: 30px;
+    margin-top: 35px;
+    font-weight: 400 !important;
+}
+
 .product-image-cart {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
 }
 
 .total-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
+    margin: 40px 0px;
 }
 
 .total-container h4 {
     font-size: 1.5rem;
-    font-weight: bold;
+    margin: 50px 0px 25px 15%;
 }
 
 .total-container button {
     font-size: 1.1rem;
     padding: 10px 20px;
+    margin-left: 15%;
+    width: 80%;
+}
+
+.total-container p {
+    font-size: 1.3rem;
+    margin-left: 15%;
 }
 
 .input-group input[type="number"] {
@@ -536,10 +546,10 @@ h1 {
 
 .table-cart table td {
     border: none !important;
-    padding: 30px 0px 30px 30px;
+    padding: 25px 0px 25px 25px;
+    border-bottom: 1px solid #e4e3e3 !important;
 }
 
 .table-cart table thead tr th {
-    border-top: none !important;
-    border-bottom: 1px solid #f7f7f7 !important;
+    border: none !important;
 }

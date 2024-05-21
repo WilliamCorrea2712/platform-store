@@ -14,40 +14,13 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand logo" href="/">{{ _('Minha Loja') }}</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mr-auto">
-                        <form class="form-inline" action="#" method="get">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{ _('Buscar') }}</button>
-                        </form>
-                    </ul>
-                    <ul class="navbar-nav align-items-center">
-                        @if(session()->has('api_token'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('account') }}">{{ _('Minha Conta') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}">{{ _('Sair') }}</a>
-                        </li>
-                        @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">{{ _('Login') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/create-account">{{ _('Cadastre-se') }}</a>
-                        </li>
-                        @endif
-                        <li class="nav-item">
-                            <a class="nav-link" href="/cart">{{ _('Carrinho') }} <i class="fas fa-shopping-cart"></i></a>
-                        </li>
+                    <ul class="navbar-nav">
+                        <li class="nav-item text-right"><i class="fas fa-lock"></i>{{_(' Compra 100% Segura')}}</li>                        
                     </ul>
                 </div>
             </div>
-        </nav>
-        @include('includes.menu')        
+        </nav>     
     </header>
     <main>
         @yield('content')

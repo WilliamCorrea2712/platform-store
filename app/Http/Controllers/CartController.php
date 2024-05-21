@@ -26,8 +26,7 @@ class CartController extends Controller
             $data = $response->json();
             $products = $data['message'] ?? [];
         } else {
-            $errorMessage = $response->json()['message'] ?? 'Erro desconhecido ao obter produtos do carrinho.';
-            return response()->json(['error' => $errorMessage], $response->status());
+            $response->json()['message'] ?? 'Erro desconhecido ao obter produtos do carrinho.';
         }
 
         return view('checkout.cart', ['products' => $products]);

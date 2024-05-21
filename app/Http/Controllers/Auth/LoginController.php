@@ -50,6 +50,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Session::forget('api_token');
+        Session::forget('customer_id');
         Auth::logout();
         return redirect()->route('login');
     }
