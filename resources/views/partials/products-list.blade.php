@@ -25,5 +25,5 @@
         @endforeach            
     </div>
 @else
-    <div class="alert alert-info" role="alert">{{ 'Nenhum produto encontrado para esta categoria!' }}</div>
+    <div class="alert alert-info" role="alert">{{ 'Nenhum produto encontrado!' }}</div>
 @endif

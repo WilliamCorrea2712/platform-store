@@ -48,9 +48,8 @@
                             <div class="sub-options" data-parent-id="{{ $stock['stock_id'] }}">
                                 @foreach ($product['stock'] as $subStock)
                                     @if ($subStock['parent_attribute_id'] === $stock['stock_id'])
-                                        <div class="sub-option">
-                                            <input type="radio" id="stock{{ $subStock['stock_id'] }}" name="stock" value="{{ $subStock['stock_id'] }}" data-id="{{ $subStock['stock_id'] ?? '' }}" data-attribute-id="{{ $subStock['attribute_id'] ?? '' }}">
-                                            <label for="stock{{ $subStock['stock_id'] }}">{{ $subStock['value'] }}</label>
+                                        <div class="sub-option" data-stock-id="{{ $subStock['stock_id'] }}" data-attribute-id="{{ $subStock['attribute_id'] }}">
+                                            {{ $subStock['value'] }}
                                         </div>
                                     @endif
                                 @endforeach
@@ -65,10 +64,10 @@
                             <input type="hidden" name="attribute_id" id="selectedAttributeId" value="">
                             <input type="hidden" name="quantity" value="1">
                             <input type="hidden" name="operation" value="add">
-                            <button type="submit" class="btn btn-primary">{{ _('Adicionar ao Carrinho') }}</button>
+                            <button type="submit" class="btn btn-success">{{ _('Adicionar ao Carrinho') }}</button>
                         </form>
                     </div>
-                </div>                            
+                </div>                                            
             </div>
         </div>
         <div class="row mt-12 product-description">

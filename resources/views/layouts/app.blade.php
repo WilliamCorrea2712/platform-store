@@ -19,10 +19,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
-                        <form class="form-inline" action="#" method="get">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                        <form class="form-inline" action="{{ route('search') }}" method="get">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" name="search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{ _('Buscar') }}</button>
-                        </form>
+                        </form>                                                                      
                     </ul>
                     <ul class="navbar-nav align-items-center">
                         @if(session()->has('api_token'))

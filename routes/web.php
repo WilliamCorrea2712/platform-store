@@ -26,6 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/create-account', [RegisterController::class, 'register'])->name('register');
 Route::post('/create', [RegisterController::class, 'create'])->name('create');
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('/menu', function () {
     return view('includes.menu');
@@ -53,7 +54,7 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
 });
 
 Route::get('/{slug}', [PageController::class, 'show'])
-    ->where('slug', '^(?!login|register|menu|dashboard|about|contact|create-account|account|cart)[\w-]+$')
+    ->where('slug', '^(?!login|register|menu|dashboard|about|contact|create-account|account|cart|search)[\w-]+$')
     ->name('page.show');
 
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');

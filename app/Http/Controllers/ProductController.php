@@ -63,4 +63,21 @@ class ProductController extends Controller
             return response()->json(['error' => $errorMessage], $response->status());
         }
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $response = $this->apiRequest->sendRequest('get', 'product/searchProducts', ['value' => $search]);
+
+        $message = $response->json()['message'] ?? null;
+
+        if ($message && isset($message['products'])) {
+            $product = $message['products'];
+        } else {
+            $product = null;
+        }
+
+        return view('product.search', ['products' => $product, 'search' => $search]);
+    }
 }

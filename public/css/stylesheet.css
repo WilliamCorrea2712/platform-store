@@ -390,7 +390,6 @@ h1 {
 .stock-option {
     padding: 10px;
     cursor: pointer;
-    border-radius: 10px;
     width: 70%;
     box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.1);
 }
@@ -405,9 +404,9 @@ h1 {
 
 .sub-options {
     display: none;
-    margin: 5px 0px 15px 0px;
+    margin: 5px 0px 5px 5px;
     width: 70%;
-    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.1);
+    margin-left: 15px;
 }
 
 .sub-option {
@@ -418,10 +417,38 @@ h1 {
 .sub-option input[type="radio"] {
     margin-left: 10px;
     cursor: pointer;
+    padding: 10px;
 }
 
 .stock-options .sub-options {
     display: none;
+}
+
+.selected {
+    background-color: #3f3f3f;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.stock-option,
+.sub-option {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.sub-option:hover {
+    background-color: #ebebeb;
+}
+
+.selected-sub {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.sub-option:hover {
+    background-color: #c5c5c5;
 }
 
 .content-section {
