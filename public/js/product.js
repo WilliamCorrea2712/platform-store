@@ -36,7 +36,11 @@ $(document).ready(function () {
         ) {
             $(this).unbind("submit").submit();
         } else {
-            alert("Por favor, selecione uma opção de estoque.");
+            $("#message-stock").text("Selecione uma opção de estoque!").show();
+
+            setTimeout(function () {
+                $("#message-stock").fadeOut();
+            }, 2000);
         }
     });
 });

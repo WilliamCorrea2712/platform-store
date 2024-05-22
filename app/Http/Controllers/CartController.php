@@ -40,4 +40,8 @@ class CartController extends Controller
 
         return view('checkout.cart', ['products' => $products]);
     }
+
+    public function removeToCart(Request $request){
+
+    }
 }

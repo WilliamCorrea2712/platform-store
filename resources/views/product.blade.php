@@ -39,6 +39,14 @@
                 <p><strong>{{ _('Peso: ') }}</strong> {{ $product['weight'] }}</p> 
                 <p><br /><strong>{{ __('Resumo ') }}</strong><br /> {{ $product['description_resume'] }}</p>
                 <div class="stock-options">
+                    <div id="message-stock" class="alert alert-danger" role="alert" style="display: none"></div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger"message-stock role="alert">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
                     <h3>{{ _('Escolha uma opção') }}</h3>
                     @foreach ($product['stock'] as $stock)
                         @if ($stock['parent_attribute_id'] === null)

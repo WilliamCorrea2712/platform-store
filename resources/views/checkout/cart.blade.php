@@ -13,6 +13,7 @@
                             <th></th>
                             <th></th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,18 +32,27 @@
                                     @endif
                                 </td>
                                 <td>{{ $product['name'] }}<br />{{ $product['parent_attribute_value'] }}: {{ $product['value'] }} 
-                                    <br /><strong>R$ {{ $product['price'] }}</strong></td>
+                                    <br /><strong>R$ {{ number_format($product['price'], 2, ',', '.') }}</strong>                                </td>
                                 <td>
                                     <div class="input-group">
                                         <input type="number" class="form-control" value="{{ $product['quantity'] }}" min="1">
                                     </div>
                                 </td>
-                                <td class="text-right">R$ {{ $product['price'] * $product['quantity'] }}</td>
+                                <td class="text-right">R$ {{ number_format($product['price'] * $product['quantity'], 2, ',', '.') }}</td>
+                                <td>
+                                    <form action="{{ route('remove_product_cart') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product['id'] }}">
+                                        <button type="submit" class="btn btn-link text-danger">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </td>
                                 @php $total += $product['price'] * $product['quantity']; @endphp
                             </tr>
                         @endforeach
                     </tbody>
-                </table>
+                </table>                
             </div>
             <div class="total-container col-md-4">
                 <p class="text-righ">{{ _('RESUMO DO PEDIDO') }}</p>

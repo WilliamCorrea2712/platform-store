@@ -59,9 +59,9 @@ class ProductController extends Controller
         if ($response->successful()) {
             return redirect('/cart')->with('success', 'Produto adicionado ao carrinho com sucesso');
         } else {
-            $errorMessage = $response->json()['message'] ?? 'Erro desconhecido ao criar cliente.';
-            return response()->json(['error' => $errorMessage], $response->status());
-        }
+            $errorMessage = $response->json()['message'] ?? 'Erro desconhecido ao adicionar produto no carrinho!';
+            return back()->withErrors(['error' => $errorMessage]);
+        }        
     }
 
     public function search(Request $request)

@@ -54,9 +54,10 @@ Route::middleware(['web', BreadcrumbMiddleware::class])->group(function () {
 });
 
 Route::get('/{slug}', [PageController::class, 'show'])
-    ->where('slug', '^(?!login|register|menu|dashboard|about|contact|create-account|account|cart|search)[\w-]+$')
+    ->where('slug', '^(?!login|register|menu|about|contact|create-account|account|cart|search)[\w-]+$')
     ->name('page.show');
 
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::post('/add_to_cart', [ProductController::class, 'addToCart'])->name('add_to_cart');
+Route::post('/remove_product_cart', [ProductController::class, 'removeToCart'])->name('remove_product_cart');
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
