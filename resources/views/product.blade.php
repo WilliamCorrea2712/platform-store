@@ -41,7 +41,7 @@
                 <div class="stock-options">
                     <div id="message-stock" class="alert alert-danger" role="alert" style="display: none"></div>
                     @if ($errors->any())
-                        <div class="alert alert-danger"message-stock role="alert">
+                        <div class="alert alert-danger" role="alert">
                             @foreach ($errors->all() as $error)
                                 <p>{{ $error }}</p>
                             @endforeach
