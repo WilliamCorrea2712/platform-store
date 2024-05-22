@@ -51,7 +51,8 @@
             </div>
         </div>
     @else
-        <div class="alert alert-info" role="alert">{{ 'Nenhum produto no carrinho!' }}</div>
+        <h1 class="title-cart">{{ _('CARRINHO VAZIO') }}</h1>
+        <div class="alert alert-info alert-cart" role="alert">{{ 'Nenhum produto no carrinho!' }}</div>
     @endif
 </div>
 @endsection

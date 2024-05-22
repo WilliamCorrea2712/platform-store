@@ -31,6 +31,9 @@ class ProductController extends Controller
 
     public function addToCart(Request $request)
     {
+        $cart = session()->get('cart', []);
+        $session_id = session()->getId();
+
         if(session()->get('customer_id')){
             $customer_id = session()->get('customer_id');
         } else {
@@ -43,8 +46,13 @@ class ProductController extends Controller
             'attribute_id' => $request->input('attribute_id'),
             'quantity' => 1,
             'operation' => 'subtract',
-            'customer_id' => $customer_id
+            'customer_id' => $customer_id,
+            'session_id' => $session_id,
         ];
+
+        $cart[] = $data;
+
+        session()->put('cart', $cart);        
 
         $response = $this->apiRequest->sendRequest('post', 'checkout/addCart', $data);
 

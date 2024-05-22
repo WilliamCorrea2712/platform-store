@@ -67,7 +67,6 @@
                             <input type="hidden" name="operation" value="add">
                             <button type="submit" class="btn btn-primary">{{ _('Adicionar ao Carrinho') }}</button>
                         </form>
-                        <button class="btn btn-success buy-now">{{ _('Comprar') }}</button>
                     </div>
                 </div>                            
             </div>

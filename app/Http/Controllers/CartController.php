@@ -16,9 +16,18 @@ class CartController extends Controller
 
     public function showCart(Request $request)
     {
-        $customer_id = session()->get('customer_id');
+        $session_id = session()->getId();
 
-        $response = $this->apiRequest->sendRequest('get', 'checkout/getProductsCart', [], ['customer_id' => $customer_id]);
+        if(session()->get('customer_id')){
+            $customer_id = session()->get('customer_id');
+        } else {
+            $customer_id = null;
+        }
+
+        $response = $this->apiRequest->sendRequest('get', 'checkout/getProductsCart', [], [
+            'customer_id' => $customer_id, 
+            'session_id' => $session_id
+        ]);
 
         $products = [];
 
