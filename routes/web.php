@@ -59,5 +59,7 @@ Route::get('/{slug}', [PageController::class, 'show'])
 
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::post('/add_to_cart', [ProductController::class, 'addToCart'])->name('add_to_cart');
-Route::post('/remove_product_cart', [ProductController::class, 'removeToCart'])->name('remove_product_cart');
+Route::post('/remove_product_cart', [CartController::class, 'removeToCart'])->name('remove_product_cart');
+Route::post('/update_quantity_cart', [CartController::class, 'updateToCart'])->name('update_quantity_cart');
+
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');

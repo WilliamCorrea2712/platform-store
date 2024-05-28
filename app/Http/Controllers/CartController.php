@@ -41,7 +41,52 @@ class CartController extends Controller
         return view('checkout.cart', ['products' => $products]);
     }
 
-    public function removeToCart(Request $request){
+    public function removeToCart(Request $request)
+    {
+        $data = [
+            'id' => $request->input('id'),
+            'product_id' => $request->input('product_id'),
+            'attribute_id' => $request->input('attribute_id'),
+            'session_id' => session()->getId()
+        ];
 
+        $response = $this->apiRequest->sendRequest('post', 'checkout/removeToCart', $data);
+
+        if ($response->successful()) {
+            return redirect('/cart')->with('success', 'Produto excluido do carrinho com sucesso');
+        } else {
+            $response->json()['message'] ?? 'Erro desconhecido ao excluir o produto do carrinho.';
+        }
+    }
+
+    public function updateToCart(Request $request)
+    {        
+        $quantity = $request->input('quantity');
+        $quantityCurrent = $request->input('quantityCurrent');
+
+        echo session()->getId();
+
+        if($quantity >= $quantityCurrent){
+            $operation = 'subtract';
+        } else {
+            $operation = 'add';
+        }
+
+        $data = [
+            'id' => $request->input('id'),
+            'product_id' => $request->input('product_id'),
+            'attribute_id' => $request->input('attribute_id'),
+            'quantity' => $quantity,
+            'operation' => $operation,
+            'session_id' => session()->getId()
+        ];
+
+        $response = $this->apiRequest->sendRequest('post', 'checkout/updateQuantityToCart', $data);
+
+        if ($response->successful()) {
+            return redirect('/cart')->with('success', 'Quantidade atualizada com sucesso');
+        } else {
+            return response()->json(['error' => $response->body()], $response->status());
+        }
     }
 }
